@@ -35,15 +35,15 @@ class OrphanDataRepairTests(unittest.TestCase):
             loaded = load_project(path)
             self.assertEqual(loaded.recovered_workspaces, project.recovered_workspaces)
 
-    def test_nonduplicate_orphan_with_useful_content_not_deleted(self):
+    def test_nonduplicate_orphan_with_useful_content_is_archived(self):
         ns = Section('namespace', 'Example', [Block('var', {'name': 'history', 'value': '{}'})])
         orphan = Section('data', 'Example', [Block('var', {'name': 'new_data', 'value': '123'})],
                          {'source_id': 'missing_source', 'container': 'Table'})
         doc = ScriptDocument('main.nut', [ns, orphan])
         project = Project(documents=[doc])
-        self.assertFalse(repair_orphan_workspaces(project))
-        self.assertIn(orphan, doc.sections)
-        self.assertFalse(project.recovered_workspaces)
+        self.assertEqual(repair_orphan_workspaces(project), [(doc.name, orphan.id, 'missing_owner')])
+        self.assertNotIn(orphan, doc.sections)
+        self.assertEqual(project.recovered_workspaces[0]['section'], orphan.to_dict())
 
     def test_linked_source_and_nested_data_are_preserved(self):
         source = Block('var', {'name': 'relation', 'value': '{}', 'container_type': 'Table'})

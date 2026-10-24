@@ -600,12 +600,12 @@ class MainWindow(QMainWindow):
                 self._loading=False
         if changes:
             self.dirty=True
-            duplicates=sum(reason=='duplicate_namespace' for _,_,reason in changes)
+            archived=sum(1 for entry in self.project.recovered_workspaces if entry.get('section', {}).get('id') in {section_id for _,section_id,_ in changes})
             english=current_profile().language=='en'
             if english:
-                message=f'Cleaned {len(changes)} orphan Data workspace(s). {duplicates} redundant workspace(s) archived in project recovery records; save the project.'
+                message=f'Removed {len(changes)} orphan Data workspace(s); archived {archived} for recovery. Save the project.'
             else:
-                message=f'已清理 {len(changes)} 个失效 Data 工作区，其中 {duplicates} 个冗余分区已存入工程恢复记录；请保存工程。'
+                message=f'已清理 {len(changes)} 个孤立 Data 工作区，其中 {archived} 个已保存恢复记录；请保存工程。'
             self.statusBar().showMessage(message,10000)
         return len(changes)
 
@@ -646,14 +646,14 @@ class MainWindow(QMainWindow):
             from ..data_definitions import repair_orphan_workspaces
             repairs=repair_orphan_workspaces(self.project)
             self._repaired_orphans=len(repairs)
-            archived=sum(reason=='duplicate_namespace' for _,_,reason in repairs)
+            archived=sum(1 for entry in self.project.recovered_workspaces if entry.get('section', {}).get('id') in {section_id for _,section_id,_ in repairs})
             self.load_document(self.project.documents[0] if self.project.documents else None)
             self.setWindowTitle(f'L4D2 Visual VScript {APP_VERSION} — '+self.project.name)
             if self._repaired_orphans:
                 self.mark_dirty()
                 english=current_profile().language=='en'
-                message=(f'Cleaned {self._repaired_orphans} orphan Data workspace(s), archived {archived} duplicate(s); save the project.' if english
-                         else f'已清理 {self._repaired_orphans} 个失效 Data 工作区，其中 {archived} 个重复分区已归档；请保存工程。')
+                message=(f'Removed {self._repaired_orphans} orphan Data workspace(s); archived {archived} for recovery. Save the project.' if english
+                         else f'已清理 {self._repaired_orphans} 个孤立 Data 工作区，其中 {archived} 个已保存恢复记录；请保存工程。')
                 self.statusBar().showMessage(message,10000)
         except Exception as exc:QMessageBox.critical(self,'打开失败',str(exc))
 

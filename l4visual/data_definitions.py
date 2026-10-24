@@ -316,12 +316,38 @@ def prune_redundant_orphan_data(document):
     return removed
 
 
-def repair_orphan_workspaces(project):
-    """Clean empty or proven-duplicate orphan workspaces, archiving content.
+def prune_unlinked_orphan_data(document):
+    """Remove all detached Data workspaces, regardless of their content.
 
-    Ambiguous / unique nonempty workspaces remain intact for manual recovery.
-    Archived sections are stored inside the .l4vp file, and can be exported
-    from the editor Tools menu. Does not change the script generator's output.
+    A Data section without source_id can be an intentional top-level global
+    and must never be removed automatically. Linked workspaces whose owner
+    still exists must also be preserved. Iterating is important: removing an
+    orphan parent can detach any nested child workspace.
+
+    Return removed (Section, reason) pairs for project-level recovery records.
+    """
+    removed = []
+    while True:
+        detached = [section for section in tuple(document.sections)
+                    if section.kind == 'data'
+                    and section.args.get('source_id')
+                    and find_source(document, section) is None]
+        if not detached:
+            return removed
+        for section in detached:
+            document.sections.remove(section)
+            removed.append((section, 'missing_owner'))
+
+
+def repair_orphan_workspaces(project):
+    """Remove detached Data workspaces; archive meaningful content first.
+
+    Every Data section whose *previously recorded* source declaration is
+    missing is removed, even with unique or nested content. Truly standalone
+    Data sections (without source_id) generate global declarations and must
+    NEVER be removed automatically. Nonempty and fallback-only removed
+    sections are stored in project recovery records for Tools-menu export.
+    Removing an orphan containing executable blocks may affect generated code.
     """
     removed = []
     for document in project.documents:
@@ -335,4 +361,12 @@ def repair_orphan_workspaces(project):
                 'section': section.to_dict(),
             })
             removed.append((document.name, section.id, 'duplicate_namespace'))
+        for section, reason in prune_unlinked_orphan_data(document):
+            if section.blocks or section.args.get('fallback_expression'):
+                project.recovered_workspaces.append({
+                    'document': document.name,
+                    'reason': reason,
+                    'section': section.to_dict(),
+                })
+            removed.append((document.name, section.id, reason))
     return removed
