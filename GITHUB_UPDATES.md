@@ -42,3 +42,13 @@ No GitHub release or no properly named ZIP asset → the editor cannot automatic
 ### 安全与数据
 
 使用 HTTPS；下载至临时文件夹；检查 ZIP、文件路径、大小、版本及可用的 SHA-256；主程序退出后更新；出现一般写入错误则回滚已替换的文件。**不会安装或覆盖 `.l4vp` 工程文件，也不会删除未知的个人文件。** 请避免把编辑器装入无写入权限的系统目录。
+
+## v26.16: startup update window / 启动前检查窗口
+
+The editor now opens an update-check dialog *before* displaying the main workspace (unless startup checks are disabled in Settings). It shows the installed version and an explicit result, including when GitHub is unreachable, no Release exists, or the installed version is already the latest.
+
+Use **Enter editor** to skip the network request; no account or download is required. **Retry** checks again, and **GitHub Releases** opens the repository's release list. When a newer official Release has a matching editor ZIP, **Download update** downloads and verifies it, then asks whether to install and restart. Installation is performed by a separate process after the editor exits.
+
+从 26.16 起，默认在主工作区打开前弹出更新检查窗口，明确显示本地版本、检查结果、网络错误及是否有新版本。可以随时选择“进入编辑器”跳过，无需联网。新版本需要 GitHub 正式 Release 和匹配的编辑器 ZIP 附件；下载校验成功后，再由独立进程安装、重启。
+
+If you publish only `v26.16` while the installed editor is already `26.16`, **Already up to date** is the expected result. / 如果本地已是 26.16，而 GitHub 最新也是 26.16，显示“已是最新版本”属于正常情况。

@@ -8,19 +8,19 @@ from ..update_service import check_latest_release, download_release
 
 class ReleaseCheckTask(QThread):
     found = Signal(object)
-    failed = Signal(str)
+    failed = Signal(object)
 
     def run(self):
         try:
             self.found.emit(check_latest_release())
         except Exception as exc:
-            self.failed.emit(str(exc))
+            self.failed.emit(exc)
 
 
 class ReleaseDownloadTask(QThread):
     progress = Signal(int)
     completed = Signal(object, object)
-    failed = Signal(str)
+    failed = Signal(object)
 
     def __init__(self, info):
         super().__init__()
@@ -39,4 +39,4 @@ class ReleaseDownloadTask(QThread):
             self.progress.emit(100)
             self.completed.emit(str(archive), str(folder))
         except Exception as exc:
-            self.failed.emit(str(exc))
+            self.failed.emit(exc)

@@ -8,6 +8,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
 import hashlib
+import datetime
 import json
 import re
 import shutil
@@ -33,7 +34,51 @@ ALLOWED_DIRS = {'l4visual','resources','tests','examples','tools','CHANGELOGS'}
 
 
 class UpdateError(Exception):
-    pass
+    """Safe update error with a stable reason for localized UI reporting."""
+
+    def __init__(self, message, *, code='unknown', detail=''):
+        super().__init__(message)
+        self.code = code
+        self.detail = detail
+
+
+def update_error_text(error, language='en'):
+    """Localize expected GitHub/network failures; preserve debugging information."""
+    zh = language == 'zh'
+    code = getattr(error, 'code', '')
+    detail = str(getattr(error, 'detail', '') or '').strip()
+    messages = {
+        'rate_limited': (
+            'GitHub API rate limit reached (HTTP 403). Try again after the limit resets or open Releases in your browser.',
+            'GitHub API 请求次数达到上限（HTTP 403）。请在额度恢复后重试，或用浏览器打开 Releases 页面。'),
+        'forbidden': (
+            'GitHub denied the request (HTTP 403). This may be caused by network/proxy restrictions or API access controls. Try the Releases page in a browser.',
+            'GitHub 拒绝了请求（HTTP 403）。可能是网络／代理限制或 API 访问策略导致。请尝试用浏览器打开 Releases 页面。'),
+        'no_release': (
+            'No public GitHub Release found (HTTP 404). Publish a formal Release with an editor ZIP asset.',
+            '未找到公开的 GitHub 正式 Release（HTTP 404）。请发布正式版本并上传编辑器 ZIP 附件。'),
+        'unauthorized': (
+            'GitHub rejected authentication (HTTP 401). Open Releases in the browser to verify access.',
+            'GitHub 认证失败（HTTP 401）。请在浏览器中确认是否可以访问 Releases。'),
+        'network': (
+            'Unable to connect to GitHub. Check your network or proxy settings; you can still use the editor offline.',
+            '无法连接 GitHub。请检查网络或代理设置；编辑器仍可离线使用。'),
+    }
+    if code in messages:
+        result = messages[code][1 if zh else 0]
+        if detail:
+            if zh and detail.startswith('Reset time (UTC): '):
+                detail = '预计额度恢复时间（UTC）：' + detail[len('Reset time (UTC): '):]
+                result += '\n' + detail
+            else:
+                result += ('\n补充信息：' if zh else '\nDetails: ') + detail
+        return result
+    if isinstance(error, UpdateCancelled):
+        return '下载已取消。' if zh else 'Download cancelled.'
+    if zh:
+        # Keep unexpected server/library details available, rather than wrongly translating them.
+        return '更新检查或下载失败。\n技术详情：' + str(error)
+    return str(error)
 
 
 class UpdateCancelled(UpdateError):
@@ -122,10 +167,33 @@ def check_latest_release(timeout: float = 8.0) -> ReleaseInfo:
             return release_from_json(json.loads(raw.decode('utf-8')))
     except urllib.error.HTTPError as exc:
         if exc.code == 404:
-            raise UpdateError('No public GitHub Release found. Publish a tagged Release with an editor ZIP asset.') from exc
-        raise UpdateError(f'GitHub returned HTTP {exc.code}.') from exc
+            raise UpdateError('No public GitHub Release found.', code='no_release') from exc
+        if exc.code == 401:
+            raise UpdateError('GitHub authentication failed.', code='unauthorized') from exc
+        if exc.code == 403:
+            remaining = (exc.headers.get('X-RateLimit-Remaining', '') if exc.headers else '')
+            reason = ''
+            try:
+                # Small bounded read; never expose the response body in UI.
+                body = json.loads(exc.read(4096).decode('utf-8', errors='replace'))
+                reason = str(body.get('message','')).lower() if isinstance(body, dict) else ''
+            except (OSError, ValueError, UnicodeError):
+                pass
+            limited = remaining == '0' or 'rate limit' in reason or 'secondary limit' in reason
+            detail = ''
+            if limited and exc.headers:
+                reset = exc.headers.get('X-RateLimit-Reset','')
+                if reset.isdecimal():
+                    try:
+                        when = datetime.datetime.fromtimestamp(int(reset), datetime.timezone.utc)
+                        detail = 'Reset time (UTC): ' + when.strftime('%Y-%m-%d %H:%M')
+                    except (OverflowError, OSError, ValueError):
+                        pass
+            raise UpdateError('GitHub returned HTTP 403.',
+                              code='rate_limited' if limited else 'forbidden', detail=detail) from exc
+        raise UpdateError(f'GitHub returned HTTP {exc.code}.', code='http_error') from exc
     except (urllib.error.URLError, TimeoutError, OSError, ValueError) as exc:
-        raise UpdateError(f'Unable to check GitHub releases: {exc}') from exc
+        raise UpdateError(f'Unable to check GitHub releases: {exc}', code='network') from exc
 
 
 def _detect_application_prefix(names: list[str]) -> str:

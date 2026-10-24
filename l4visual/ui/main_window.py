@@ -25,7 +25,7 @@ from .trash import ProjectTree
 from ..display_profile import current_profile, use_profile, event_caption, method_caption, menu_caption, category_caption
 from .localization import translated_text
 from ..version import APP_VERSION
-from ..update_service import is_newer, RELEASES_PAGE
+from ..update_service import is_newer, RELEASES_PAGE, update_error_text
 from .update_tasks import ReleaseCheckTask, ReleaseDownloadTask
 
 
@@ -126,7 +126,7 @@ class VPKInfoDialog(QDialog):
                     version=self.version.text().strip() or '1.0',description=self.description.toPlainText())
 
 class MainWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self, startup_checked=False):
         super().__init__()
         self.setWindowTitle('L4D2 Visual VScript '+APP_VERSION+' — '+('Unsaved' if current_profile().language=='en' else '未保存'))
         self.resize(1500,920)
@@ -159,7 +159,7 @@ class MainWindow(QMainWindow):
         # Only the initial demonstration receives a startup camera position.
         QTimer.singleShot(0,self.focus_starter_blocks)
         QTimer.singleShot(300,self._show_prior_update_result)
-        if str(self.preferences.value('updates/check_on_startup','true')).lower() not in ('false','0','no'):
+        if not startup_checked and str(self.preferences.value('updates/check_on_startup','true')).lower() not in ('false','0','no'):
             QTimer.singleShot(1500,lambda:self.check_for_updates(manual=False))
 
     def focus_starter_blocks(self):
@@ -1006,6 +1006,7 @@ class MainWindow(QMainWindow):
 
     def _release_check_failed(self,message):
         if self._close_pending:return
+        message=update_error_text(message, current_profile().language)
         if self._manual_update_check:
             QMessageBox.information(self,self._update_text('Update check','检查更新'),message)
         else:
@@ -1073,10 +1074,12 @@ class MainWindow(QMainWindow):
         task.start()
 
     def _download_failed(self,message):
+        was_cancelled = isinstance(message, Exception) and message.__class__.__name__ == 'UpdateCancelled'
+        message=update_error_text(message, current_profile().language)
         if self._download_progress is not None:
             self._download_progress.close()
             self._download_progress=None
-        if 'cancelled' not in message.lower():
+        if not was_cancelled:
             QMessageBox.warning(self,self._update_text('Download failed','下载失败'),message)
 
     def _download_ready(self,info,archive,folder):
