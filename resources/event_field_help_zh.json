@@ -1,0 +1,4915 @@
+{
+  "player_death": {
+    "userid": {
+      "zh": "死亡玩家的用户 ID",
+      "en": "user ID who died",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "entityid": {
+      "zh": "死亡者为玩家时优先用 userid；否则用该死亡实体索引",
+      "en": "entity ID who died, userid should be used first, to get the dead Player. Otherwise, it is not a player, so use this.",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "attacker": {
+      "zh": "击杀者的用户 ID",
+      "en": "user ID who killed",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attackername": {
+      "zh": "感染者的种类名称（感染者通常没有单独的玩家名）",
+      "en": "What type of zombie, so we don't have zombie names",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "attackerentid": {
+      "zh": "击杀者不是玩家时的实体索引；玩家击杀者优先使用 attacker",
+      "en": "if the killer is not a player, the entindex of who killed. Again, use the attacker first",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "weapon": {
+      "zh": "击杀者使用的武器名称",
+      "en": "weapon name killer used",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "headshot": {
+      "zh": "是否造成爆头",
+      "en": "signals a headshot",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "attackerisbot": {
+      "zh": "攻击者是否为 Bot",
+      "en": "is the attacker a bot",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "victimname": {
+      "zh": "感染者的种类名称（感染者通常没有单独的玩家名）",
+      "en": "What type of zombie, so we don't have zombie names",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "victimisbot": {
+      "zh": "受害者是否为 Bot",
+      "en": "is the victim a bot",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "abort": {
+      "zh": "受害者是否中途退出",
+      "en": "did the victim abort",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "type": {
+      "zh": "伤害类型",
+      "en": "damage type",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "victim_x": {
+      "zh": "受害者位置 X 坐标",
+      "en": "victim's position in the x-axis",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    },
+    "victim_y": {
+      "zh": "受害者位置 Y 坐标",
+      "en": "victim's position in the y-axis",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    },
+    "victim_z": {
+      "zh": "受害者位置 Z 坐标",
+      "en": "victim's position in the z-axis",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    }
+  },
+  "player_hurt": {
+    "userid": {
+      "zh": "受到伤害的玩家用户 ID",
+      "en": "user ID who was hurt",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attacker": {
+      "zh": "攻击者的用户 ID",
+      "en": "user id who attacked",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attackerentid": {
+      "zh": "如果攻击者不是玩家，使用这里的攻击者实体索引；玩家攻击者优先使用 attacker",
+      "en": "entity id who attacked, if attacker not a player, and userid therefore invalid",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "health": {
+      "zh": "受伤后剩余的生命值",
+      "en": "remaining health points",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "armor": {
+      "zh": "剩余护甲值",
+      "en": "remaining armor points",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "weapon": {
+      "zh": "攻击者使用的武器名称（非环境伤害时）",
+      "en": "weapon name attacker used, if not the world",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "dmg_health": {
+      "zh": "本次扣除的生命值",
+      "en": "damage done to health",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "dmg_armor": {
+      "zh": "对护甲造成的伤害",
+      "en": "damage done to armor",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "hitgroup": {
+      "zh": "受到伤害的身体部位编号",
+      "en": "hitgroup that was damaged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "type": {
+      "zh": "伤害类型",
+      "en": "damage type",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "player_activate": {
+    "userid": {
+      "zh": "服务器分配的玩家用户 ID",
+      "en": "user ID on server",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_team": {
+    "userid": {
+      "zh": "服务器分配的玩家用户 ID",
+      "en": "user ID on server",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "team": {
+      "zh": "新队伍 ID",
+      "en": "team id",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "oldteam": {
+      "zh": "原来的队伍 ID",
+      "en": "old team id",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "disconnect": {
+      "zh": "换队原因是否为玩家断开连接",
+      "en": "team change because player disconnects",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "name": {
+      "zh": "名称",
+      "en": "",
+      "en_inferred": "Name",
+      "source": "inferred",
+      "type": "string"
+    },
+    "isbot": {
+      "zh": "是否为 Bot",
+      "en": "",
+      "en_inferred": "Whether the player is a bot",
+      "source": "inferred",
+      "type": "bool"
+    }
+  },
+  "player_bot_replace": {
+    "player": {
+      "zh": "被 Bot 接管的人类玩家用户 ID",
+      "en": "user ID of the player",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "bot": {
+      "zh": "接替人类玩家的 Bot 用户 ID",
+      "en": "user ID of the bot",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "bot_player_replace": {
+    "bot": {
+      "zh": "被接管的 Bot 用户 ID",
+      "en": "user ID of the bot",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "player": {
+      "zh": "接管 Bot 的人类玩家用户 ID",
+      "en": "user ID of the player",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_afk": {
+    "player": {
+      "zh": "玩家用户 ID",
+      "en": "user ID of the player",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "weapon_fire": {
+    "userid": {
+      "zh": "开火玩家的用户 ID",
+      "en": "user ID of the player who fires their weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "weapon": {
+      "zh": "所用武器的名称",
+      "en": "used weapon name",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "weaponid": {
+      "zh": "所用武器的 ID",
+      "en": "used weapon ID",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "count": {
+      "zh": "本次开火的弹丸数量",
+      "en": "number of bullets",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "weapon_fire_on_empty": {
+    "userid": {
+      "zh": "空弹匣仍尝试开火的玩家用户 ID",
+      "en": "user ID of the player who fires their weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "weapon": {
+      "zh": "所用武器的名称",
+      "en": "weapon name used",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "count": {
+      "zh": "子弹数量",
+      "en": "number of bullets",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "weapon_reload": {
+    "userid": {
+      "zh": "换弹玩家的用户 ID",
+      "en": "user ID of the player who reloads",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "manual": {
+      "zh": "是否由玩家主动按下换弹键",
+      "en": "player manually started the reload",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "weapon_zoom": {
+    "userid": {
+      "zh": "使用武器瞄准镜的幸存者用户 ID",
+      "en": "user ID of the survivor who zooms their weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "ability_use": {
+    "userid": {
+      "zh": "使用特感技能的玩家用户 ID",
+      "en": "user ID of the player who uses their ability",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "ability": {
+      "zh": "技能实体类名，如 Smoker 的 ability_tongue、Spitter 的 ability_spit 等",
+      "en": "Classname of ability. Possible values: 'ability_tongue', 'ability_vomit', 'ability_lunge', 'ability_spit', 'ability_charge', 'ability_throw' for the Smoker, Boomer, Hunter, Spitter, Charger and Tank, respectively.",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "context": {
+      "zh": "技能使用模式的编号（依技能种类变化）",
+      "en": "enum of the way it was used (different for each ability)",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "ammo_pickup": {
+    "userid": {
+      "zh": "从弹药堆补充弹药的玩家用户 ID",
+      "en": "The player who got some ammo from a weapon_ammo_spawner",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "item_pickup": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "item": {
+      "zh": "拾取的武器或物品名称，例如 tmp、hegrenade 等",
+      "en": "either a weapon such as 'tmp' or 'hegrenade', or an item such as 'nvgs'",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    }
+  },
+  "golden_crowbar_pickup": {
+    "userid": {
+      "zh": "拾取金撬棍的玩家用户 ID",
+      "en": "The player who picked up the crowbar",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "grenade_bounce": {
+    "userid": {
+      "zh": "弹射物拥有者的用户 ID",
+      "en": "user ID of the projectile's owner",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "x": {
+      "zh": "弹射物位置 X 坐标",
+      "en": "the projectile's position in the x-axis",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    },
+    "y": {
+      "zh": "弹射物位置 Y 坐标",
+      "en": "the projectile's position in the y-axis",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    },
+    "z": {
+      "zh": "弹射物位置 Z 坐标",
+      "en": "the projectile's position in the z-axis",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    }
+  },
+  "hegrenade_detonate": {
+    "userid": {
+      "zh": "发生爆炸实体的拥有者用户 ID",
+      "en": "user ID of the detonated entities' owner",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "x": {
+      "zh": "爆炸位置 X 坐标",
+      "en": "detonated entity's position in the x-axis",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    },
+    "y": {
+      "zh": "爆炸位置 Y 坐标",
+      "en": "detonated entity's position in the y-axis",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    },
+    "z": {
+      "zh": "爆炸位置 Z 坐标",
+      "en": "detonated entity's position in the z-axis",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    }
+  },
+  "bullet_impact": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "x": {
+      "zh": "子弹命中位置 X 坐标",
+      "en": "bullet's position in the x-axis",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    },
+    "y": {
+      "zh": "子弹命中位置 Y 坐标",
+      "en": "bullet's position in the y-axis",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    },
+    "z": {
+      "zh": "子弹命中位置 Z 坐标",
+      "en": "bullet's position in the z-axis",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    }
+  },
+  "player_footstep": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "player_jump": {
+    "userid": {
+      "zh": "跳跃玩家的用户 ID",
+      "en": "user ID of the player who jumps",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_blind": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "player_falldamage": {
+    "userid": {
+      "zh": "受到伤害的玩家",
+      "en": "Who got hurt",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "damage": {
+      "zh": "受到的伤害数值",
+      "en": "for how much",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    },
+    "causer": {
+      "zh": "造成该状态的玩家（如果存在）",
+      "en": "Who caused them to do so (if anyone)",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_ledge_grab": {
+    "userid": {
+      "zh": "抓住悬崖边缘的幸存者",
+      "en": "Who grabbed the ledge",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "causer": {
+      "zh": "造成该状态的玩家（如果存在）",
+      "en": "Who caused them to do so (if anyone)",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_ledge_release": {
+    "userid": {
+      "zh": "松开悬崖边缘的幸存者",
+      "en": "person who released from the ledge",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "door_moving": {
+    "entindex": {
+      "zh": "实体索引",
+      "en": "",
+      "en_inferred": "Entity index",
+      "source": "inferred",
+      "type": "long"
+    },
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "door_open": {
+    "userid": {
+      "zh": "打开门的玩家",
+      "en": "Who opened the door",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "checkpoint": {
+      "zh": "是否为安全屋/关卡检查点门",
+      "en": "Is the door a checkpoint door",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "closed": {
+      "zh": "门开始打开前是否处于关闭状态",
+      "en": "Was the door closed when it started opening?",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "door_close": {
+    "userid": {
+      "zh": "关闭门的玩家",
+      "en": "Who closed the door",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "checkpoint": {
+      "zh": "是否为安全屋/关卡检查点门",
+      "en": "Is the door a checkpoint door",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "door_unlocked": {
+    "userid": {
+      "zh": "打开门的玩家",
+      "en": "Who opened the door",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "checkpoint": {
+      "zh": "是否为安全屋/关卡检查点门",
+      "en": "Is the door a checkpoint door",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "rescue_door_open": {
+    "userid": {
+      "zh": "打开门的玩家",
+      "en": "Who opened the door",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "entindex": {
+      "zh": "被打开的门实体索引",
+      "en": "door that opened",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "waiting_checkpoint_door_used": {
+    "userid": {
+      "zh": "尝试开门的玩家",
+      "en": "player who tried to open it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "entindex": {
+      "zh": "被使用的门实体索引",
+      "en": "door that was used",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "waiting_door_used_versus": {
+    "userid": {
+      "zh": "尝试开门的玩家",
+      "en": "player who tried to open it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "entindex": {
+      "zh": "被使用的门实体索引",
+      "en": "door that was used",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "waiting_checkpoint_button_used": {
+    "userid": {
+      "zh": "尝试开门的玩家",
+      "en": "player who tried to open it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "success_checkpoint_button_used": {
+    "userid": {
+      "zh": "按下按钮的玩家",
+      "en": "player who openned it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "round_freeze_end": {},
+  "round_start": {
+    "timelimit": {
+      "zh": "回合时间限制（秒）",
+      "en": "round time limit in seconds",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "fraglimit": {
+      "zh": "回合击杀数限制",
+      "en": "frag limit in seconds",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "objective": {
+      "zh": "回合目标",
+      "en": "round objective",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    }
+  },
+  "round_start_pre_entity": {},
+  "round_start_post_nav": {},
+  "nav_blocked": {
+    "area": {
+      "zh": "导航区域编号",
+      "en": "",
+      "en_inferred": "Navigation area identifier",
+      "source": "inferred",
+      "type": "long"
+    },
+    "blocked": {
+      "zh": "导航区域现在是否被阻挡",
+      "en": "",
+      "en_inferred": "Whether the navigation area is blocked",
+      "source": "inferred",
+      "type": "bool"
+    }
+  },
+  "nav_generate": {},
+  "round_end_message": {
+    "winner": {
+      "zh": "获胜的队伍或玩家编号",
+      "en": "winner team/user i",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "reason": {
+      "zh": "该队伍获胜的原因编号",
+      "en": "reson why team won",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "message": {
+      "zh": "回合结束时的提示信息",
+      "en": "end round message",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    }
+  },
+  "round_end": {
+    "winner": {
+      "zh": "胜利方编号",
+      "en": "winner team/user i",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "reason": {
+      "zh": "回合结束原因编号",
+      "en": "reson why team won",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "message": {
+      "zh": "回合结束时的提示信息",
+      "en": "end round message",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "time": {
+      "zh": "时间",
+      "en": "",
+      "en_inferred": "Elapsed time or time value",
+      "source": "inferred",
+      "type": "float"
+    }
+  },
+  "vote_ended": {},
+  "vote_started": {
+    "issue": {
+      "zh": "投票议题",
+      "en": "",
+      "en_inferred": "Vote issue",
+      "source": "inferred",
+      "type": "string"
+    },
+    "param1": {
+      "zh": "投票参数",
+      "en": "",
+      "en_inferred": "Additional event parameter",
+      "source": "inferred",
+      "type": "string"
+    },
+    "votedata": {
+      "zh": "「votedata」字段（原文未解释）",
+      "en": "",
+      "en_inferred": "Additional voting data",
+      "source": "inferred",
+      "type": "string"
+    },
+    "team": {
+      "zh": "发起投票的队伍",
+      "en": "",
+      "en_inferred": "Team identifier",
+      "source": "inferred",
+      "type": "byte"
+    },
+    "initiator": {
+      "zh": "发起投票玩家的实体索引",
+      "en": "entity id of the player who initiated the vote",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "reliable": {
+      "zh": "该事件是可靠消息",
+      "en": "this event is reliable",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "1"
+    }
+  },
+  "vote_changed": {
+    "yesVotes": {
+      "zh": "目前赞成票数",
+      "en": "",
+      "en_inferred": "Current yes-vote count",
+      "source": "inferred",
+      "type": "byte"
+    },
+    "noVotes": {
+      "zh": "目前反对票数",
+      "en": "",
+      "en_inferred": "Current no-vote count",
+      "source": "inferred",
+      "type": "byte"
+    },
+    "potentialVotes": {
+      "zh": "可能参与投票的人数",
+      "en": "",
+      "en_inferred": "Number of potential voters",
+      "source": "inferred",
+      "type": "byte"
+    }
+  },
+  "vote_passed": {
+    "details": {
+      "zh": "投票通过时附带的详细信息",
+      "en": "",
+      "en_inferred": "Additional details",
+      "source": "inferred",
+      "type": "string"
+    },
+    "param1": {
+      "zh": "投票附加参数",
+      "en": "",
+      "en_inferred": "Additional event parameter",
+      "source": "inferred",
+      "type": "string"
+    },
+    "team": {
+      "zh": "队伍编号",
+      "en": "",
+      "en_inferred": "Team identifier",
+      "source": "inferred",
+      "type": "byte"
+    },
+    "reliable": {
+      "zh": "该事件是可靠消息",
+      "en": "this event is reliable",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "1"
+    }
+  },
+  "vote_failed": {
+    "team": {
+      "zh": "队伍编号",
+      "en": "",
+      "en_inferred": "Team identifier",
+      "source": "inferred",
+      "type": "byte"
+    },
+    "reliable": {
+      "zh": "该事件是可靠消息",
+      "en": "this event is reliable",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "1"
+    }
+  },
+  "vote_cast_yes": {
+    "team": {
+      "zh": "队伍编号",
+      "en": "",
+      "en_inferred": "Team identifier",
+      "source": "inferred",
+      "type": "byte"
+    },
+    "entityid": {
+      "zh": "投票玩家的实体索引",
+      "en": "entity id of the voter",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "vote_cast_no": {
+    "team": {
+      "zh": "队伍编号",
+      "en": "",
+      "en_inferred": "Team identifier",
+      "source": "inferred",
+      "type": "byte"
+    },
+    "entityid": {
+      "zh": "投票玩家的实体索引",
+      "en": "entity id of the voter",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "infected_hurt": {
+    "attacker": {
+      "zh": "攻击者的用户 ID",
+      "en": "player userid who attacked",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "entityid": {
+      "zh": "受伤感染者的实体索引",
+      "en": "entity id of infected",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "hitgroup": {
+      "zh": "受到伤害的身体部位编号",
+      "en": "hitgroup that was damaged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "amount": {
+      "zh": "本次造成的伤害量",
+      "en": "how much damage was done",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "type": {
+      "zh": "伤害类型",
+      "en": "damage type",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "infected_death": {
+    "attacker": {
+      "zh": "击杀者的用户 ID",
+      "en": "user ID who killed",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "infected_id": {
+      "zh": "死亡感染者的 ID",
+      "en": "ID of the infected that died",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "gender": {
+      "zh": "感染者的性别或种类编号",
+      "en": "gender (type) of the infected",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "weapon_id": {
+      "zh": "使用的武器 ID",
+      "en": "ID of the weapon used",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "headshot": {
+      "zh": "是否造成爆头",
+      "en": "signals a headshot",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "minigun": {
+      "zh": "是否由固定机枪击杀",
+      "en": "signals a minigun kill",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "blast": {
+      "zh": "是否由爆炸造成死亡",
+      "en": "signals a death from blast damage",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "submerged": {
+      "zh": "感染者当时是否处于水下",
+      "en": "indicates the infected was submerged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "hostname_changed": {
+    "hostname": {
+      "zh": "新的服务器名称",
+      "en": "",
+      "en_inferred": "Server hostname",
+      "source": "inferred",
+      "type": "string"
+    }
+  },
+  "difficulty_changed": {
+    "newDifficulty": {
+      "zh": "更新后的难度编号",
+      "en": "",
+      "en_inferred": "New difficulty",
+      "source": "inferred",
+      "type": "short"
+    },
+    "oldDifficulty": {
+      "zh": "之前的难度编号",
+      "en": "",
+      "en_inferred": "Previous difficulty",
+      "source": "inferred",
+      "type": "short"
+    },
+    "strDifficulty": {
+      "zh": "新的难度控制台字符串",
+      "en": "",
+      "en_inferred": "Difficulty console string",
+      "source": "inferred",
+      "type": "string"
+    }
+  },
+  "finale_start": {
+    "rushes": {
+      "zh": "战役终局中的尸潮波次或次数",
+      "en": "",
+      "en_inferred": "Finale rush count or wave value",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "finale_rush": {},
+  "finale_escape_start": {},
+  "finale_vehicle_incoming": {
+    "campaign": {
+      "zh": "战役名称",
+      "en": "",
+      "en_inferred": "Campaign identifier or name",
+      "source": "inferred",
+      "type": "string"
+    }
+  },
+  "finale_vehicle_ready": {
+    "campaign": {
+      "zh": "战役名称",
+      "en": "",
+      "en_inferred": "Campaign identifier or name",
+      "source": "inferred",
+      "type": "string"
+    }
+  },
+  "finale_vehicle_leaving": {
+    "survivorcount": {
+      "zh": "成功撤离的幸存者人数",
+      "en": "number of survivors that made it out",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "finale_win": {
+    "map_name": {
+      "zh": "当前地图名称",
+      "en": "",
+      "en_inferred": "Map name",
+      "source": "inferred",
+      "type": "string"
+    },
+    "difficulty": {
+      "zh": "当前难度",
+      "en": "",
+      "en_inferred": "Difficulty setting",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "mission_lost": {},
+  "finale_radio_start": {
+    "health": {
+      "zh": "生命值",
+      "en": "",
+      "en_inferred": "Health amount",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "finale_radio_damaged": {
+    "health": {
+      "zh": "生命值",
+      "en": "",
+      "en_inferred": "Health amount",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "final_reportscreen": {},
+  "map_transition": {},
+  "player_transitioned": {
+    "userid": {
+      "zh": "刚进入下一章节的玩家用户 ID",
+      "en": "the person that just finished transitioning",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "heal_begin": {
+    "userid": {
+      "zh": "实施治疗的玩家用户 ID",
+      "en": "person doing the healing",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "接受治疗的玩家用户 ID",
+      "en": "person being healed",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "heal_success": {
+    "userid": {
+      "zh": "治疗者用户 ID",
+      "en": "person doing the healing",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "被治疗者用户 ID",
+      "en": "person being healed",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "health_restored": {
+      "zh": "医疗包恢复的生命值",
+      "en": "amount of health restored",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "heal_end": {
+    "userid": {
+      "zh": "实施治疗的玩家用户 ID",
+      "en": "person doing the healing",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "接受治疗的玩家用户 ID",
+      "en": "person being healed",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "heal_interrupted": {
+    "userid": {
+      "zh": "移动导致治疗中断的玩家用户 ID",
+      "en": "person who was being healed, but moved.",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "接受治疗的玩家用户 ID",
+      "en": "person being healed",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "ammo_pack_used": {
+    "userid": {
+      "zh": "提供弹药的玩家用户 ID",
+      "en": "person giving the ammo",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "领取弹药的玩家用户 ID",
+      "en": "person receiving ammo",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "give_weapon": {
+    "userid": {
+      "zh": "交出武器的玩家用户 ID",
+      "en": "The giver of the weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "recipient": {
+      "zh": "接收武器的玩家用户 ID",
+      "en": "The recipient of the weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "weapon": {
+      "zh": "被赠送武器的 ID",
+      "en": "The ID of the weapon given",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "pills_used": {
+    "userid": {
+      "zh": "持有止痛药的玩家用户 ID",
+      "en": "person who had the pills",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "服用止痛药的玩家用户 ID",
+      "en": "person swallowing the pills",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "pills_used_fail": {
+    "userid": {
+      "zh": "尝试使用止痛药的玩家用户 ID",
+      "en": "person who tried to use the pills",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "ammo_pack_used_fail_no_weapon": {
+    "userid": {
+      "zh": "尝试使用弹药升级包的玩家用户 ID",
+      "en": "person who tried to use the ammo pack",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "弹药升级包未能生效的目标玩家用户 ID",
+      "en": "person it failed to help",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "ammo_pack_used_fail_full": {
+    "userid": {
+      "zh": "尝试使用弹药升级包的玩家用户 ID",
+      "en": "person who tried to use the ammo pack",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "弹药升级包未能生效的目标玩家用户 ID",
+      "en": "person it failed to help",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "ammo_pack_used_fail_doesnt_use_ammo": {
+    "userid": {
+      "zh": "尝试使用弹药升级包的玩家用户 ID",
+      "en": "person who tried to use the ammo pack",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "弹药升级包未能生效的目标玩家用户 ID",
+      "en": "person it failed to help",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "ammo_pile_weapon_cant_use_ammo": {
+    "userid": {
+      "zh": "持榴弹发射器使用弹药堆的玩家用户 ID",
+      "en": "person who tried to use an ammo pile with a grenade launcher",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "defibrillator_begin": {
+    "userid": {
+      "zh": "使用除颤器的玩家用户 ID",
+      "en": "person who is defibrillating.",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "正在被救起的幸存者用户 ID",
+      "en": "person being revived",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "defibrillator_used": {
+    "userid": {
+      "zh": "使用除颤器的玩家用户 ID",
+      "en": "person who used the defibrillator",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "被除颤器救活的幸存者用户 ID",
+      "en": "person it helped",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "defibrillator_used_fail": {
+    "userid": {
+      "zh": "尝试使用除颤器的玩家用户 ID",
+      "en": "person who tried to use the defibrillator",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "弹药升级包未能生效的目标玩家用户 ID",
+      "en": "person it failed to help",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "defibrillator_interrupted": {
+    "userid": {
+      "zh": "因移动中断除颤操作的玩家用户 ID",
+      "en": "person who was defibrillating, but moved.",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "正在被救起的幸存者用户 ID",
+      "en": "person being revived",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "upgrade_pack_begin": {
+    "userid": {
+      "zh": "正在部署弹药升级包的玩家用户 ID",
+      "en": "person who is deploying the pack",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "upgrade_pack_used": {
+    "upgradeid": {
+      "zh": "部署完成的高爆或燃烧弹药升级包的实体索引",
+      "en": "entity index of the deployed upgrade pack (either upgrade_ammo_explosive or upgrade_ammo_incendiary)",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "userid": {
+      "zh": "正在部署弹药升级包的玩家用户 ID",
+      "en": "person who is deploying the pack",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "upgrade_item_already_used": {
+    "userid": {
+      "zh": "试图重复使用升级包的玩家用户 ID",
+      "en": "person who tried to use an ammo upgrade twice",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "upgradeclass": {
+      "zh": "尝试使用的升级包实体类名",
+      "en": "classname of the upgrade we tried to use",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    }
+  },
+  "upgrade_failed_no_primary": {
+    "userid": {
+      "zh": "没有主武器却尝试使用升级包的玩家用户 ID",
+      "en": "person who tried to use an upgrade without having a primary weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "upgrade": {
+      "zh": "尝试使用的升级类型名称，例如 INCENDIARY_AMMO",
+      "en": "name of the upgrade we tried to use, eg \"INCENDIARY_AMMO\"",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    }
+  },
+  "dead_survivor_visible": {
+    "userid": {
+      "zh": "看到目标的玩家用户 ID",
+      "en": "The player who sees the entity",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "被看到实体的索引",
+      "en": "Entindex of the entity they see",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "deadplayer": {
+      "zh": "对应死亡幸存者的用户 ID",
+      "en": "user id of the dead player represented",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "adrenaline_used": {
+    "userid": {
+      "zh": "使用肾上腺素的玩家用户 ID",
+      "en": "person who had and used the adrenaline",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "revive_begin": {
+    "userid": {
+      "zh": "正在扶起倒地幸存者的玩家用户 ID",
+      "en": "person doing the reviving",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "正在被救起的幸存者用户 ID",
+      "en": "person being revived",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "revive_success": {
+    "userid": {
+      "zh": "正在扶起倒地幸存者的玩家用户 ID",
+      "en": "person doing the reviving",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "被扶起的幸存者用户 ID",
+      "en": "person who was revived",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "lastlife": {
+      "zh": "被救起的人再次倒地是否就会死亡",
+      "en": "person revived dies if they fall again",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "ledge_hang": {
+      "zh": "被救起者是否此前挂在悬崖边缘",
+      "en": "1 if person revived was ledge hanging",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "revive_end": {
+    "userid": {
+      "zh": "正在扶起倒地幸存者的玩家用户 ID",
+      "en": "person doing the reviving",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "正在被救起的幸存者用户 ID",
+      "en": "person being revived",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "ledge_hang": {
+      "zh": "目标玩家是否挂在悬崖边缘",
+      "en": "person is ledge hanging",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "drag_begin": {
+    "userid": {
+      "zh": "执行拖拽的玩家用户 ID",
+      "en": "person doing the dragging",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "正在被拖拽的玩家用户 ID",
+      "en": "person being dragged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "drag_end": {
+    "userid": {
+      "zh": "执行拖拽的玩家用户 ID",
+      "en": "person doing the dragging",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "正在被拖拽的玩家用户 ID",
+      "en": "person being dragged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_incapacitated": {
+    "userid": {
+      "zh": "进入倒地状态的幸存者用户 ID",
+      "en": "person who became incapacitated",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attacker": {
+      "zh": "造成这次倒地的攻击者用户 ID",
+      "en": "user ID who made us incapacitated",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attackerentid": {
+      "zh": "当攻击者不是玩家时，其实体索引",
+      "en": "if attacker not player, entindex of who made us incapacitated",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "weapon": {
+      "zh": "攻击者使用的武器名称",
+      "en": "weapon name attacker used",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "type": {
+      "zh": "伤害类型",
+      "en": "damage type",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "player_incapacitated_start": {
+    "userid": {
+      "zh": "进入倒地状态的幸存者用户 ID",
+      "en": "person who became incapacitated",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attacker": {
+      "zh": "造成这次倒地的攻击者用户 ID",
+      "en": "user ID who made us incapacitated",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attackerentid": {
+      "zh": "当攻击者不是玩家时，其实体索引",
+      "en": "if attacker not player, entindex of who made us incapacitated",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "weapon": {
+      "zh": "攻击者使用的武器名称",
+      "en": "weapon name attacker used",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "type": {
+      "zh": "伤害类型",
+      "en": "damage type",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "player_entered_start_area": {
+    "userid": {
+      "zh": "进入该区域的玩家用户 ID",
+      "en": "person who entered",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_first_spawn": {
+    "userid": {
+      "zh": "刚生成的玩家用户 ID",
+      "en": "person who spawned",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "map_name": {
+      "zh": "第一次生成玩家时的地图名称",
+      "en": "",
+      "en_inferred": "Map name",
+      "source": "inferred",
+      "type": "string"
+    },
+    "isbot": {
+      "zh": "是否为 Bot",
+      "en": "",
+      "en_inferred": "Whether the player is a bot",
+      "source": "inferred",
+      "type": "bool"
+    }
+  },
+  "player_left_start_area": {
+    "userid": {
+      "zh": "离开该区域的玩家用户 ID",
+      "en": "person who left",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_left_safe_area": {
+    "userid": {
+      "zh": "离开该区域的玩家用户 ID",
+      "en": "person who left",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "playercount": {
+      "zh": "离开安全区域时的人数",
+      "en": "",
+      "en_inferred": "Player count",
+      "source": "inferred",
+      "type": "byte"
+    }
+  },
+  "player_entered_checkpoint": {
+    "userid": {
+      "zh": "进入检查点的玩家用户 ID",
+      "en": "player who entered",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "entityid": {
+      "zh": "进入者不是玩家时，使用其实体索引",
+      "en": "If not a player, the entity index of the one entering",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "door": {
+      "zh": "玩家穿过的检查点门实体索引",
+      "en": "Entity index of the checkpoint door the player entered to get here.",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "area": {
+      "zh": "导航区域编号",
+      "en": "",
+      "en_inferred": "Navigation area identifier",
+      "source": "inferred",
+      "type": "long"
+    },
+    "doorname": {
+      "zh": "玩家看到的实体名称",
+      "en": "name of the entity they see",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    }
+  },
+  "player_left_checkpoint": {
+    "userid": {
+      "zh": "离开检查点的玩家用户 ID",
+      "en": "player who left",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "entityid": {
+      "zh": "离开区域的不是玩家时，使用其实体索引",
+      "en": "If not a player, the entity index of the one exiting",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "area": {
+      "zh": "导航区域编号",
+      "en": "",
+      "en_inferred": "Navigation area identifier",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "player_shoved": {
+    "userid": {
+      "zh": "被推搡玩家的实体索引",
+      "en": "player index who was shoved",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attacker": {
+      "zh": "推搡者的玩家实体索引",
+      "en": "player index who attacked them",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "entity_shoved": {
+    "entityid": {
+      "zh": "被推搡实体的索引",
+      "en": "the entity index of the one who was shoved",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attacker": {
+      "zh": "推搡者的玩家实体索引",
+      "en": "player index who attacked them",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_jump_apex": {
+    "userid": {
+      "zh": "跳跃的玩家",
+      "en": "player who jumped",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_blocked": {
+    "userid": {
+      "zh": "尝试移动玩家的实体索引",
+      "en": "player index who was trying to move",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "blocker": {
+      "zh": "阻挡者的玩家实体索引",
+      "en": "player index who kept them from moving",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_now_it": {
+    "userid": {
+      "zh": "刚被胆汁覆盖的玩家用户 ID",
+      "en": "Player who is now it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attacker": {
+      "zh": "造成胆汁覆盖的攻击者用户 ID",
+      "en": "player that did the it-ing",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "exploded": {
+      "zh": "胆汁来自直接喷吐还是爆炸",
+      "en": "whether it was vomit or explosion",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "infected": {
+      "zh": "该胆汁效果是否会吸引感染者",
+      "en": "is the vomit infectious",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "by_boomer": {
+      "zh": "胆汁是否来自 Boomer",
+      "en": "came from a boomer",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "player_no_longer_it": {
+    "userid": {
+      "zh": "胆汁效果刚消失的玩家用户 ID",
+      "en": "Player who is now no longer it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "witch_harasser_set": {
+    "userid": {
+      "zh": "惊动 Witch 的玩家用户 ID",
+      "en": "Player who woke up the witch",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "witchid": {
+      "zh": "被惊动 Witch 的实体索引",
+      "en": "Entindex of witch woken up",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "first": {
+      "zh": "Witch 是否首次确定惊扰者",
+      "en": "First time the witch set a harasser",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "witch_spawn": {
+    "witchid": {
+      "zh": "新生成 Witch 的实体索引",
+      "en": "Entindex of witch spawning right now.",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "witch_killed": {
+    "userid": {
+      "zh": "击杀 Witch 的玩家用户 ID",
+      "en": "Player who killed the witch",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "witchid": {
+      "zh": "死亡 Witch 的实体索引",
+      "en": "Entindex of witch that was killed.",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "oneshot": {
+      "zh": "是否一枪击杀 Witch",
+      "en": "TRUE if the Witch was killed with one shot",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "melee_only": {
+      "zh": "是否仅使用近战攻击击杀 Witch",
+      "en": "TRUE if the witch was only killed by melee attacks (no blast, burn, or bullet damage)",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "bride": {
+      "zh": "是否为新娘 Witch 变体（文档存疑）",
+      "en": "bride variant?",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "tank_spawn": {
+    "userid": {
+      "zh": "新生成 Tank 的用户 ID",
+      "en": "User ID of the tank spawning now",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "tankid": {
+      "zh": "Tank 实体索引",
+      "en": "Entindex of tank spawning right now.",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "melee_kill": {
+    "userid": {
+      "zh": "近战击杀感染者的玩家用户 ID",
+      "en": "Player who bashed the infected",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "entityid": {
+      "zh": "被击杀感染者的实体索引",
+      "en": "Entindex of infected what got killed",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "ambush": {
+      "zh": "被击杀感染者当时是否未察觉攻击者",
+      "en": "Infected was unaware when killed",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "area_cleared": {
+    "userid": {
+      "zh": "清理该区域的玩家用户 ID",
+      "en": "person who cleared the area",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "area": {
+      "zh": "被清理区域的 ID",
+      "en": "id of the cleared area",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "award_earned": {
+    "userid": {
+      "zh": "获得奖励的玩家用户 ID",
+      "en": "player who earned the award",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "entityid": {
+      "zh": "供客户端使用的实体索引",
+      "en": "client likes ent id",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "subjectentid": {
+      "zh": "奖励相关另一方的实体索引（若存在）",
+      "en": "entity id of other party in the award, if any",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "award": {
+      "zh": "获得奖励的 ID",
+      "en": "id of award earned",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "tongue_grab": {
+    "userid": {
+      "zh": "实施抓取的感染者玩家用户 ID",
+      "en": "player who did the grabbing",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被抓取的幸存者用户 ID",
+      "en": "player that got grabbed",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "tongue_broke_bent": {
+    "userid": {
+      "zh": "舌头的拥有者（Smoker）用户 ID",
+      "en": "Tongue owner",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "tongue_broke_victim_died": {
+    "userid": {
+      "zh": "舌头的拥有者（Smoker）用户 ID",
+      "en": "Tongue owner",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "tongue_release": {
+    "userid": {
+      "zh": "Smoker 舌头的拥有者用户 ID",
+      "en": "The tongue owner",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "刚摆脱束缚的幸存者用户 ID",
+      "en": "The (now released) victim",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "distance": {
+      "zh": "被拖行的距离",
+      "en": "Distance the victim was dragged.",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "choke_start": {
+    "userid": {
+      "zh": "正在勒住幸存者的 Smoker 用户 ID",
+      "en": "The choker",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被勒住的幸存者用户 ID",
+      "en": "The person being choked",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "choke_end": {
+    "userid": {
+      "zh": "正在勒住幸存者的 Smoker 用户 ID",
+      "en": "The choker",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被勒住的幸存者用户 ID",
+      "en": "The person being choked",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "choke_stopped": {
+    "userid": {
+      "zh": "解除控制的玩家用户 ID",
+      "en": "Who stopped it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被 Smoker 勒住的幸存者用户 ID",
+      "en": "And who was being choked",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "smoker": {
+      "zh": "Smoker 舌头的拥有者用户 ID",
+      "en": "The tongue owner",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "release_type": {
+      "zh": "控制中断的原因编号",
+      "en": "How did it break?",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "tongue_pull_stopped": {
+    "userid": {
+      "zh": "解除控制的玩家用户 ID",
+      "en": "Who stopped it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被 Smoker 舌头拖行的幸存者用户 ID",
+      "en": "And who was being pulled",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "smoker": {
+      "zh": "Smoker 舌头的拥有者用户 ID",
+      "en": "The tongue owner",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "release_type": {
+      "zh": "控制中断的原因编号",
+      "en": "How did it break?",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "damage_type": {
+      "zh": "中断使用的伤害类型，例如枪弹、斩击或电锯",
+      "en": "bullet, slash, chainsaw",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "lunge_shove": {
+    "userid": {
+      "zh": "扑击的 Hunter 用户 ID",
+      "en": "player who did the lunging",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被扑中的幸存者用户 ID",
+      "en": "player that got lunged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "lunge_pounce": {
+    "userid": {
+      "zh": "扑击的 Hunter 用户 ID",
+      "en": "player who did the lunging",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被扑中的幸存者用户 ID",
+      "en": "player that got lunged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "distance": {
+      "zh": "从起跳到扑中目标的距离",
+      "en": "Distance from pounce start to contact",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "damage": {
+      "zh": "伤害量",
+      "en": "",
+      "en_inferred": "Damage amount",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "pounce_end": {
+    "userid": {
+      "zh": "实施扑击的 Hunter 用户 ID",
+      "en": "Player who did the pouncing",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被扑中的幸存者用户 ID",
+      "en": "And who was being pounced",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "pounce_stopped": {
+    "userid": {
+      "zh": "解除控制的玩家用户 ID",
+      "en": "Who stopped it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被扑中的幸存者用户 ID",
+      "en": "And who was being pounced",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "pounce_attempt_stopped": {
+    "userid": {
+      "zh": "解除控制的玩家用户 ID",
+      "en": "Who stopped it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "weaponid": {
+      "zh": "所用武器的 ID",
+      "en": "used weapon ID",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "fatal_vomit": {
+    "userid": {
+      "zh": "喷出胆汁的感染者用户 ID",
+      "en": "Who vomited",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被喷吐后死亡或倒地的幸存者用户 ID",
+      "en": "And who was killed or incapped",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "survivor_call_for_help": {
+    "userid": {
+      "zh": "正在等待从救援房间获救的幸存者用户 ID",
+      "en": "The actual player entity who is awaiting rescue.",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "代表待救幸存者位置的 SurvivorRescue 实体索引",
+      "en": "SurvivorRescue entity representing the player who needs to be rescued from the closet (used for position)",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "survivor_rescued": {
+    "rescuer": {
+      "zh": "实施救援的玩家用户 ID",
+      "en": "player that did the rescuing",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被救出的幸存者用户 ID",
+      "en": "the survivor being rescued",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "dooridx": {
+      "zh": "救援门的实体索引",
+      "en": "ent index of the rescue door",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "survivor_rescue_abandoned": {},
+  "relocated": {
+    "userid": {
+      "zh": "位置发生迁移的玩家用户 ID",
+      "en": "player who was relocated",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "respawning": {
+    "userid": {
+      "zh": "开始重生的玩家用户 ID",
+      "en": "player who started respawning",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "tank_frustrated": {
+    "userid": {
+      "zh": "失去 Tank 控制权的玩家用户 ID",
+      "en": "player who was culled",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "weapon_given": {
+    "userid": {
+      "zh": "收到武器的玩家用户 ID",
+      "en": "player who got the weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "giver": {
+      "zh": "赠送武器的玩家用户 ID",
+      "en": "player that did the giving",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "weapon": {
+      "zh": "赠送武器的 ID",
+      "en": "weapon id given",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "weaponentid": {
+      "zh": "武器实体索引",
+      "en": "weapon entity id",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "weapon_drop": {
+    "userid": {
+      "zh": "丢弃武器的玩家用户 ID",
+      "en": "player who dropped the weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "item": {
+      "zh": "拾取的武器或物品名称，例如 tmp、hegrenade 等",
+      "en": "either a weapon such as 'tmp' or 'hegrenade', or an item such as 'nvgs'",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "propid": {
+      "zh": "被丢弃武器的实体索引",
+      "en": "entindex of the dropped weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "weapon_drop_to_prop": {
+    "userid": {
+      "zh": "丢弃武器的玩家用户 ID",
+      "en": "player who dropped the weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "item": {
+      "zh": "物品类名，例如 weapon_*",
+      "en": "weapon string \"weapon_*\"",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "propid": {
+      "zh": "被丢弃武器的实体索引",
+      "en": "entindex of the dropped weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "break_breakable": {
+    "userid": {
+      "zh": "打碎物体的玩家用户 ID",
+      "en": "userid of breaker",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "entindex": {
+      "zh": "被打碎物体的实体索引",
+      "en": "entindex of thing breaking",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "material": {
+      "zh": "材质类别编号，例如玻璃、木材",
+      "en": "BREAK_GLASS, BREAK_WOOD, etc",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "hulkonly": {
+      "zh": "是否启用仅 Tank 可破坏标记 SF_BREAK_HULK_ONLY",
+      "en": "SF_BREAK_HULK_ONLY",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "achievement": {
+      "zh": "客户端使用的成就识别标记",
+      "en": "tag to identify achievement on the client",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "achievement_earned": {
+    "player": {
+      "zh": "玩家实体索引",
+      "en": "entindex of the player",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "achievement": {
+      "zh": "成就 ID",
+      "en": "achievement ID",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "spec_target_updated": {},
+  "spawner_give_item": {
+    "userid": {
+      "zh": "收到物品的玩家用户 ID",
+      "en": "Item recipient",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "item": {
+      "zh": "赠送物品的名称",
+      "en": "Name of item given",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "spawner": {
+      "zh": "物品生成点的实体索引",
+      "en": "entindex of the spawner entity",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "create_panic_event": {
+    "userid": {
+      "zh": "触发尸潮的玩家用户 ID",
+      "en": "player who was started the panic",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "explain_pills": {
+    "subject": {
+      "zh": "被提示的止痛药生成点实体索引",
+      "en": "The weapon_pain_pills spawner that is indicated",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_weapons": {
+    "subject": {
+      "zh": "被提示的止痛药生成点实体索引",
+      "en": "The weapon_pain_pills spawner that is indicated",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "entity_visible": {
+    "userid": {
+      "zh": "看到目标的玩家用户 ID",
+      "en": "The player who sees the entity",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "被看到实体的索引",
+      "en": "Entindex of the entity they see",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "classname": {
+      "zh": "被看到实体的类名",
+      "en": "Classname of the entity they see",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "entityname": {
+      "zh": "玩家看到的实体名称",
+      "en": "name of the entity they see",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    }
+  },
+  "weapon_spawn_visible": {
+    "userid": {
+      "zh": "看到目标的玩家用户 ID",
+      "en": "The player who sees the entity",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "被看到实体的索引",
+      "en": "Entindex of the entity they see",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "weaponname": {
+      "zh": "武器名称；近战武器时为 melee",
+      "en": "weapon name, or \"melee\"",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "subtype": {
+      "zh": "近战武器名称",
+      "en": "melee weapon name",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    }
+  },
+  "boomer_near": {
+    "userid": {
+      "zh": "靠近幸存者的 Boomer 用户 ID",
+      "en": "The boomer",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被 Boomer 接近的幸存者用户 ID",
+      "en": "The survivor whom the boomer has gotten very close to",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "explain_pre_radio": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "started_pre_radio": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "User ID or entity index of the affected target",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_radio": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_gas_truck": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "目标拉杆实体索引",
+      "en": "The lever",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_panic_button": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "触发尸潮的按钮实体索引",
+      "en": "The panic button",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_elevator_button": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "目标按钮实体索引",
+      "en": "The button",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_lift_button": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "升降梯按钮实体索引",
+      "en": "The lift button",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_church_door": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "安全屋门实体索引",
+      "en": "The saferoom door",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_emergency_door": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "目标门实体索引",
+      "en": "The door",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_crane": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "操作拉杆或按钮的实体索引",
+      "en": "The lever/button",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_bridge": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "目标按钮实体索引",
+      "en": "The button",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_gas_can_panic": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "油桶实体索引",
+      "en": "The gas can",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_van_panic": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "厢式车实体索引",
+      "en": "The van",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_mainstreet": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "叉车实体索引",
+      "en": "The forklift",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_train_lever": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "车厢上的拉杆实体索引",
+      "en": "The lever on box car",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_disturbance": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "引发骚动的物体实体索引",
+      "en": "The source of disturbance",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_scavenge_goal": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "收集汽油桶的设备实体索引",
+      "en": "The collection device",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "explain_scavenge_leave_area": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "有关实体的索引",
+      "en": "The entity",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "begin_scavenge_overtime": {},
+  "scavenge_round_start": {
+    "round": {
+      "zh": "当前回合编号（从 1 开始）",
+      "en": "round number, 1 based",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "firsthalf": {
+      "zh": "是否为回合上半场开始",
+      "en": "start of the first half of the round",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "scavenge_round_halftime": {},
+  "scavenge_round_finished": {},
+  "scavenge_score_tied": {},
+  "versus_round_start": {},
+  "gascan_pour_blocked": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in the gas-can interaction",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "gascan_pour_completed": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in the gas-can interaction",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "gascan_dropped": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in the gas-can interaction",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "gascan_pour_interrupted": {
+    "userid": {
+      "zh": "打断倒油操作的玩家用户 ID",
+      "en": "person who interuppted us",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "scavenge_match_finished": {
+    "winners": {
+      "zh": "获胜队伍编号",
+      "en": "winner team",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    }
+  },
+  "versus_match_finished": {
+    "winners": {
+      "zh": "获胜队伍编号",
+      "en": "winner team",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    }
+  },
+  "use_target": {
+    "targetid": {
+      "zh": "可交互目标的实体索引",
+      "en": "Entindex of the use target",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "classname": {
+      "zh": "可交互目标的实体类名",
+      "en": "classname of the use target",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "isprop": {
+      "zh": "目标是否为可搬运物品",
+      "en": "is this a prop that can be carried",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "player_use": {
+    "userid": {
+      "zh": "进行交互的玩家用户 ID",
+      "en": "userid of user",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "targetid": {
+      "zh": "被使用实体的索引",
+      "en": "Entindex of the used entity",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "friendly_fire": {
+    "attacker": {
+      "zh": "开火的玩家用户 ID",
+      "en": "player who fired the weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被误伤的幸存者用户 ID",
+      "en": "player who got shot",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "guilty": {
+      "zh": "被判定应承担误伤责任的玩家用户 ID",
+      "en": "player who was at fault",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "type": {
+      "zh": "伤害类型",
+      "en": "damage type",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "gameinstructor_draw": {},
+  "gameinstructor_nodraw": {},
+  "request_weapon_stats": {
+    "userid": {
+      "zh": "请求查看武器统计数据的玩家用户 ID",
+      "en": "userid of user requesting their stats",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_talking_state": {
+    "player": {
+      "zh": "玩家编号",
+      "en": "",
+      "en_inferred": "Player identifier",
+      "source": "inferred",
+      "type": "byte"
+    },
+    "istalking": {
+      "zh": "玩家是否正在语音说话",
+      "en": "",
+      "en_inferred": "Whether the player is currently talking",
+      "source": "inferred",
+      "type": "bool"
+    }
+  },
+  "weapon_pickup": {
+    "context": {
+      "zh": "分屏显示的消息上下文编号",
+      "en": "split screen message context",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    },
+    "weaponid": {
+      "zh": "拾取武器的类型 ID",
+      "en": "",
+      "en_inferred": "Weapon type identifier",
+      "source": "inferred",
+      "type": "byte"
+    },
+    "weaponslot": {
+      "zh": "武器栏位置",
+      "en": "",
+      "en_inferred": "Weapon inventory slot",
+      "source": "inferred",
+      "type": "byte"
+    },
+    "dropped_by_infected": {
+      "zh": "掉落武器感染者的性别或类型编号",
+      "en": "gender of the Infected that dropped the weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "byte"
+    }
+  },
+  "hunter_punched": {
+    "userid": {
+      "zh": "造成点燃效果的玩家用户 ID",
+      "en": "player who caused ignition",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "hunteruserid": {
+      "zh": "Hunter 的用户 ID",
+      "en": "user ID of Hunter",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "islunging": {
+      "zh": "Hunter 当时是否正在跳扑",
+      "en": "TRUE if the Hunter was in the act of lunging",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "hunter_headshot": {
+    "userid": {
+      "zh": "打出爆头的玩家用户 ID",
+      "en": "player who made the headshot",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "hunteruserid": {
+      "zh": "Hunter 的用户 ID",
+      "en": "user ID of Hunter",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "islunging": {
+      "zh": "Hunter 当时是否正在跳扑",
+      "en": "TRUE if the Hunter was in the act of lunging",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "zombie_ignited": {
+    "userid": {
+      "zh": "造成点燃效果的玩家用户 ID",
+      "en": "player who caused ignition",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "gender": {
+      "zh": "感染者的性别或种类编号",
+      "en": "gender (type) of the infected",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "entityid": {
+      "zh": "Tank 的实体索引",
+      "en": "entity ID of Tank",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "victimname": {
+      "zh": "感染者名称，如 Witch、Tank、Hunter 等",
+      "en": "\"Witch\", \"Tank\", \"Hunter\", \"Smoker\", or \"Infected\"",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "fire_ammo": {
+      "zh": "是否使用燃烧弹药",
+      "en": "true if incendiary ammo was used",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "boomer_exploded": {
+    "userid": {
+      "zh": "爆炸 Boomer 的用户 ID",
+      "en": "Boomer that exploded",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attacker": {
+      "zh": "造成爆炸的攻击者用户 ID",
+      "en": "player who caused the explosion",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "splashedbile": {
+      "zh": "爆炸是否让幸存者沾上胆汁",
+      "en": "Exploding boomer splashed bile on Survivors",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "non_pistol_fired": {
+    "userid": {
+      "zh": "使用非手枪武器开火的玩家用户 ID",
+      "en": "User that fired a non-pistol weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "weapon_fire_at_40": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "weapon": {
+      "zh": "所用武器的名称",
+      "en": "used weapon name",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "weaponid": {
+      "zh": "所用武器的 ID",
+      "en": "used weapon ID",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "count": {
+      "zh": "子弹数量",
+      "en": "number of bullets",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "total_ammo_below_40": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "player_hurt_concise": {
+    "userid": {
+      "zh": "受伤玩家的用户 ID",
+      "en": "user ID who was hurt",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attackerentid": {
+      "zh": "如果攻击者不是玩家，使用这里的攻击者实体索引；玩家攻击者优先使用 attacker",
+      "en": "entity id who attacked, if attacker not a player, and userid therefore invalid",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "type": {
+      "zh": "伤害类型",
+      "en": "damage type",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "dmg_health": {
+      "zh": "对生命值造成的伤害",
+      "en": "damage done to health",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "tank_killed": {
+    "userid": {
+      "zh": "死亡 Tank 的用户 ID",
+      "en": "user ID of dead tank",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attacker": {
+      "zh": "击杀者的用户 ID",
+      "en": "user id of killer",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "solo": {
+      "zh": "是否由一名玩家独自击杀 Tank",
+      "en": "TRUE if a player single-handedly killed the Tank",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "melee_only": {
+      "zh": "是否仅靠近战攻击击杀 Tank",
+      "en": "TRUE if the tank was only killed by melee attacks (no blast, burn, or bullet damage)",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "l4d1_only": {
+      "zh": "是否只有一代幸存者对 Tank 造成伤害",
+      "en": "TRUE if l4d1 survivors inflicted damage and the l4d2 survivors did not)",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "tank_rock_killed": {
+    "userid": {
+      "zh": "击杀者的用户 ID",
+      "en": "user id of killer",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "achievement_write_failed": {},
+  "ghost_spawn_time": {
+    "userid": {
+      "zh": "即将进入幽灵模式的玩家用户 ID",
+      "en": "user ID of the player that is becoming a ghost",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "spawntime": {
+      "zh": "距离变成幽灵还需等待的时间",
+      "en": "How long of a wait until player is a ghost",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "survival_at_30min": {},
+  "survival_at_10min": {},
+  "explain_pre_drawbridge": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_drawbridge": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_perimeter": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_deactivate_alarm": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_impound_lot": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_decon": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_mall_window": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_mall_alarm": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_coaster": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_coaster_stop": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_decon_wait": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "gauntlet_finale_start": {},
+  "explain_float": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_ferry_button": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_hatch_button": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_shack_button": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "upgrade_incendiary_ammo": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "upgrade_explosive_ammo": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "receive_upgrade": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "upgrade": {
+      "zh": "收到的武器升级类型",
+      "en": "",
+      "en_inferred": "Weapon upgrade name or type",
+      "source": "inferred",
+      "type": "string"
+    }
+  },
+  "explain_vehicle_arrival": {
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "mounted_gun_start": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "User ID or entity index of the affected target",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "mounted_gun_overheated": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "explain_burger_sign": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_carousel_button": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_carousel_destination": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_stage_lighting": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_stage_finale_start": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_stage_survival_start": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "ability_out_of_range": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "ability": {
+      "zh": "技能实体类名",
+      "en": "ability classname",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    }
+  },
+  "explain_stage_pyrotechnics": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_c3m4_radio1": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_c3m4_radio2": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_gates_are_open": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_c2m4_ticketbooth": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_c3m4_rescue": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_hotel_elevator_doors": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_gun_shop_tanker": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_gun_shop": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_store_alarm": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_store_item": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_store_item_stop": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_survival_generic": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_survival_alarm": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_survival_radio": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_survival_carousel": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_return_item": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_save_items": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "spit_burst": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "User ID or entity index of the affected target",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "entered_spit": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "User ID or entity index of the affected target",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "temp_c4m1_getgas": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "User ID or entity index of the affected target",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "temp_c4m3_return_to_boat": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "User ID or entity index of the affected target",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_c1m4_finale": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "c1m4_scavenge_instructions": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "User ID or entity index of the affected target",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "punched_clown": {
+    "userid": {
+      "zh": "击打小丑感染者的玩家用户 ID",
+      "en": "player who punched the clown",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "charger_killed": {
+    "userid": {
+      "zh": "死亡 Charger 的用户 ID",
+      "en": "user ID of dead charger",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attacker": {
+      "zh": "击杀者的用户 ID",
+      "en": "user id of killer",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "melee": {
+      "zh": "是否由近战武器击杀 Charger",
+      "en": "TRUE if a player killed the charger with a melee weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    },
+    "charging": {
+      "zh": "Charger 死亡时是否正在冲锋",
+      "en": "TRUE if the charger was charging when it died",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "spitter_killed": {
+    "userid": {
+      "zh": "死亡 Spitter 的用户 ID",
+      "en": "user ID of dead spitter",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attacker": {
+      "zh": "击杀者的用户 ID",
+      "en": "user id of killer",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "has_spit": {
+      "zh": "Spitter 是否曾喷出酸液",
+      "en": "TRUE if the spitter spit at some point",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "jockey_ride": {
+    "userid": {
+      "zh": "扑击的 Hunter 用户 ID",
+      "en": "player who did the lunging",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被扑中的幸存者用户 ID",
+      "en": "player that got lunged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "jockey_ride_end": {
+    "userid": {
+      "zh": "扑击的 Hunter 用户 ID",
+      "en": "player who did the lunging",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被扑中的幸存者用户 ID",
+      "en": "player that got lunged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "rescuer": {
+      "zh": "解除控制的玩家用户 ID",
+      "en": "Who stopped it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "ride_length": {
+      "zh": "Jockey 控制幸存者的时间（秒）",
+      "en": "Duration of our ride",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "float"
+    }
+  },
+  "jockey_punched": {
+    "userid": {
+      "zh": "推开 Jockey 的玩家用户 ID",
+      "en": "user ID of player that shoved the jockey",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "jockeyuserid": {
+      "zh": "Jockey 的用户 ID",
+      "en": "user ID of Jockey",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "islunging": {
+      "zh": "Jockey 当时是否正在跳扑",
+      "en": "TRUE if Jockey was in the act of lunging",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "jockey_headshot": {
+    "userid": {
+      "zh": "爆头击中 Jockey 的玩家用户 ID",
+      "en": "user ID of player that landed a headshot on the Jockey",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "jockeyuserid": {
+      "zh": "Jockey 的用户 ID",
+      "en": "user ID of Jockey",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "islunging": {
+      "zh": "Jockey 当时是否正在跳扑",
+      "en": "TRUE if Jockey was in the act of lunging",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "bool"
+    }
+  },
+  "jockey_killed": {
+    "userid": {
+      "zh": "死亡 Jockey 的用户 ID",
+      "en": "user ID of dead jockey",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "attacker": {
+      "zh": "击杀者的用户 ID",
+      "en": "user id of killer",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "weapon": {
+      "zh": "武器名称",
+      "en": "weapon name",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    }
+  },
+  "non_melee_fired": {
+    "userid": {
+      "zh": "使用非近战武器开火的玩家用户 ID",
+      "en": "User that fired a non-melee weapon",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "infected_decapitated": {
+    "userid": {
+      "zh": "斩首感染者的玩家用户 ID",
+      "en": "userid of the player who did the decapitation",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "weapon": {
+      "zh": "近战武器名称",
+      "en": "melee weapon name",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    }
+  },
+  "upgrade_pack_added": {
+    "upgradeid": {
+      "zh": "新增升级包的实体索引",
+      "en": "",
+      "en_inferred": "Upgrade entity index",
+      "source": "inferred",
+      "type": "short"
+    },
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "vomit_bomb_tank": {
+    "userid": {
+      "zh": "向 Tank 投掷胆汁瓶的玩家用户 ID",
+      "en": "userid of the player who biled the tank",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "triggered_car_alarm": {
+    "userid": {
+      "zh": "触发汽车警报的玩家用户 ID",
+      "en": "user ID of player who activated car alarm",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "panic_event_finished": {},
+  "charger_charge_start": {
+    "userid": {
+      "zh": "Charger 的用户 ID",
+      "en": "user ID of the charger",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "charger_charge_end": {
+    "userid": {
+      "zh": "Charger 的用户 ID",
+      "en": "user ID of the charger",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "charger_carry_start": {
+    "userid": {
+      "zh": "Charger 的用户 ID",
+      "en": "user ID of the charger",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被 Charger 冲撞的玩家用户 ID",
+      "en": "user ID of the player who was charged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "charger_carry_end": {
+    "userid": {
+      "zh": "Charger 的用户 ID",
+      "en": "user ID of the charger",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被 Charger 冲撞的玩家用户 ID",
+      "en": "user ID of the player who was charged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "charger_carry_kill": {
+    "userid": {
+      "zh": "Charger 的用户 ID",
+      "en": "user ID of the charger",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "受害玩家的用户 ID",
+      "en": "user ID of the victim",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "charger_impact": {
+    "userid": {
+      "zh": "Charger 的用户 ID",
+      "en": "user ID of the charger",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被 Charger 撞飞的玩家用户 ID",
+      "en": "user ID of the player who was impacted",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "charger_pummel_start": {
+    "userid": {
+      "zh": "Charger 的用户 ID",
+      "en": "user ID of the charger",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被 Charger 冲撞的玩家用户 ID",
+      "en": "user ID of the player who was charged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "charger_pummel_end": {
+    "userid": {
+      "zh": "Charger 的用户 ID",
+      "en": "user ID of the charger",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "被 Charger 冲撞的玩家用户 ID",
+      "en": "user ID of the player who was charged",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "rescuer": {
+      "zh": "救出幸存者的玩家用户 ID",
+      "en": "user ID of the player who rescued them",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "strongman_bell_knocked_off": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "User ID or entity index of the affected target",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "molotov_thrown": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "gas_can_forced_drop": {
+    "userid": {
+      "zh": "迫使对方丢下物品的玩家用户 ID",
+      "en": "player that forced the drop",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "victim": {
+      "zh": "丢下物品的玩家用户 ID",
+      "en": "player that dropped it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "explain_need_gnome_to_continue": {},
+  "explain_survivor_glows_disabled": {
+    "userid": {
+      "zh": "接收游戏操作提示的玩家用户 ID",
+      "en": "The player we're explaining to",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "explain_item_glows_disabled": {
+    "userid": {
+      "zh": "接收游戏操作提示的玩家用户 ID",
+      "en": "The player we're explaining to",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "explain_rescue_disabled": {
+    "userid": {
+      "zh": "接收游戏操作提示的玩家用户 ID",
+      "en": "The player we're explaining to",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "explain_bodyshots_reduced": {
+    "userid": {
+      "zh": "接收游戏操作提示的玩家用户 ID",
+      "en": "The player we're explaining to",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "explain_witch_instant_kill": {
+    "userid": {
+      "zh": "接收游戏操作提示的玩家用户 ID",
+      "en": "The player we're explaining to",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "set_instructor_group_enabled": {
+    "group": {
+      "zh": "分组名称",
+      "en": "",
+      "en_inferred": "Instructor group",
+      "source": "inferred",
+      "type": "string"
+    },
+    "enabled": {
+      "zh": "是否启用",
+      "en": "",
+      "en_inferred": "Whether the group is enabled",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "versus_marker_reached": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "marker": {
+      "zh": "抵达的对抗模式进度标记编号",
+      "en": "",
+      "en_inferred": "Progress marker identifier",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "start_score_animation": {},
+  "survival_round_start": {},
+  "scavenge_gas_can_destroyed": {
+    "userid": {
+      "zh": "摧毁汽油桶的玩家用户 ID",
+      "en": "The player that destroyed it",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "explain_sewer_gate": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_sewer_run": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "explain_c6m3_finale": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player shown the instructional hint",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "Entity index of the object highlighted by the instructional hint",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "finale_bridge_lowering": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "subject": {
+      "zh": "相关目标实体或玩家编号",
+      "en": "",
+      "en_inferred": "User ID or entity index of the affected target",
+      "source": "inferred",
+      "type": "long"
+    }
+  },
+  "m60_streak_ended": {},
+  "chair_charged": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "song_played": {},
+  "foot_locker_opened": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "player_connect_full": {
+    "userid": {
+      "zh": "相关玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    }
+  },
+  "player_say": {
+    "userid": {
+      "zh": "发言玩家的用户 ID",
+      "en": "",
+      "en_inferred": "User ID of the player involved in this event",
+      "source": "inferred",
+      "type": "short"
+    },
+    "text": {
+      "zh": "聊天消息正文",
+      "en": "",
+      "en_inferred": "Text content",
+      "source": "inferred",
+      "type": "string"
+    }
+  },
+  "stashwhacker_game_won": {
+    "subject": {
+      "zh": "用于成就事件的 info_game_event_proxy 实体索引",
+      "en": "info_game_event_proxy entity for wam_achievement_event",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "entity_killed": {
+    "entindex_inflictor": {
+      "zh": "造成伤害的实体索引",
+      "en": "entity index of the inflictor",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "entindex_killed": {
+      "zh": "死亡实体的索引",
+      "en": "entity index of the killed entity",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "damagebits": {
+      "zh": "伤害类型",
+      "en": "damage type",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    },
+    "entindex_attacker": {
+      "zh": "攻击者实体索引",
+      "en": "entity index of the attacker",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "long"
+    }
+  },
+  "player_connect": {
+    "xuid": {
+      "zh": "连接者的 Steam64 ID",
+      "en": "Steam64 ID of the client",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "address": {
+      "zh": "连接者的 IP 地址和源端口",
+      "en": "The IP address and source port of the client for the connection",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "networkid": {
+      "zh": "连接者的 Steam ID",
+      "en": "Steam ID of the client",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "index": {
+      "zh": "连接者的实体索引",
+      "en": "Entity index of the client",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "userid": {
+      "zh": "连接者的用户 ID",
+      "en": "User ID of the client",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    },
+    "name": {
+      "zh": "连接者的名称",
+      "en": "Name of the client",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "bot": {
+      "zh": "连接的是 Bot 还是真人",
+      "en": "Flag indicating whether the client is a bot or player",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  },
+  "player_disconnect": {
+    "xuid": {
+      "zh": "连接者的 Steam64 ID",
+      "en": "Steam64 ID of the client",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "reason": {
+      "zh": "断开连接的原因",
+      "en": "Reason for disconnecting",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "name": {
+      "zh": "连接者的名称",
+      "en": "Name of the client",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "networkid": {
+      "zh": "连接者的 Steam ID",
+      "en": "Steam ID of the client",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "string"
+    },
+    "userid": {
+      "zh": "连接者的用户 ID",
+      "en": "User ID of the client",
+      "en_inferred": "",
+      "source": "documented",
+      "type": "short"
+    }
+  }
+}

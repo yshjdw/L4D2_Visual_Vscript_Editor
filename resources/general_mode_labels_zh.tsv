@@ -1,0 +1,915 @@
+﻿kind	owner	canonical_name	general_zh	signature_or_fields	source_description
+function	CBaseAnimating	FindBodygroupByName	按名称查找身体部件编号	 FindBodygroupByName(name:string)	Find a bodygroup ID by name. Returns -1 if the bodygroup does not exist.
+function	CBaseAnimating	GetAttachmentAngles	取得模型附着点的朝向	 GetAttachmentAngles(ID:int)	Get the attachment ID's angles as a QAngle.
+function	CBaseAnimating	GetAttachmentBone	查看附着点骨骼	 GetAttachmentBone(ID:int)	Get the attachment ID's parent bone index.
+function	CBaseAnimating	GetAttachmentOrigin	取得模型附着点的位置	 GetAttachmentOrigin(ID:int)	Get the attachment ID's origin as a Vector.
+function	CBaseAnimating	GetBodygroup	读取模型指定部件的外观编号	 GetBodygroup(ID:int)	Get the bodygroup value by bodygroup ID.
+function	CBaseAnimating	GetBodygroupName	查出身体部件分组的名称	 GetBodygroupName(ID:int)	Get the bodygroup ID's name.
+function	CBaseAnimating	GetBodygroupPartName	查看身体部件分组中某个外观名称	 GetBodygroupPartName(group:int, part:int)	Get name by group and part.
+function	CBaseAnimating	GetBoneAngles	读取模型骨骼朝向	 GetBoneAngles(ID:int)	Get the bone ID's angles as a QAngle.
+function	CBaseAnimating	GetBoneOrigin	读取模型骨骼的位置	 GetBoneOrigin(ID:int)	Get the bone ID's origin Vector.
+function	CBaseAnimating	GetModelScale	查看模型大小	 GetModelScale()	Get the model scale.
+function	CBaseAnimating	GetSequence	查看角色正在播放的动画序列	 GetSequence()	Get the currently playing sequence ID.
+function	CBaseAnimating	GetSequenceActivityName	查看动画序列对应的活动名称	 GetSequenceActivityName(ID:int)	Get the activity name for a sequence by sequence ID.
+function	CBaseAnimating	GetSequenceDuration	查看动画时长	 GetSequenceDuration(ID:int)	Get a sequence duration in seconds by sequence ID.
+function	CBaseAnimating	GetSequenceName	查看动画名称	 GetSequenceName(ID:int)	Get a sequence name by sequence ID.
+function	CBaseAnimating	IsSequenceFinished	当前动画播放完了吗？	 IsSequenceFinished()	Returns true if the current sequence has finished playing.
+function	CBaseAnimating	LookupActivity	按活动名称查找活动编号	 LookupActivity(activity:string)	Get the named activity index. Returns -1 if the activity does not exist.
+function	CBaseAnimating	LookupAttachment	查找附着点	 LookupAttachment(name:string)	Get the named attachment index. Returns 0 if the attachment does not exist.
+function	CBaseAnimating	LookupBone	查找骨骼	 LookupBone(bone:string)	Get the named bone index. Returns -1 if the bone does not exist.
+function	CBaseAnimating	LookupSequence	按动画名称查找序列编号	 LookupSequence(name:string)	Looks up a sequence by sequence name or activity name. Returns -1 if the sequence does not exist.
+function	CBaseAnimating	ResetSequence	重新开始播放指定的动画	 ResetSequence(ID:int)	Reset a sequence by sequence ID. If the ID is different than the current sequence, switch to the new sequence.
+function	CBaseAnimating	SetBodygroup	切换模型指定身体部件	 SetBodygroup(ID:int, value:int)	Set the bodygroup by ID.
+function	CBaseAnimating	SetModelScale	调整模型的显示大小	 SetModelScale(scale:float, change_duration:float)	Changes a model's scale over time. Set the change duration to 0.0 to change the scale instantly.
+function	CBaseAnimating	SetPoseParameter	修改角色模型的姿态参数	 SetPoseParameter(ID:int, value:float)	Sets a pose parameter value. Returns the effective value after clamping or looping.
+function	CBaseAnimating	SetSequence	让角色播放指定动画序列	 SetSequence(ID:int)	Plays a sequence by sequence ID.
+function	CBaseCombatCharacter	GetLastKnownArea	获取角色上次所在的导航区域	 GetLastKnownArea()	Return the last nav area occupied - NULL if unknown.
+function	CBaseEntity	ApplyAbsVelocityImpulse	给实体施加世界坐标系的速度冲量	 ApplyAbsVelocityImpulse(impulse:Vector)	Applies a velocity impulse as a world space impulse vector.
+function	CBaseEntity	ApplyLocalAngularVelocityImpulse	让实体围绕自身坐标轴旋转	 ApplyLocalAngularVelocityImpulse(impulse:Vector)	Applies an angular velocity impulse in the entity's local space. The direction of the input vector is the rotation axis, and the length is the magnitude of the impulse.
+function	CBaseEntity	ConnectOutput	让实体输出触发时执行指定函数	 ConnectOutput(output:string, function:string)	Adds an I/O connection that will call the named function when the specified output fires.
+function	CBaseEntity	DisconnectOutput	取消实体输出与函数的连接	 DisconnectOutput(output:string, function:string)	Removes a connected script function from an I/O event.
+function	CBaseEntity	FirstMoveChild	找到挂在实体上的第一个子实体	 FirstMoveChild()	Returns the first entity parented to this one. Needs to be used in combination with NextMovePeer() to iterate over all children.
+function	CBaseEntity	GetAngles	查看朝向	 GetAngles()	Returns the orientation of the entity in the world.
+function	CBaseEntity	GetBaseVelocity	读取环境额外施加给实体的速度	 GetBaseVelocity()	Returns any constant velocity currently being imparted onto the entity. This includes movement from effects like trigger_push and players standing on moving geometry, such as elevators. Returns a zero vector if the entity is not affected by any movement effects.
+function	CBaseEntity	GetCenter	读取实体边界盒的中心位置	 GetCenter()	Gets the object's center in world space, absolute coordinates.
+function	CBaseEntity	GetClassname	查看实体是什么类型	 GetClassname()	Returns the entity class. This includes player and infected.
+function	CBaseEntity	GetContext	查找实体对话上下文中的值	 GetContext(name:string)	Looks up a response context and returns it if available. May return string, float, or null (if the context isn't found).
+function	CBaseEntity	GetEntityHandle	取得引擎内部的实体句柄引用	 GetEntityHandle()	Returns a C++ EHANDLE reference of the entity. This is an opaque type not directly usable by Squirrel; it is not a normal script handle. It is only necessary for CPointScriptUseTarget functions. ↓
+function	CBaseEntity	GetEntityIndex	查看实体的索引编号	 GetEntityIndex()	Returns the entity index. This is the same type of index used in most game events.
+function	CBaseEntity	GetForwardVector	查看实体正前方的方向向量	 GetForwardVector()	Returns the forward vector of the entity.
+function	CBaseEntity	GetHealth	查看实体还剩多少生命值	 GetHealth()	Returns the current health of the entity, does not include survivor's temporary health.
+function	CBaseEntity	GetLocalAngles	查看相对朝向	 GetLocalAngles()	Returns the orientation of the entity relative to its parent or attachment point.
+function	CBaseEntity	GetLocalAngularVelocity	读取实体相对父对象的角速度	 GetLocalAngularVelocity()	Returns the angular velocity of the entity relative to its parent or attachment point.
+function	CBaseEntity	GetLocalOrigin	读取实体相对于父对象的位置	 GetLocalOrigin()	Returns the origin of the entity relative to its parent or attachment point.
+function	CBaseEntity	GetLocalVelocity	查看相对速度	 GetLocalVelocity()	Returns the entity velocity relative to its parent or attachment point.
+function	CBaseEntity	GetMaxHealth	查看实体生命值上限	 GetMaxHealth()	Returns the maximum health of the entity.
+function	CBaseEntity	GetModelName	读取实体使用的模型文件	 GetModelName()	Returns the filename of the model used by the entity (if applicable).
+function	CBaseEntity	GetMoveParent	查看实体当前依附在哪个父对象上	 GetMoveParent()	If in a hierarchy, retrieves the entity's parent.
+function	CBaseEntity	GetName	读取实体的 targetname	 GetName()	Returns the targetname key of the entity.
+function	CBaseEntity	GetOrigin	读取实体在地图上的位置	 GetOrigin()	Returns the origin of the entity in the world.
+function	CBaseEntity	GetOwnerEntity	查看所有者实体	 GetOwnerEntity()	Returns the entity's owner, if it exists, null otherwise.
+function	CBaseEntity	GetPreTemplateName	读取未加生成模板后缀的实体名	 GetPreTemplateName()	Returns the entity name stripped of template unique decoration.
+function	CBaseEntity	GetRootMoveParent	找到实体父子关系链最顶端的实体	 GetRootMoveParent()	If in a hierarchy, walks up the hierarchy to retrieve the root parent.
+function	CBaseEntity	GetScriptId	查看脚本编号	 GetScriptId()	Returns the name of the entity's think function.
+function	CBaseEntity	GetScriptScope	拿到实体保存脚本数据的表	 GetScriptScope()	Retrieves the table storing the Entity Script associated with this entity, null otherwise.
+function	CBaseEntity	GetVelocity	读取实体移动速度	 GetVelocity()	Returns a local velocity Vector.
+function	CBaseEntity	IsPlayer	这是玩家实体吗？	 IsPlayer()	Returns true if the entity's class is player, false otherwise.
+function	CBaseEntity	IsValid	这个实体或对象还有效吗？	 IsValid()	Whether the handle still belongs to an entity that's still valid, could become invalid in cases such as the entity, like a destroyed func_breakable.(?)
+function	CBaseEntity	Kill	从地图中移除这个实体	 Kill()	Removes the entity.
+function	CBaseEntity	NextMovePeer	依次访问同一父实体下的下一个子实体	 NextMovePeer()	Returns the next child of this entity's parent. Used to continue iteration with FirstMoveChild().
+function	CBaseEntity	OnEntText	提供实体调试文字	 OnEntText()	If ent_text is used on an entity and this function exists, it will be called every tick. Returns a string that gets displayed as part of the ent_text overlay. This is a handy feature for displaying script data on objects when you ent_text the object, or running arbitrary code (such as turning on additional debugging visualizations) is using ent_text. NOTE: ent_text_allow_script 1 must be set in order for this feature to be active.
+function	CBaseEntity	OnPostSpawn	实体生成完毕后执行此钩子	 OnPostSpawn()	Called after the entity spawns, which is after scripts and players have loaded. This could be used to have an entity register itself with a master script, or adjusting the entity parameters in a programmatic way.
+function	CBaseEntity	OverrideFriction	在指定时间内临时改变实体摩擦力	 OverrideFriction(duration:float, friction:float)	Takes a duration and a value for a temporary override.
+function	CBaseEntity	Precache	提前加载	 Precache()	Called after the script executes. Can be used to call precache functions for models and sounds on map load.
+function	CBaseEntity	PrecacheModel	提前加载模型，避免使用时卡顿	 PrecacheModel(filename:string)	Precaches a model after the map has loaded and returns the index of the model.
+function	CBaseEntity	PrecacheScriptSound	预加载脚本声音	 PrecacheScriptSound(soundscript:string)	Precaches a sound file, used by the specified soundscript.
+function	CBaseEntity	SetAngles	设置朝向	 SetAngles(direction:QAngle)	Sets the orientation of the entity.
+function	CBaseEntity	SetContext	给实体记下一条会过期的文字上下文	 SetContext(name:string, value:string, duration:float)	Stores any key/value pair in this entity's dialog contexts. Value must be a string. Will last for duration (set -1 for 'forever').
+function	CBaseEntity	SetContextNum	给实体记下一条会过期的数字上下文	 SetContextNum(name:string, value:float, duration:float)	Stores any key/value pair in this entity's dialog contexts. Value must be a number (int or float). Will last for duration (set -1 for 'forever').
+function	CBaseEntity	SetForwardVector	调整实体正前方朝向	 SetForwardVector(direction:Vector)	Sets the orientation of the entity to have this forward vector.
+function	CBaseEntity	SetFriction	修改实体的摩擦力	 SetFriction(friction:float)	Sets player's friction, ignored for objects.
+function	CBaseEntity	SetGravity	修改实体的重力比例	 SetGravity(gravity:float)	Sets player's gravity, ignored for objects.
+function	CBaseEntity	SetHealth	修改实体当前生命值	 SetHealth(health:int)	Changes the health value of the entity. Does not check whether to kill players.
+function	CBaseEntity	SetLocalAngles	设置相对朝向	 SetLocalAngles(direction:QAngle)	Sets the entity orientation relative to its parent or attachment point.
+function	CBaseEntity	SetLocalOrigin	设置相对位置	 SetLocalOrigin(position:Vector)	Sets the entity position relative to its parent or attachment point.
+function	CBaseEntity	SetMaxHealth	修改生命值上限	 SetMaxHealth(health:int)	Changes the maximum health value of the entity.
+function	CBaseEntity	SetModel	设置模型	 SetModel(modelName:string)	Changes the model of the entity (if applicable).
+function	CBaseEntity	SetOrigin	把实体移到指定位置	 SetOrigin(position:Vector)	Sets the world entity position.
+function	CBaseEntity	SetVelocity	修改实体移动速度	 SetVelocity(velocity:Vector)	Sets the entity velocity.
+function	CBaseEntity	TakeDamage	让实体受到指定伤害	 TakeDamage(damage:float, damageType:int, attacker:CBaseEntity)	Damages the entity.
+function	CBaseEntity	TakeDamageEx	按更详细的参数让实体受伤	 TakeDamageEx(inflictor:CBaseEntity, attacker:CBaseEntity, weapon:CBaseEntity, vecDamageForce:Vector, vecDamagePosition:Vector, damage:float, damageType:int)	Damages the entity (extended).
+function	CBaseEntity	ValidateScriptScope	为实体准备脚本数据表（没有就创建）	 ValidateScriptScope()	Ensures an entity has a script scope; if it does not, one is created. Returns true if it is created successfully.
+function	CBaseFlex	GetCurrentScene	查看当前正在播放的对白场景	 GetCurrentScene()	Returns the instance of the oldest active scene entity (if any).
+function	CBaseFlex	GetSceneByIndex	按编号查找对白场景	 GetSceneByIndex(index:int)	Returns the instance of the scene entity at the specified index.
+function	CBaseFlex	PlayScene	让角色播放一段对白或场景动画	 PlayScene(sceneFile:string, delay:float)	Play the specified .vcd file, causing the related characters to speak and subtitles to play.
+function	CBaseTrigger	Disable	停用	 Disable()	Disable the trigger. Identical to the Disable input.
+function	CBaseTrigger	Enable	启用	 Enable()	Enable the trigger. Identical to the Enable input.
+function	CBaseTrigger	IsTouching	目标实体现在碰到这个触发器吗？	 IsTouching(entity:handle)	Checks whether the passed entity is touching the trigger.
+function	CCallChainer	Call	执行调用链里匹配到的目标函数	 Call(event:string, ...:any)	Find an unprefixed function name in the chains table and call it with the given arguments.
+function	CCallChainer	PostScriptExecute	扫描并整理符合前缀规则的函数调用链	 PostScriptExecute()	Search for all non-native functions with matching prefixes, then push them into the chains table.
+function	CDirector	AreAllSurvivorsInBattlefield	所有幸存者都进入战斗区域了吗？	 AreAllSurvivorsInBattlefield()	Returns true if all Survivors are in the battlefield.
+function	CDirector	AreAllSurvivorsInFinaleArea	所有幸存者都进入终局区域了吗？	 AreAllSurvivorsInFinaleArea()	True when all survivors are within the finale area.
+function	CDirector	AreTeamsFlipped	对抗模式双方队伍已经交换了吗？	 AreTeamsFlipped()	True when teams are flipped in Versus modes.
+function	CDirector	ClearCachedBotQueries	清除 Bot 行为查询的缓存	 ClearCachedBotQueries()	Mark all cached bot query results as invalid.
+function	CDirector	ForceNextStage	让导演系统立即推进到下一阶段	 ForceNextStage()	Push the ScriptedMode to next stage - i.e. request GNSS be called.
+function	CDirector	GetAveragedSurvivorSpan	查看幸存者队伍的平均分散程度	 GetAveragedSurvivorSpan()	Get the distance between the lead and trailing survivors, smoothed over time.
+function	CDirector	GetAveragedSurvivorSpeed	查看幸存者队伍的平均速度	 GetAveragedSurvivorSpeed()	Get the rate at which the lead survivor is moving along the flow, smoothed over time.
+function	CDirector	GetClosestActivePipeBomb	找到最近的一枚生效中的土制炸弹	 GetClosestActivePipeBomb(origin:Vector)	Returns the closest active pipe bomb from this origin.
+function	CDirector	GetClosestCharacterWhoIsIT	找到最近的一个被胆汁吸引感染者的角色	 GetClosestCharacterWhoIsIT(character:CBaseCombatCharacter)	Returns the closest character who is IT to the passed character.
+function	CDirector	GetClosestSurvivor	找到距离目标最近的幸存者	 GetClosestSurvivor(origin:Vector, bIncludeIncap:bool, bIncludeOnRescueVehicle:bool)	Returns the closest Survivor from the passed origin, if incapped Survivors are included in search, or on rescue vehicle.
+function	CDirector	GetCommonInfectedCount	查看地图上普通感染者数量	 GetCommonInfectedCount()	Returns number for infected currently spawned.
+function	CDirector	GetFurthestSurvivorFlow	查看跑得最远的幸存者进度	 GetFurthestSurvivorFlow()	Get the maximum distance along the flow that the survivors have reached.
+function	CDirector	GetGameMode	查看游戏模式	 GetGameMode()	Get the current game mode. If called in a mutation, it returns the current mutation, not the base mode. Will only look for the specific game mode/mutation.
+function	CDirector	GetGameModeBase	查看游戏模式的基础类型	 GetGameModeBase()	Get the current base game mode. Does not return the current mutation. Example, if looking for survival, it will also count for all game modes using survival as base. Such as Mutation 15 (Survival Versus)
+function	CDirector	GetHighestFlowSurvivor	找到关卡进度最高的幸存者	 GetHighestFlowSurvivor()	Returns the Survivor with the highest flow.
+function	CDirector	GetHoldoutCooldownEndTime	查看坚守模式冷却何时结束	 GetHoldoutCooldownEndTime()	Get the end time of the cooldown timer.
+function	CDirector	GetLowestFlowSurvivor	找到关卡进度最低的幸存者	 GetLowestFlowSurvivor()	Returns the Survivor with the lowest flow.
+function	CDirector	GetMapName	查看地图名称	 GetMapName()	Get the current map name.
+function	CDirector	GetMapNumber	查看目前所在关卡编号	 GetMapNumber()	Return the current map number.
+function	CDirector	GetMissionWipes	查看本局队伍团灭次数	 GetMissionWipes()	Returns the current number of mission wipes.
+function	CDirector	GetPendingMobCount	查看导演准备生成多少普通感染者	 GetPendingMobCount()	Returns the number of infected waiting to spawn.
+function	CDirector	GetRandomSurvivor	查看随机幸存者	 GetRandomSurvivor()	Returns a random alive Survivor.
+function	CDirector	GetSurvivorSet	查看幸存者调整	 GetSurvivorSet()	Get the current survivor set. L4D1 Survivors = 1, L4D2 Survivors = 2.
+function	CDirector	GetTimeSinceSpecialZombieKilled	计算距离上次击杀特殊感染者过去多久	 GetTimeSinceSpecialZombieKilled(zombieType:int)	Returns the time since the passed zombie type was killed.
+function	CDirector	GetTotalElapsedMissionTime	查看战役已进行的总时间	 GetTotalElapsedMissionTime()	Returns the total elapsed mission time.
+function	CDirector	HasAnySurvivorLeftSafeArea	有人离开安全区域了吗？	 HasAnySurvivorLeftSafeArea()	True when one or more survivors have left the starting safe area.
+function	CDirector	IsAnySurvivorBypassingTank	有没有幸存者绕过 Tank？	 IsAnySurvivorBypassingTank()	True when one or more survivors are bypassing the Tank.
+function	CDirector	IsAnySurvivorInCombat	是否至少有一名幸存者正在战斗？	 IsAnySurvivorInCombat()	Returns true if any survivor recently dealt or took damage.
+function	CDirector	IsAnySurvivorInExitCheckpoint	是否有幸存者进入出口安全屋？	 IsAnySurvivorInExitCheckpoint()	True when one or more survivors are in the exit checkpoint.
+function	CDirector	IsAnySurvivorInStartArea	是否有幸存者还在出发区域？	 IsAnySurvivorInStartArea()	True when one or more survivors are in the starting safe area.
+function	CDirector	IsFinale	终局流程已经开始了吗？	 IsFinale()	True when the finale has started.
+function	CDirector	IsFinaleEscapeInProgress	终局逃脱阶段正在进行吗？	 IsFinaleEscapeInProgress()	True when the finale escape is in progress.
+function	CDirector	IsFinaleVehicleReady	终局载具已经可以登车了吗？	 IsFinaleVehicleReady()	True when the finale vehicle is ready.
+function	CDirector	IsFinaleWon	这次终局已经获胜了吗？	 IsFinaleWon()	Returns true if the finale has been won.
+function	CDirector	IsFirstMapInScenario	这是战役的第一张地图吗？	 IsFirstMapInScenario()	True if the first map in a scenario.
+function	CDirector	IsL4D1Campaign	当前玩的是一代战役吗？	 IsL4D1Campaign()	Return true if the current campaign is originally from L4D1.
+function	CDirector	IsLocationFoggedToSurvivors	幸存者无法看到该区域吗？	 IsLocationFoggedToSurvivors(origin:Vector)	Returns true if the passed location is fogged to Survivors.
+function	CDirector	IsPlayingIntro	游戏正在播放开场动画吗？	 IsPlayingIntro()	True if the intro is currently playing.
+function	CDirector	IsPlayingOnConsole	游戏运行在主机平台吗？	 IsPlayingOnConsole()	Return true if game is running on a console (such as Xbox 360).
+function	CDirector	IsSessionStartMap	这是不是本次会话的开局地图？	 IsSessionStartMap()	True if the map is the start of the session.
+function	CDirector	IsSinglePlayerGame	本局是单人游戏吗？	 IsSinglePlayerGame()	Return true if game is in single player.
+function	CDirector	IsTankInPlay	当前地图有正在活动的 Tank 吗？	 IsTankInPlay()	Returns true if any tanks are aggro on survivors.
+function	CDirector	IsValid	这个实体或对象还有效吗？	 IsValid()	WhetherDirectorbelongs to a valid entity. Seems futile to use.
+function	CDirector	L4D1SurvivorGiveItem	给一代幸存者发放物品	 L4D1SurvivorGiveItem()	Let the L4D1 survivors know that now is a good time to give the players an item.
+function	CDirector	PlayMegaMobWarningSounds	播放大型尸潮即将袭来的警告声	 PlayMegaMobWarningSounds()	Plays a horde scream sound and asks survivors to speak incoming horde lines.
+function	CDirector	RegisterForbiddenTarget	把实体加入禁止作为目标的名单	 RegisterForbiddenTarget(entity:CBaseEntity)	Registers a target entity as forbidden.
+function	CDirector	ResetMobTimer	重置普通感染者尸潮倒计时	 ResetMobTimer()	Trigger a mob as soon as possible when in BUILD_UP.
+function	CDirector	ResetSpecialTimers	重置特殊感染者生成计时器	 ResetSpecialTimers()	Reset all special timers (by type and by slot) so that hopefully mobs will spawn asap.
+function	CDirector	SetHoldoutCooldownEndTime	调整坚守模式冷却结束时间	 SetHoldoutCooldownEndTime(time:float)	
+function	CDirector	UnregisterForbiddenTarget	从禁止目标名单中移除实体	 UnregisterForbiddenTarget(entity:CBaseEntity)	Unregisters a target entity as forbidden.
+function	CDirector	WarpAllSurvivorsToBattlefield	把全部幸存者传送到战斗区域	 WarpAllSurvivorsToBattlefield()	Warp all Survivors to the battlefield.
+function	CDirector	WarpAllSurvivorsToCheckpoint	把全部幸存者传送进安全屋	 WarpAllSurvivorsToCheckpoint()	Warp all Survivors to the exit checkpoint.
+function	CDirector	WarpAllSurvivorsToFinale	把全部幸存者传送到终局位置	 WarpAllSurvivorsToFinale()	Warp all Survivors to the finale radio.
+function	CEntities	FindByClassname	按实体类型依次查找	 FindByClassname(previous:handle, class:string)	Find entities by class name.
+function	CEntities	FindByClassnameNearest	找到离指定位置最近的同类实体	 FindByClassnameNearest(class:string, origin:Vector, radius:float)	Find the entity with the given class name nearest to the specified point.
+function	CEntities	FindByClassnameWithin	在指定半径内查找某类实体	 FindByClassnameWithin(previous:handle, class:string, origin:Vector, radius:float)	Find entities by class name within a radius, while within a set radius.
+function	CEntities	FindByModel	按模型文件依次查找	 FindByModel(previous:handle, filename:string)	Find entities by a model path name.
+function	CEntities	FindByName	按 targetname 依次查找	 FindByName(previous:handle, name:string)	Find entities by targetname. Special ones including !bill will work.
+function	CEntities	FindByNameNearest	找到指定位置附近最近的同名实体	 FindByNameNearest(name:string, origin:Vector, radius:float)	Find entities by targetname nearest to a point, while within a set radius. Special ones including !bill will work.
+function	CEntities	FindByNameWithin	在指定半径内查找同名实体	 FindByNameWithin(previous:handle, name:string, origin:Vector, radius:float)	Find entities by targetname within a radius. Special ones including !bill will work.
+function	CEntities	FindByTarget	查找指向指定 target 的实体	 FindByTarget(previous:handle, targetname:string)	Find entities by its target.
+function	CEntities	FindInSphere	查找球形范围内的实体	 FindInSphere(previous:handle, origin:Vector, radius:float)	Returns entities within a set radius.
+function	CEntities	First	拿到列表中的第一个实体	 First()	The first entity that spawned (Always worldspawn). Can be used to begin an iteration for a list of entities.
+function	CEntities	IsValid	这个实体或对象还有效吗？	 IsValid()	Whether the handle for Entities is a valid handle.
+function	CEntities	Next	继续访问下一个实体	 Next(previous:handle)	At the given reference of a previously-found entity, returns the next one after it in the list.
+function	CEnvEntityMaker	SpawnEntity	生成实体	 SpawnEntity()	Create an entity at the location of the maker.
+function	CEnvEntityMaker	SpawnEntityAtEntityOrigin	在另一个实体的位置生成目标实体	 SpawnEntityAtEntityOrigin(entity:CBaseEntity)	Create an entity at the location of a specified entity instance.
+function	CEnvEntityMaker	SpawnEntityAtLocation	在指定坐标生成实体	 SpawnEntityAtLocation(origin:Vector, orientation:QAngle)	Create an entity at a specified location and orientation.
+function	CEnvEntityMaker	SpawnEntityAtNamedEntityOrigin	在指定名称实体的位置生成实体	 SpawnEntityAtNamedEntityOrigin(name:string)	Create an entity at the location of a named entity.
+function	CNavLadder	ConnectTo	将此导航区域与目标区域连通	 ConnectTo(area:TerrorNavArea)	Connect this ladder to given area.
+function	CNavLadder	Disconnect	断开	 Disconnect(area:TerrorNavArea)	Disconnect this ladder from given area.
+function	CNavLadder	GetBottomArea	梯子下端连接哪片区域？	 GetBottomArea()	Area of the bottom of the ladder.
+function	CNavLadder	GetBottomOrigin	读取梯子底部坐标	 GetBottomOrigin()	World coords of the bottom of the ladder.
+function	CNavLadder	GetDir	读取梯子的朝向	 GetDir()	Return the way the ladder faces (ie: surface normal of climbable side).
+function	CNavLadder	GetID	查看编号	 GetID()	Get ladder ID.
+function	CNavLadder	GetLadderEntity	查看梯子实体	 GetLadderEntity()	Returns the ladder entity.
+function	CNavLadder	GetLength	查看长度	 GetLength()	Return the length of the ladder.
+function	CNavLadder	GetPosAtHeight	求出梯子指定高度上的坐标	 GetPosAtHeight(height:float)	Return x,y coordinate of the ladder at a given height.
+function	CNavLadder	GetTopArea	梯子上端连接哪片区域？	 GetTopArea()	Area of the top of the ladder.
+function	CNavLadder	GetTopOrigin	读取梯子顶部坐标	 GetTopOrigin()	World coords of the top of the ladder.
+function	CNavLadder	GetWidth	查看宽度	 GetWidth()	Return the width of the ladder.
+function	CNavLadder	IsConnected	这架梯子和指定导航区域连通吗？	 IsConnected(area:TerrorNavArea, dir:int)	Return true if given ladder is connected in given direction.
+function	CNavLadder	IsInUse	现在有人正在使用这架梯子吗？	 IsInUse(ignore:CBaseEntity)	Return true if someone is on this ladder (other than 'ignore').
+function	CNavLadder	IsUsableByTeam	指定队伍能使用这架梯子吗？	 IsUsableByTeam(teamID:int)	Returns true if ladder is usable for team.
+function	CNavLadder	IsValid	这个实体或对象还有效吗？	 IsValid()	Whether the handle belongs to a valid ladder.
+function	CNavMesh	FindLadderAlongRay	沿指定射线寻找导航梯子	 FindLadderAlongRay(startpos:Vector, endpos:Vector, ignoreArea:TerrorNavArea)	Get nav ladder from ray.
+function	CNavMesh	FindNavAreaAlongRay	沿指定射线寻找导航区域	 FindNavAreaAlongRay(startpos:Vector, endpos:Vector, ignoreArea:TerrorNavArea)	Get nav area from ray.
+function	CNavMesh	GetAllAreas	获取当前全部导航区域	 GetAllAreas(table:any)	Fills a passed in table of all nav areas.
+function	CNavMesh	GetAllLadders	获取地图中的全部导航梯子	 GetAllLadders(table:any)	Fills a passed in table of all nav ladders.
+function	CNavMesh	GetAreasWithAttributes	找到具有指定标志的导航区域	 GetAreasWithAttributes(bits:int, table:any)	Fills a passed in table of all nav areas that have the specified attributes.
+function	CNavMesh	GetLadderByID	按编号找到一架导航梯子	 GetLadderByID(id:int)	Get nav ladder by ID.
+function	CNavMesh	GetLadderCount	统计地图导航梯子数量	 GetLadderCount()	Return total number of nav ladders.
+function	CNavMesh	GetNavArea	查看导航区域	 GetNavArea(origin:Vector, flBeneath:float)	Given a position in the world, return the nav area that is closest and at the same height, or beneath it.
+function	CNavMesh	GetNavAreaByID	按编号找到对应的导航区域	 GetNavAreaByID(id:int)	Get nav area by ID.
+function	CNavMesh	GetNavAreaCount	统计地图导航区域数量	 GetNavAreaCount()	Return total number of nav areas.
+function	CNavMesh	GetNavAreasFromBuildPath	取出路径规划结果中的导航区域	 GetNavAreasFromBuildPath(startArea:TerrorNavArea, endArea:TerrorNavArea, goalPos:Vector, flMaxPathLength:float, teamID:int, ignoreNavBlockers:bool, table:any)	Fills table with areas from a path. Returns whether a path was found. If 'endArea' is NULL, will compute a path as close as possible to 'goalPos'.
+function	CNavMesh	GetNavAreasInRadius	取得指定半径内的导航区域	 GetNavAreasInRadius(origin:Vector, radius:float, table:any)	Fills a passed in table of nav areas within radius.
+function	CNavMesh	GetNavAreasOverlappingEntityExtent	找到与实体范围重叠的导航区域	 GetNavAreasOverlappingEntityExtent(entity:CBaseEntity, table:any)	Fills passed in table with areas overlapping entity's extent.
+function	CNavMesh	GetNearestNavArea	找到离坐标最近的导航区域	 GetNearestNavArea(origin:Vector, maxDist:float, checkLOS:bool, checkGround:bool)	Given a position in the world, return the nav area that is closest and at the same height, or beneath it.
+function	CNavMesh	GetObstructingEntities	列出阻挡导航的实体	 GetObstructingEntities(table:any)	Fills a passed in table of all obstructing entities.
+function	CNavMesh	IsValid	这个实体或对象还有效吗？	 IsValid()	Whether the handle belongs to a valid entity. Redundant as navigation meshes are not entity related.
+function	CNavMesh	NavAreaBuildPath	沿导航网格规划一条行走路径	 NavAreaBuildPath(startArea:TerrorNavArea, endArea:TerrorNavArea, goalPos:Vector, flMaxPathLength:float, teamID:int, ignoreNavBlockers:bool)	Returns true if a path exists. If 'endArea' is NULL, will compute a path as close as possible to 'goalPos'.
+function	CNavMesh	NavAreaTravelDistance	计算沿导航网格行走的距离	 NavAreaTravelDistance(startArea:TerrorNavArea, endArea:TerrorNavArea, flMaxPathLength:float)	Compute distance between two areas. Return -1 if can't reach 'endArea' from 'startArea'.
+function	CNavMesh	RegisterAvoidanceObstacle	登记需要让 Bot 避开的障碍物	 RegisterAvoidanceObstacle(entity:CBaseEntity)	Registers an entity as an avoidance obstacle.
+function	CNavMesh	UnblockRescueVehicleNav	解除逃生载具附近的导航阻挡	 UnblockRescueVehicleNav()	Unblock the rescue vehicle nav areas so bots can path through them.
+function	CNavMesh	UnregisterAvoidanceObstacle	取消一项导航避让障碍物	 UnregisterAvoidanceObstacle(entity:CBaseEntity)	Unregisters an entity as an avoidance obstacle.
+function	CNetPropManager	GetPropArraySize	查看网络属性数组有多少个元素	 GetPropArraySize(entity:CBaseEntity, propertyName:string)	Returns the size of an netprop array, or -1.
+function	CNetPropManager	GetPropEntity	读取网络属性指向的实体	 GetPropEntity(entity:CBaseEntity, propertyName:string)	Reads an EHANDLE-valued netprop (21 bit integer). Returns the script handle of the entity.
+function	CNetPropManager	GetPropEntityArray	读取实体引用数组中的某一项	 GetPropEntityArray(entity:CBaseEntity, propertyName:string, arrayElement:int)	Reads an EHANDLE-valued netprop (21 bit integer) from an array. Returns the script handle of the entity.
+function	CNetPropManager	GetPropFloat	读取实体的浮点网络属性	 GetPropFloat(entity:CBaseEntity, propertyName:string)	Reads a float-valued netprop.
+function	CNetPropManager	GetPropFloatArray	读取浮点网络数组中的某一项	 GetPropFloatArray(entity:CBaseEntity, propertyName:string, arrayElement:int)	Reads a float-valued netprop from an array.
+function	CNetPropManager	GetPropInt	读取实体的整数网络属性	 GetPropInt(entity:CBaseEntity, propertyName:string)	Reads an integer-valued netprop.
+function	CNetPropManager	GetPropIntArray	读取整数网络数组中的某一项	 GetPropIntArray(entity:CBaseEntity, propertyName:string, arrayElement:int)	Reads an integer-valued netprop from an array.
+function	CNetPropManager	GetPropString	读取实体的文本网络属性	 GetPropString(entity:CBaseEntity, propertyName:string)	Reads an string-valued netprop.
+function	CNetPropManager	GetPropStringArray	读取文本网络数组中的某一项	 GetPropStringArray(entity:CBaseEntity, propertyName:string, arrayElement:int)	Reads an string-valued netprop from an array.
+function	CNetPropManager	GetPropType	查看网络属性的存储类型	 GetPropType(entity:CBaseEntity, propertyName:string)	Returns the name of the netprop type as a string.
+function	CNetPropManager	GetPropVector	读取实体的三维向量网络属性	 GetPropVector(entity:CBaseEntity, propertyName:string)	Reads a 3D vector-valued netprop.
+function	CNetPropManager	GetPropVectorArray	读取向量网络数组中的某一项	 GetPropVectorArray(entity:CBaseEntity, propertyName:string, arrayElement:int)	Reads a 3D vector-valued netprop from an array.
+function	CNetPropManager	HasProp	实体是否存在这个网络属性？	 HasProp(entity:CBaseEntity, propertyName:string)	Checks if a netprop exists.
+function	CNetPropManager	SetPropEntity	把网络属性指向另一个实体	 SetPropEntity(entity:CBaseEntity, propertyName:string, value:CBaseEntity)	Sets an EHANDLE-valued netprop (21 bit integer) to reference the specified entity.
+function	CNetPropManager	SetPropEntityArray	修改实体引用数组中的某一项	 SetPropEntityArray(entity:CBaseEntity, propertyName:string, value:CBaseEntity, arrayElement:int)	Sets an EHANDLE-valued netprop (21 bit integer) from an array to reference the specified entity.
+function	CNetPropManager	SetPropFloat	修改实体的浮点网络属性	 SetPropFloat(entity:CBaseEntity, propertyName:string, value:float)	Sets a netprop to the specified float.
+function	CNetPropManager	SetPropFloatArray	修改浮点网络数组中的某一项	 SetPropFloatArray(entity:CBaseEntity, propertyName:string, value:float, arrayElement:int)	Sets a netprop from an array to the specified float.
+function	CNetPropManager	SetPropInt	修改实体的整数网络属性	 SetPropInt(entity:CBaseEntity, propertyName:string, value:int)	Sets a netprop to the specified integer.
+function	CNetPropManager	SetPropIntArray	修改整数网络数组中的某一项	 SetPropIntArray(entity:CBaseEntity, propertyName:string, value:int, arrayElement:int)	Sets a netprop from an array to the specified integer.
+function	CNetPropManager	SetPropString	修改实体的文本网络属性	 SetPropString(entity:CBaseEntity, propertyName:string, value:string)	Sets a netprop to the specified string.
+function	CNetPropManager	SetPropStringArray	修改文本网络数组中的某一项	 SetPropStringArray(entity:CBaseEntity, propertyName:string, value:string, arrayElement:int)	Sets a netprop from an array to the specified string.
+function	CNetPropManager	SetPropVector	修改实体的三维向量网络属性	 SetPropVector(entity:CBaseEntity, propertyName:string, value:Vector)	Sets a netprop to the specified vector.
+function	CNetPropManager	SetPropVectorArray	修改向量网络数组中的某一项	 SetPropVectorArray(entity:CBaseEntity, propertyName:string, value:Vector, arrayElement:int)	Sets a netprop from an array to the specified vector.
+function	CPointScriptTemplate	AddTemplate	添加模板	 AddTemplate(string:any, handle:any)	Add an entity to the template spawner.
+function	CPointScriptTemplate	SetGroupSpawnTables	设置这一组模板实体生成时使用的数据表	 SetGroupSpawnTables(handle:any, handle:any)	Cache the group spawn tables.
+function	CPointScriptUseTarget	CanShowBuildPanel	控制使用目标时是否显示交互面板	 CanShowBuildPanel(showPanel:bool)	Sets if the UI panel for the button is shown.
+function	CPointScriptUseTarget	GetUseModelName	查看使用模型名称	 GetUseModelName()	Get the entity name of the prop bound to this button.
+function	CPointScriptUseTarget	OnUseFinished	玩家把这次交互完整做完后执行	 OnUseFinished()	Called when the player has used this button for at least 'FinishTime' seconds.
+function	CPointScriptUseTarget	OnUseStart	玩家刚开始使用这个交互目标时执行	 OnUseStart()	Called when the player begins to use this button. Return false to disable the third-person use animation.
+function	CPointScriptUseTarget	OnUseStop	玩家停止使用这个交互目标时执行	 OnUseStop(timeUsed:float)	Called when the player stops using this button. Passes the time this button has been used (time between StartUse and now).
+function	CPointScriptUseTarget	Precache	提前加载	 Precache()	Called by the game engine when the entity first spawns, immediately after this script is run.
+function	CPointScriptUseTarget	SetProgressBarCurrentProgress	修改当前交互已经完成的进度	 SetProgressBarCurrentProgress(time:float)	Sets the current use progress. It can be used to save the use progress when the user releases the use key.
+function	CPointScriptUseTarget	SetProgressBarFinishTime	设置完成这次交互需要按住多久	 SetProgressBarFinishTime(time:float)	Sets the total time the button takes to use. If '0', no progress bar will be displayed.
+function	CPointScriptUseTarget	SetProgressBarText	修改交互进度条上显示的文字	 SetProgressBarText(text:string)	Sets the use text for the button UI.
+function	CPointScriptUseTarget	StopUse	停止使用	 StopUse()	Stop the current use action.
+function	CScriptEntityOutputs	AddOutput	添加输出	 AddOutput(entity:CBaseEntity, outputName:string, targetName:string, inputName:string, parameter:string, delay:float, timesToFire:int)	Adds a new output to the entity.
+function	CScriptEntityOutputs	GetNumElements	查看这个输出一共绑定了多少条动作	 GetNumElements(entity:CBaseEntity, outputName:string)	Returns the number of array elements.
+function	CScriptEntityOutputs	GetOutputTable	查看输出数据表	 GetOutputTable(entity:CBaseEntity, outputName:string, table:any, arrayElement:int)	Fills the passed table with output information.
+function	CScriptEntityOutputs	HasAction	这个输出里存在指定动作吗？	 HasAction(entity:CBaseEntity, outputName:string)	Returns true if an action exists for the output.
+function	CScriptEntityOutputs	HasOutput	实体上存在这个输出吗？	 HasOutput(entity:CBaseEntity, outputName:string)	Returns true if the output exists.
+function	CScriptEntityOutputs	RemoveOutput	移除输出	 RemoveOutput(entity:CBaseEntity, outputName:string, targetName:string, inputName:string, parameter:string)	Removes an output from the entity.
+function	CScriptResponseCriteria	GetTable	查看数据表	 GetTable(entity:CBaseEntity, table:any)	Fills the passed table with all criteria.
+function	CScriptResponseCriteria	GetValue	查看数值	 GetValue(entity:CBaseEntity, criteriaName:string)	Returns a string.
+function	CScriptResponseCriteria	HasCriterion	当前响应条件里有这个条件吗？	 HasCriterion(entity:CBaseEntity, criteriaName:string)	Returns true if the criterion exists.
+function	CSimpleCallChainer	Call	依次执行简化调用链里的全部函数	 Call(...:any)	Call all functions inside the chain array with the given arguments.
+function	CSimpleCallChainer	PostScriptExecute	扫描并整理这个简化调用链里的函数	 PostScriptExecute()	Begin searching for all non-native functions with matching prefixes, then push them into the chain array.
+function	CTerrorPlayer	DropItem	让玩家丢下指定物品	 DropItem(classname:string)	Makes the player drop an item/weapon from their inventory, by classname.
+function	CTerrorPlayer	Extinguish	扑灭玩家身上的火	 Extinguish()	Extinguishes a burning player.
+function	CTerrorPlayer	EyeAngles	查看玩家正在朝哪个方向看	 EyeAngles()	Returns the direction the player is facing.
+function	CTerrorPlayer	EyePosition	查看玩家眼睛所在位置	 EyePosition()	Returns the player's eye position in the world.
+function	CTerrorPlayer	GetActiveWeapon	拿到玩家手里正在用的武器	 GetActiveWeapon()	Gets the player's active weapon entity.
+function	CTerrorPlayer	GetAliveDuration	查看存活时长	 GetAliveDuration()	Returns the time the character has been alive (only valid when alive).
+function	CTerrorPlayer	GetButtonMask	读取玩家正在按的按键	 GetButtonMask()	Returns a bitfield of currently pressed buttons. Test against each value to see which button is pressed. Recognized buttons are:
+function	CTerrorPlayer	GetHealthBuffer	查看幸存者的临时生命值	 GetHealthBuffer()	Returns the current temporary health of a survivor.
+function	CTerrorPlayer	GetNetworkIDString	读取玩家的网络身份标识	 GetNetworkIDString()	Gets the player's network (i.e. Steam) ID.
+function	CTerrorPlayer	GetPlayerName	读取玩家显示的名字	 GetPlayerName()	Gets the player's name.
+function	CTerrorPlayer	GetPlayerUserId	读取玩家本局的 UserID	 GetPlayerUserId()	Get the player's userID.
+function	CTerrorPlayer	GetSenseFlags	读取 Bot 的感知状态	 GetSenseFlags()	Gets the current bot sense flags. Test against each value to see which flag is set. Values:
+function	CTerrorPlayer	GetSpecialInfectedDominatingMe	是谁在控制这个幸存者？	 GetSpecialInfectedDominatingMe()	Gets the special infected dominating this Survivor.
+function	CTerrorPlayer	GetSurvivorSlot	查看幸存者所在槽位	 GetSurvivorSlot()	Gets the player's slot number.
+function	CTerrorPlayer	GetZombieType	查看玩家属于哪一种感染者	 GetZombieType()	If it is an infected, find out what type. Recognized ZombieTypes are: Smoker = 1, Boomer = 2, Hunter = 3, Spitter = 4, Jockey = 5, Charger = 6, Witch = 7, Tank = 8, Survivor = 9
+function	CTerrorPlayer	GiveAmmo	给玩家的主武器补充后备弹药	 GiveAmmo(amount:int)	Adds ammo for the player's primary weapon ammo pool.
+function	CTerrorPlayer	GiveItem	向玩家背包里发放物品或武器	 GiveItem(itemname:string)	Gives an item/weapon by name. Uses the same names as the give console command(health, katana, rifle_ak47, etc.).
+function	CTerrorPlayer	GiveItemWithSkin	给玩家一件指定外观的武器或物品	 GiveItemWithSkin(classname:string, skin:int)	Gives the player a skinned item/weapon.
+function	CTerrorPlayer	GiveUpgrade	给玩家的主武器安装弹药升级	 GiveUpgrade(upgradeType:int)	Gives a primary weapon upgrade. Possible values:
+function	CTerrorPlayer	HasEverBeenInjured	玩家曾被指定队伍的成员伤过吗？	 HasEverBeenInjured(team:int)	Returns true if the character has been injured by a member of the given team.
+function	CTerrorPlayer	HitWithVomit	让玩家被胆汁喷中	 HitWithVomit()	Covers the player with a boomer vomit attack.
+function	CTerrorPlayer	IsAdrenalineActive	玩家的肾上腺素效果还在吗？	 IsAdrenalineActive()	Returns true if an adrenaline effect is currently active on the survivor.
+function	CTerrorPlayer	IsDead	玩家已经死亡了吗？	 IsDead()	Returns true when a player is dead for more than 5 seconds. Note that taking over a dying bot immediately switches to the dead phase.
+function	CTerrorPlayer	IsDominatedBySpecialInfected	玩家是否被特殊感染者控制？	 IsDominatedBySpecialInfected()	Return true if being dominated by a Special Infected (i.e. held by smoker, charger, jockey or hunter)
+function	CTerrorPlayer	IsDying	玩家正在死亡过渡阶段吗？	 IsDying()	Returns true when a player has recently died for 5 seconds.
+function	CTerrorPlayer	IsFiringWeapon	玩家正在开火吗？	 IsFiringWeapon()	Returns true if player is firing a weapon.
+function	CTerrorPlayer	IsGettingUp	玩家正在起身吗？	 IsGettingUp()	Returns true if player is currently getting up.
+function	CTerrorPlayer	IsGhost	感染者处于灵魂状态吗？	 IsGhost()	Returns true if player is currently in an infected ghost state.
+function	CTerrorPlayer	IsHangingFromLedge	幸存者挂在边缘吗？	 IsHangingFromLedge()	Returns true if player is currently hanging from a ledge.
+function	CTerrorPlayer	IsIT	玩家身上有胆汁吸引感染者吗？	 IsIT()	Returns true if player is currently IT from bile.
+function	CTerrorPlayer	IsImmobilized	玩家现在行动受限吗？	 IsImmobilized()	Returns true if player is currently immobilized.
+function	CTerrorPlayer	IsInCombat	玩家正在交战吗？	 IsInCombat()	Returns true if player is currently in combat.
+function	CTerrorPlayer	IsIncapacitated	幸存者现在倒地了吗？	 IsIncapacitated()	Returns true if player is currently incapacitated.
+function	CTerrorPlayer	IsOnFire	玩家身上着火了吗？	 IsOnFire()	Returns true if player is on fire, e.g., standing in fireworks crate explosions.
+function	CTerrorPlayer	IsOnThirdStrike	幸存者已经黑白了吗？	 IsOnThirdStrike()	Returns true if player is on third-strike.
+function	CTerrorPlayer	IsStaggering	玩家正在踉跄吗？	 IsStaggering()	Returns true if player is currently staggering.
+function	CTerrorPlayer	IsSuppressingFallingDamage	玩家的坠落伤害目前被忽略了吗？	 IsSuppressingFallingDamage()	Returns true if fall damage is currently suppressed, which is when the entity received the IgnoreFallDamage or IgnoreFallDamageWithoutReset input, provided that it is still active.
+function	CTerrorPlayer	IsSurvivor	这是幸存者吗？	 IsSurvivor()	Returns true if player is on the survivor or l4d1 survivor team (Otherwise, unknown, spectator or infected).
+function	CTerrorPlayer	RemoveUpgrade	移除玩家主武器的弹药升级	 RemoveUpgrade(upgradeType:int)	Removes a primary weapon upgrade. Possible values:
+function	CTerrorPlayer	ReviveByDefib	用除颤器复活玩家	 ReviveByDefib()	Revives a dead player by defib.
+function	CTerrorPlayer	ReviveFromIncap	把倒地的幸存者扶起来	 ReviveFromIncap()	Revives an incapacitated player.
+function	CTerrorPlayer	SetFriction	修改实体的摩擦力	 SetFriction(friction:int)	Sets player friction.
+function	CTerrorPlayer	SetGravity	修改实体的重力比例	 SetGravity(gravity:int)	Sets player gravity.
+function	CTerrorPlayer	SetHealthBuffer	修改幸存者的临时生命值	 SetHealthBuffer(health:float)	Sets the temporary health of a survivor; No effect for infecteds. Does not incapacitate or kill when set to zero.
+function	CTerrorPlayer	SetReviveCount	设置扶起数量	 SetReviveCount(count:int)	Sets the number of times a survivor has been revived, and updates third-strike state (B&W) and heartbeat sound.
+function	CTerrorPlayer	SetSenseFlags	调整 Bot 的感知状态	 SetSenseFlags(flags:int)	Set the set of bot sense flags. Combine values to set appropriate flags:
+function	CTerrorPlayer	SnapEyeAngles	直接调整玩家观看方向	 SnapEyeAngles(angles:QAngle)	Sets the view angles, supports rolling the view.
+function	CTerrorPlayer	Stagger	让玩家朝指定位置反方向踉跄	 Stagger(position:Vector)	Staggers a player away from a position. Use Vector(0,0,0) to stagger forward.
+function	CTerrorPlayer	SwitchToItem	让玩家切换到指定物品	 SwitchToItem(classname:string)	Makes the player switch to an item/weapon by classname. Returns true if the switch is performed successfully.
+function	CTerrorPlayer	TryGetPathableLocationWithin	在指定范围内尝试寻找能走到的位置	 TryGetPathableLocationWithin(radius:float)	Get a location on the nav that the player can path to within the desired radius.
+function	CTerrorPlayer	UseAdrenaline	让玩家获得肾上腺素加速效果	 UseAdrenaline(duration:float)	Causes Adrenaline's speed and visual effect, no change to health.
+function	CTerrorWeapon	Clip1	看看弹匣里还有几发子弹	 Clip1()	Current amount of ammo in a weapon's clip.
+function	CTerrorWeapon	Clip2	看看第二弹匣还剩多少弹药	 Clip2()	Current 'secondary clip' ammo count. Always -1 in default game.
+function	CTerrorWeapon	GetDefaultClip1	读取武器初始弹匣容量	 GetDefaultClip1()	Clip count of a weapon when its newly picked up.
+function	CTerrorWeapon	GetDefaultClip2	读取第二弹匣初始容量	 GetDefaultClip2()	Default 'secondary clip' ammo count. Always -1 in default game; Only a positive value if a custom weapon script has clip2_size set.
+function	CTerrorWeapon	GetMaxClip1	查看当前武器最多装几发	 GetMaxClip1()	Max clip count a weapon can hold. Will always return the same value as the GetDefaultClip1 function.
+function	CTerrorWeapon	GetMaxClip2	查看第二弹匣容量上限	 GetMaxClip2()	Max 'secondary clip' count. Always -1 in default game; Only a positive value if a custom weapon script has clip2_size set. Will always return the same value as the GetDefaultClip2 function.
+function	CTerrorWeapon	GiveDefaultAmmo	把武器弹匣恢复为默认数量	 GiveDefaultAmmo()	Revert both weapons's clip to their default values.
+function	CTerrorWeapon	Reload	尝试让这把武器开始换弹	 Reload()	Forces the weapon to reload if it is not full. Returns true if it could start a weapon reload.
+function	CTerrorWeapon	SetClip1	把当前弹匣改成指定弹药数	 SetClip1(amount:int)	Sets a weapon's clip count.
+function	CTerrorWeapon	SetClip2	修改第二弹匣里的弹药数量	 SetClip2(amount:int)	Sets a weapon's 'secondary clip' count; Works just fine but has no gameplay effect in default game.
+function	Convars	GetClientConvarValue	读取指定客户端的控制台变量	 GetClientConvarValue(name:string, entindex:int)	Returns the convar value for the entindex as a string. Only works on client convars with the FCVAR_USERINFO flag. Convars without FCVAR_USERINFO or non-existent ones return empty string
+function	Convars	GetFloat	读取控制台变量的数值	 GetFloat(name:string)	Returns the convar as a float. Returns null if no such convar.
+function	Convars	GetStr	读取控制台变量的文字值	 GetStr(name:string)	Returns the convar as a string. Returns null if no such convar.
+function	Convars	SetValue	修改控制台变量的值	 SetValue(name:string, value:any)	Sets the value of the convar. Supported types are bool, int, float, string.
+function	Decider	AddRule	添加规则	 AddRule(CRule:handle)	Add a CRule object (defined in rulescript_base.nut)
+function	Decider	FindAllMatches	找到所有匹配项	 FindAllMatches(query:handle, leeway:float)	Returns an array of all matching responses. If leeway is nonzero, all results scoring within 'leeway' of the best score return.
+function	Decider	FindBestMatch	找到最合适的匹配	 FindBestMatch(query:handle)	Query the database and return the best result found. If multiple of equal score found, an arbitrary one returns.
+function	Decider	IsValid	这个实体或对象还有效吗？	 IsValid()	Whether the object belongs to a valid entity(?).
+function	Globals	AddThinkToEnt	给实体绑定一个会持续重复运行的 Think 函数	 AddThinkToEnt(entity:handle, FuncName:string)	Sets a function in the entity's script to rerun by itself constantly.
+function	Globals	AddToScriptHelp	添加到脚本帮助	 AddToScriptHelp(scope:table)	Checks for any scripthelp_<funcname> strings inside scope and creates help entries for them.
+function	Globals	Assert	断言	 Assert(value:bool, null:string msg =)	"Test value and if not true, throws an exception string ""Assertion failed""."
+function	Globals	BeginScriptDebug	开始脚本调试	 BeginScriptDebug()	
+function	Globals	CheckForSpecialStage	检查用于特殊阶段	 CheckForSpecialStage(level:any, stage_list:any, stage_info:any)	Helper for picking a random special stage based on stage_info table.
+function	Globals	ClearGameEventCallbacks	清空游戏事件回调	 ClearGameEventCallbacks()	Empties the tables of game event callback functions.
+function	Globals	ClearSavedTables	清空已保存数据表	 ClearSavedTables()	Removes any tables saved with SaveTable().
+function	Globals	ClientPrint	在指定玩家屏幕上显示一条消息	 ClientPrint(player:CTerrorPlayer, destination:int, message:string)	Print a client message. If you pass null instead of a valid player, the message will be sent to all clients.
+function	Globals	CommandABot	指令Bot	 CommandABot(commandTable:table)	Issues commands to bots based on a table configuration.
+function	Globals	ConnectOutputs	连接输出	 ConnectOutputs(table:any)	Expected to be used inside an entity's scope. Calling ConnectOutputs(this) inside entity script will search for functions named [some output]Output and connects respective output to them. Example: function named OnStartTouchOutput will have OnStartTouch output connected to it. (the output name needs to begin with On for this to work)
+function	Globals	DebugDrawBox	调试绘制方框	 DebugDrawBox(origin:Vector, min:vector, max:vector, r:int, g:int, b:int, alpha:int, duration:float)	Draw a debug overlay box.
+function	Globals	DebugDrawBoxAngles	调试绘制方框朝向	 DebugDrawBoxAngles(origin:Vector, min:Vector, max:Vector, direction:QAngle, rgb:Vector, alpha:int, duration:float)	Draw a debug oriented box (cent, min, max, angles(p,y,r), vRgb, a, duration).
+function	Globals	DebugDrawBoxDirection	调试绘制方框方向	 DebugDrawBoxDirection(center:Vector, min:Vector, max:Vector, forward:Vector, rgb:Vector, alpha:float, duration:float)	Draw a debug forward box.
+function	Globals	DebugDrawCircle	调试绘制圆圈	 DebugDrawCircle(center:Vector, rgb:Vector, alpha:float, radius:float, ztest:bool, duration:float)	Draw a debug circle.
+function	Globals	DebugDrawClear	调试绘制清空	 DebugDrawClear()	Try to clear all the debug overlay info.
+function	Globals	DebugDrawLine	调试绘制线条	 DebugDrawLine(start:Vector, end:Vector, red:int, green:int, int blue':any, zTest:bool, time:float)	Draw a debug overlay line.
+function	Globals	DebugDrawLine_vCol	调试绘制线条向量彩色	 DebugDrawLine_vCol(start:Vector, end:vector, rgb:vector, ztest:bool, duration:float)	Draw a debug line using color vec.
+function	Globals	DebugDrawScreenTextLine	调试绘制屏幕文本线条	 DebugDrawScreenTextLine(x:float, y:float, lineOffset:int, text:string, r:int, g:int, b:int, a:int, duration:float)	Draw text with a line offset.
+function	Globals	DebugDrawText	调试绘制文本	 DebugDrawText(origin:Vector, text:string, useViewCheck:bool, duration:float)	Draw text on the screen, starting on the position of origin.
+function	Globals	DoEntFire	发送实体 I/O 指令	 DoEntFire(target:string, action:string, value:string, delay:float, activator:handle, caller:handle)	Adds entity I/O event to the event queue to be processed at appropriate time based on specified delay. The caller and activator argument takes a CBaseEntity script handle, and entities assigned can receive inputs with target set to !self, or !activator / !caller.
+function	Globals	DoIncludeScript	执行包含脚本	 DoIncludeScript(file:string, scope:handle/table)	Execute a script. and put all its content for the argument passed to the scope parameter. (internal)
+function	Globals	DoUniqueString	执行唯一文字	 DoUniqueString(input:string/null)	Generate a string guaranteed to be unique across the life of the script VM. This function requires a string or a null value as an input, otherwise throws an error.
+function	Globals	Document	文档	 Document(symbolOrTable:unknown, null:unknown itemIfSymbol =, null:string descriptionIfSymbol =)	
+function	Globals	DropFire	在指定位置生成一片火焰	 DropFire(location:Vector)	Drop a fire pool from the specified Vector location.
+function	Globals	DropSpit	丢弃酸液	 DropSpit(location:Vector)	Drop a spit pool from the specified Vector location.
+function	Globals	DumpObject	列出对象	 DumpObject(object:handle)	Dumps information about a class or instance.
+function	Globals	EmitAmbientSoundOn	让指定实体播放环境音效	 EmitAmbientSoundOn(soundName:string, volume:float, soundlevel:int, pitch:int, entity:handle)	Play named sound on an entity that has similar configurations to ambient_generic.
+function	Globals	EmitSoundOn	让指定实体播放这个声音	 EmitSoundOn(soundScript:string, entity:handle)	Play named sound on an entity.
+function	Globals	EmitSoundOnClient	只让指定玩家听到这个声音	 EmitSoundOnClient(soundScript:string, player:handle)	Play named sound only on the client for the specified player.
+function	Globals	EndScriptDebug	结束脚本调试	 EndScriptDebug()	
+function	Globals	Ent	实体	 Ent(idxorname:string/int)	Wrapper function. If a string is provided, it'll find the entity by name using the string. But if an integer is provided, it'll be converted to a Script Handle before verifying the entity exists.
+function	Globals	EntFire	向指定实体发送 I/O 指令	 EntFire(target:string, action:string, null:string value =, float delay = 0:any, null:handle activator =)	Wrapper for DoEntFire(). If called from an entity's script scope it sets caller to self.
+function	Globals	EntIndexToHScript	把实体索引转换成可操作的脚本实体	 EntIndexToHScript(entIndex:int)	Returns the script handle for the given entity index.
+function	Globals	FileToString	读取文件内容并得到一段文字	 FileToString(path:string)	"Reads the file located in left4dead2/ems/path and returns its contents as a string. path supports folders and special names ""."" and "".."", which indicate ""current folder"" and ""parent folder"" respectfully."
+function	Globals	FindRescueAreaTrigger	找到营救区域触发器	 FindRescueAreaTrigger()	Returns the trigger entity for the rescue area.
+function	Globals	FireGameEvent	开火游戏事件	 FireGameEvent(event:string, params:table)	Fire a game event to a listening callback function in script. Parameters are passed in a squirrel table.
+function	Globals	FireScriptEvent	开火脚本事件	 FireScriptEvent(event:any, params:any)	Wrapper for __RunEventCallbacks()
+function	Globals	ForceScavengeStart	强制清道夫模式开始	 ForceScavengeStart()	Starts the scavenge round, even if the setup timer hasn't elapsed.
+function	Globals	ForceSurvivalStart	强制生存模式开始	 ForceSurvivalStart()	Starts the survival round, even if the survivors haven't activated the radio.
+function	Globals	ForceVersusStart	强制对抗模式开始	 ForceVersusStart()	Starts the versus round, even if the survivors haven't left the safe room.
+function	Globals	GetAverageSurvivorFlowDistance	查看平均幸存者流程进度距离	 GetAverageSurvivorFlowDistance()	Returns the navigation flow distance from the start to the survivors position averaged.
+function	Globals	GetCharacterDisplayName	查看角色显示名称	 GetCharacterDisplayName(player:CTerrorPlayer)	Return null if not a survivor, else the survivor's chosen character's name. This does not work with team 4 survivors.
+function	Globals	GetCurrentFlowDistanceForPlayer	查看当前流程进度距离用于玩家	 GetCurrentFlowDistanceForPlayer(player:CTerrorPlayer)	Returns the navigation flow distance from the start to the specified player.
+function	Globals	GetCurrentFlowPercentForPlayer	查看当前流程进度百分比用于玩家	 GetCurrentFlowPercentForPlayer(player:CTerrorPlayer)	Returns how far in the navigation flow from the start to the end the player is.
+function	Globals	GetDifficulty	查看难度	 GetDifficulty()	Returns the current difficulty as a numeric value. Easy = 0, Normal = 1, Advanced = 2, Expert = 3.
+function	Globals	GetDifficultyString	查看难度文字	 GetDifficultyString()	Returns the current difficulty as a string. Difficulty names are in z_difficulty cvar style: Easy, Normal, Hard, Impossible.
+function	Globals	GetFlowDistanceForPosition	查看流程进度距离用于位置	 GetFlowDistanceForPosition(position:Vector)	Returns the navigation flow distance from the start to the specified point.
+function	Globals	GetFlowPercentForPosition	查看流程进度百分比用于位置	 GetFlowPercentForPosition(position:Vector, unknown:bool)	Returns how far in the navigation flow from the start to the end the position is.
+function	Globals	GetFrameCount	查看帧数量	 GetFrameCount()	Returns the engine's current frame count.
+function	Globals	GetFriction	查看摩擦力	 GetFriction(player:CTerrorPlayer)	Returns the Friction on a player entity, meaningless if not a player.
+function	Globals	GetInfectedStats	查看感染者统计	 GetInfectedStats(statTable:table)	Fills statTable with some infected counts/etc... Right now the list is Witches, Tanks, Specials, Commons, though we may add more as requested going forward.
+function	Globals	GetInvTable	查看背包数据表	 GetInvTable(player:CTerrorPLayer, invTable:table)	Fills invTable with the specified player's inventory.
+function	Globals	GetListenServerHost	查看监听服务器主机	 GetListenServerHost()	Get the host player on a listen server.
+function	Globals	GetMaxFlowDistance	查看最大流程进度距离	 GetMaxFlowDistance()	Returns the navigation flow distance from the start to the end of the level.
+function	Globals	GetModelIndex	查看模型编号	 GetModelIndex(filename:string)	Returns index of model by name.
+function	Globals	GetPhysAngularVelocity	读取实体当前的物理角速度	 GetPhysAngularVelocity(entity:handle)	Returns the Angular velocity of the entity.
+function	Globals	GetPhysVelocity	查看物理速度	 GetPhysVelocity(entity:handle)	Returns the velocity of the entity.
+function	Globals	GetPlayerFromCharacter	按幸存者角色找到玩家	 GetPlayerFromCharacter(characterType:int)	Given a character type, return the entity, or null.
+function	Globals	GetPlayerFromUserID	根据游戏事件的 UserID 查找玩家实体	 GetPlayerFromUserID(ID:int)	Given a user id, return the entity, or null.
+function	Globals	GetScavengeItemsGoal	查看清道夫模式物品目标数量	 GetScavengeItemsGoal()	Returns number of Scavenge items needed. (Scavenge Finale)
+function	Globals	GetScavengeItemsRemaining	查看清道夫模式物品剩余	 GetScavengeItemsRemaining()	Returns number of Scavenge items remaining. (Scavenge Gamemode)
+function	Globals	GetSoundDuration	查看声音时长	 GetSoundDuration(soundname:string, actormodel:string)	Returns float duration of the sound. Takes soundname and optional actormodelname.
+function	Globals	HUDManageTimers	管理 HUD计时器	 HUDManageTimers(timerID:int, command:int, value:float)	Manages the HUD timers. Valid command enumerations are: TIMER_DISABLE, TIMER_COUNTUP, TIMER_COUNTDOWN, TIMER_STOP, TIMER_SET
+function	Globals	HUDPlace	摆放 HUD	 HUDPlace(slot:int, x:float, y:float, width:float, height:float)	Sets the position of a HUD element. See L4D2_EMS/Appendix:_HUD
+function	Globals	HUDReadTimer	读取 HUD计时器	 HUDReadTimer(timerID:int)	Returns the value of a HUD timer. See L4D2_EMS/Appendix:_HUD
+function	Globals	HUDSetLayout	设置 HUD布局	 HUDSetLayout(HUDTable:table)	Applies a HUD to the screen. See L4D2_EMS/Appendix:_HUD
+function	Globals	HasConfigurableDifficultySetting	当前模式允许玩家修改难度吗？	 HasConfigurableDifficultySetting()	Returns true if the mode has more than a single difficulty.
+function	Globals	HasPlayerControlledZombies	当前模式允许玩家控制感染者吗？	 HasPlayerControlledZombies()	Returns true if the current mode supports player controlled zombies.
+function	Globals	IncludeScript	加载另一个 .nut 脚本文件	 IncludeScript(file:string, null:handle scope =)	Wrapper for DoIncludeScript.
+function	Globals	IsDedicatedServer	当前运行环境是专用服务器吗？	 IsDedicatedServer()	Returns true if this is a dedicated server.
+function	Globals	IsMissionFinalMap	当前地图是战役最后一关吗？	 IsMissionFinalMap()	True if the current map is the final map of the campaign. Independent of trigger_finale existence.
+function	Globals	IsModelPrecached	这个模型已经预加载了吗？	 IsModelPrecached(modelname:string)	Checks if the modelname is precached.
+function	Globals	IsPlayerABot	这个玩家实体是 Bot 吗？	 IsPlayerABot(player:handle)	Is this player/entity a bot.
+function	Globals	IsSoundPrecached	这个声音已经预加载了吗？	 IsSoundPrecached(soundname:string)	Checks if the soundname is precached.
+function	Globals	IsWeakref	这个值是弱引用吗？	 IsWeakref(table:any, key:any)	Returns true/false based on whether table[key] is a weak reference
+function	Globals	LocalTime	相对时间	 LocalTime(table:any)	Fills out a table with the local time (second, minute, hour, day, month, year, dayofweek, dayofyear, daylightsavings).
+function	Globals	Msg	消息	 Msg(message:string)	Prints message to console without any line feed after.
+function	Globals	PickupObject	拾取对象	 PickupObject(player:handle, entity:handle)	"Object from world is put into the ""Held"" slot of the player. Warning: it will smoothly interpolate from where it is to the players hand - which is a bit goofy if it is on other side of level."
+function	Globals	PlayerInstanceFromIndex	用玩家索引找到对应的玩家实体	 PlayerInstanceFromIndex(index:int)	Get a script handle of a player using the player index.
+function	Globals	PrecacheEntityFromTable	按照数据表里的配置提前加载实体资源	 PrecacheEntityFromTable(keyvalues:table)	Precache an entity from KeyValues in a table.
+function	Globals	PrecacheModel	提前加载模型，避免使用时卡顿	 PrecacheModel(filename:string)	Precache a model and return index of the model.
+function	Globals	PrecacheSound	提前加载声音资源	 PrecacheSound(soundName:string)	Precache a sound.
+function	Globals	PrintTable	打印数据表	 PrintTable(table:handle)	Print a table without searching through subtables to the console. Works with classes as well (not instances).
+function	Globals	QueueSpeak	加入队列说话	 QueueSpeak(entity:handle, concept:string, delay:float, criteria:string)	Queue a speech concept.
+function	Globals	RandomFloat	在指定范围随机取小数	 RandomFloat(min:float, max:float)	Generate a random floating-point number within a range, inclusive.
+function	Globals	RandomInt	在指定范围随机取整数	 RandomInt(min:int, max:int)	Generate a random integer within a range, inclusive.
+function	Globals	ReapplyInfectedFlags	重新应用感染者标志	 ReapplyInfectedFlags(flags:int, infected:handle)	Apply Infected Flags from DirectorOptions. Applies to all common (spawned and unspawned) unless a handle to a specific infected is specified.
+function	Globals	RegisterFunctionDocumentation	登记函数说明	 RegisterFunctionDocumentation(func:unknown, name:string, signature:string, description:string)	
+function	Globals	RegisterScriptGameEventListener	登记脚本游戏事件监听器	 RegisterScriptGameEventListener(eventName:string)	Register as a listener for a game event from script. It's what __CollectGameEventCallbacks() uses to register event callbacks to the C++ code.
+function	Globals	ReloadMOTD	换弹服务器公告	 ReloadMOTD()	Reloads the MotD file.
+function	Globals	RestoreTable	恢复数据表	 RestoreTable(identifier:string, table:any)	Restores table data and deletes it. See L4D2_EMS/Appendix:_Table_Save_Restore.
+function	Globals	RetrieveNativeSignature	获取原生签名	 RetrieveNativeSignature(nativeFunction:string)	
+function	Globals	RotateOrientation	旋转朝向	 RotateOrientation(QAngle:any, QAngle:any)	Rotate a QAngle by another QAngle.
+function	Globals	RotatePosition	旋转位置	 RotatePosition(origin:Vector, rotation:QAngle, input:Vector)	Rotate the input Vector around an origin.
+function	Globals	RushVictim	冲锋受害者	 RushVictim(hVictim:handle, range:float)	Make all common zombies in range rush the victim. (If hVictim isn't set, a random survivor will be chosen.)
+function	Globals	SaveTable	保存数据表	 SaveTable(identifier:string, table:any)	See L4D2_EMS/Appendix:_Table_Save_Restore.
+function	Globals	Say	让指定玩家在聊天栏发送一条消息	 Say(player:CTerrorPlayer, message:string, teamOnly:bool)	Calling this will have the specified player send the message to chat, either to teamOnly (true) or to everyone.
+function	Globals	ScreenFade	屏幕淡入淡出	 ScreenFade(player:handle, red:int, green:int, blue:int, alpha:int, fadeTime:float, fadeHold:float, flags:int)	Start a screenfade with the following parameters.
+function	Globals	ScreenShake	屏幕震动	 ScreenShake(vecCenter:Vector, flAmplitude:float, flFrequency:float, flDuration:float, flRadius:float, eCommand:int, bAirShake:bool)	Start a screenshake with the following parameters.
+function	Globals	ScriptDebugAddTextFilter	脚本调试添加文本过滤	 ScriptDebugAddTextFilter()	
+function	Globals	ScriptDebugAddTrace	脚本调试添加轨迹	 ScriptDebugAddTrace()	
+function	Globals	ScriptDebugAddWatch	脚本调试添加监视项	 ScriptDebugAddWatch()	
+function	Globals	ScriptDebugAddWatchPattern	脚本调试添加监视项匹配模板	 ScriptDebugAddWatchPattern()	
+function	Globals	ScriptDebugAddWatches	脚本调试添加监视项	 ScriptDebugAddWatches()	
+function	Globals	ScriptDebugClearTraces	脚本调试清空轨迹	 ScriptDebugClearTraces()	
+function	Globals	ScriptDebugClearWatches	脚本调试清空监视项	 ScriptDebugClearWatches()	
+function	Globals	ScriptDebugDefaultWatchColor	脚本调试默认监视项颜色	 ScriptDebugDefaultWatchColor()	
+function	Globals	ScriptDebugDraw	脚本调试绘制	 ScriptDebugDraw()	
+function	Globals	ScriptDebugDrawWatches	脚本调试绘制监视项	 ScriptDebugDrawWatches()	
+function	Globals	ScriptDebugDumpKeys	脚本调试列出键	 ScriptDebugDumpKeys()	
+function	Globals	ScriptDebugHook	脚本调试回调钩子	 ScriptDebugHook()	
+function	Globals	ScriptDebugIterateKeys	脚本调试遍历键	 ScriptDebugIterateKeys()	
+function	Globals	ScriptDebugIterateKeysRecursive	脚本调试遍历键递归	 ScriptDebugIterateKeysRecursive()	
+function	Globals	ScriptDebugRemoveTextFilter	脚本调试移除文本过滤	 ScriptDebugRemoveTextFilter()	
+function	Globals	ScriptDebugRemoveTrace	脚本调试移除轨迹	 ScriptDebugRemoveTrace()	
+function	Globals	ScriptDebugRemoveWatch	脚本调试移除监视项	 ScriptDebugRemoveWatch()	
+function	Globals	ScriptDebugRemoveWatchPattern	脚本调试移除监视项匹配模板	 ScriptDebugRemoveWatchPattern()	
+function	Globals	ScriptDebugRemoveWatches	脚本调试移除监视项	 ScriptDebugRemoveWatches()	
+function	Globals	ScriptDebugText	脚本调试文本	 ScriptDebugText()	
+function	Globals	ScriptDebugTextDraw	脚本调试文本绘制	 ScriptDebugTextDraw()	
+function	Globals	ScriptDebugTextPrint	脚本调试文本显示	 ScriptDebugTextPrint()	
+function	Globals	ScriptDebugTextTrace	脚本调试文本轨迹	 ScriptDebugTextTrace()	
+function	Globals	ScriptDebugTraceAll	脚本调试轨迹所有	 ScriptDebugTraceAll()	
+function	Globals	ScriptDebugWatches	脚本调试监视项	 ScriptDebugWatches()	
+function	Globals	ScriptedMode_AddSlowPoll	登记一个大约每三秒执行一次的低频函数	 ScriptedMode_AddSlowPoll(updatefunc:function)	Register arbitrary function without parameters to run every 3 seconds (single function cannot be registered twice).
+function	Globals	ScriptedMode_AddUpdate	登记一个每秒自动执行的更新函数	 ScriptedMode_AddUpdate(updatefunc:function)	Register arbitrary function without parameters to run every second (single function cannot be registered twice).
+function	Globals	ScriptedMode_CallNextUpdate	安排一个函数在下一次 Update 时执行一次	 ScriptedMode_CallNextUpdate(callnext:function)	Pass a function to this, it will get called once as part of next Update, for doing something 'soon but not now'
+function	Globals	ScriptedMode_RemoveSlowPoll	取消之前登记的低频更新函数	 ScriptedMode_RemoveSlowPoll(updatefunc:function)	Removes a function that was before added by ScriptedMode_AddSlowPoll
+function	Globals	ScriptedMode_RemoveUpdate	取消之前登记的每秒更新函数	 ScriptedMode_RemoveUpdate(updatefunc:function)	Removes a function that was before added by ScriptedMode_AddUpdate
+function	Globals	SendToConsole	把一条命令发送到本地控制台执行	 SendToConsole(command:string)	Send a string to the console as a command.
+function	Globals	SendToServerConsole	把一条命令发送到服务器控制台执行	 SendToServerConsole(command:string)	Send a string to the server console as a command.
+function	Globals	SetFakeClientConVarValue	修改 Bot / 假客户端的用户信息控制台变量	 SetFakeClientConVarValue(bot:handle, cvar:string, value:string)	Sets a USERINFO client ConVar for a fakeclient.
+function	Globals	SetScavengeItemsGoal	设置清道夫模式物品目标数量	 SetScavengeItemsGoal(count:int)	Set the number of Scavenge items needed. (Scavenge Finale)
+function	Globals	SetScavengeItemsRemaining	设置清道夫模式物品剩余	 SetScavengeItemsRemaining(count:int)	Set the number of Scavenge items remaining. (Scavenge Gamemode)
+function	Globals	ShowMessage	显示消息	 ShowMessage(message:string)	Print a HUD message on all clients.
+function	Globals	SpawnEntityFromTable	按照配置创建一个地图实体	 SpawnEntityFromTable(classname:string, keyvalues:table)	Native function for entity spawning. See L4D2_EMS/Appendix:_Spawning.
+function	Globals	SpawnEntityGroupFromTable	按配置批量创建一组实体	 SpawnEntityGroupFromTable(entityGroup:table)	Native function for entity group spawning. See L4D2_EMS/Appendix:_Spawning.
+function	Globals	StageInfo_Execute	执行当前阶段配置里登记的逻辑	 StageInfo_Execute(stageInfo:any, stageDefaults:any)	Execute a stage table, i.e. move parameters to DirectorOptions, do callbacks and so on.
+function	Globals	StartAssault	开始攻击	 StartAssault()	Tells all existing nextbots to swap into assault mode and not hide/dither/loiter.
+function	Globals	StopAmbientSoundOn	停止指定实体正在播放的环境音效	 StopAmbientSoundOn(soundName:string, entity:handle)	Stop named sound on an entity that has similar configurations to ambient_generic.
+function	Globals	StopSoundOn	停止指定实体正在播放的声音	 StopSoundOn(soundScript:string, entity:handle)	Stop named sound on an entity.
+function	Globals	StringToFile	把一段文字写入文件	 StringToFile(path:string, string:string)	"Stores the string into the file located at left4dead2/ems/path. Path can contain folders -- in that case folders will be automatically created. Also path supports special names ""."" and "".."", which indicate ""current folder"" and ""parent folder"" respectfully."
+function	Globals	Time	查看当前游戏时间	 Time()	Get the current server time.
+function	Globals	TraceLine	轨迹线条	 TraceLine(traceTable:table)	Uses a configuration table to do a raytrace, puts return information into the table for return usage.
+function	Globals	UniqueString	唯一文字	" UniqueString(string input="""":any)"	Generate a string guaranteed to be unique across the life of the script VM, with an optional root string. Input will be converted to a string by calling tostring() member function of that input, before passing it to DoUniqueString function. Useful for adding data to tables when not sure what keys are already in use in that table. Throws error on null value.
+function	Globals	VSquirrel_OnCreateScope	Squirrel 创建一个新的脚本作用域时调用	 VSquirrel_OnCreateScope(value:any, scope:table)	Creates a new scope with the name of value in the submitted table (includes unique params).
+function	Globals	VSquirrel_OnReleaseScope	Squirrel 释放一个脚本作用域时调用	 VSquirrel_OnReleaseScope(createdScope:table)	Removes a scope created via VSquirrel_OnCreateScope.
+function	Globals	ZSpawn	在游戏中生成指定感染者	 ZSpawn(spawnTable:table)	Spawn an infected of liking, with a choice.
+function	Globals	__CollectEventCallbacks	收集事件回调	 __CollectEventCallbacks(scope:any, prefix:any, globalTableName:any, regFunc:any)	"Overloaded function, used by the above one like this: __CollectEventCallbacks(scope, ""OnGameEvent_"", ""GameEventCallbacks"", ::RegisterScriptGameEventListener)"
+function	Globals	__CollectGameEventCallbacks	收集游戏事件回调	 __CollectGameEventCallbacks(scope:any)	Wrapper that registers callbacks for both OnGameEvent_x ↑ and OnScriptEvent_ functions. Done using the __CollectEventCallbacks function.
+function	Globals	__DumpScope	列出作用域	 __DumpScope(indentation:int, scope:table)	Dumps a scope's contents and expands all tables and arrays; this is what the ent_script_dump command uses.
+function	Globals	__ReplaceClosures	替换闭包	 __ReplaceClosures(script:any, scope:any)	
+function	Globals	__RunEventCallbacks	运行事件回调	 __RunEventCallbacks(event:any, params:any, prefix:any, globalTableName:any, bWarnIfMissing:any)	Call all functions in the callback array for the given game event.
+function	Globals	array	数组	 array(size:int, null:any fill =)	Create and returns array of a specified size where each element is set to fill.
+function	Globals	assert	断言	 assert(exp:bool)	Throws an exception if exp is evaluated to false.
+function	Globals	callee	当前函数	 callee()	Returns the currently running closure.
+function	Globals	collectgarbage	执行垃圾回收	 collectgarbage()	Runs the garbage collector and returns the number of reference cycles found(and deleted) This function only works on garbage collector builds.
+function	Globals	compilestring	编译一段脚本文字	 compilestring(string:string, null:string buffername =)	Compiles a string containing a squirrel script into a function and returns it.
+function	Globals	developer	开发者	 developer()	The current level of the developer console variable.
+function	Globals	enabledebuginfo	启用调试信息	 enabledebuginfo(enable:any)	Enable/disable the debug line information generation at compile time. enable != null enables . enable == null disables.
+function	Globals	error	错误	 error(x:string)	Prints x in the standard error output.
+function	Globals	getconsttable	查看常量表	 getconsttable()	Returns the const table of the VM.
+function	Globals	getroottable	查看全局表	 getroottable()	Returns the root table of the VM.
+function	Globals	getstackinfos	查看调用栈信息	 getstackinfos(stacklevel:int)	Returns the stack frame informations at the given stack level (0 is the current function 1 is the caller and so on). If the stack level doesn't exist the function returns null.
+function	Globals	newthread	创建协程	 newthread(threadfunc:function)	Creates a new cooperative thread object(coroutine) and returns it
+function	Globals	print	在控制台输出文字	 print(message:string)	Prints message to console without any line feed after.
+function	Globals	printl	向控制台输出一行文字	 printl(message:string)	Prints message to console with a line feed after.
+function	Globals	realPrint	直接显示	 realPrint(message:string)	Identical to print. print seems to be a wrapper for this.
+function	Globals	resurrectunreachable	恢复暂时无法访问的对象	 resurrectunreachable()	Runs the garbage collector and returns an array containing all unreachable object found. If no unreachable object is found, null is returned instead. This function is meant to help debugging reference cycles. This function only works on garbage collector builds.
+function	Globals	rrDebugPrint	语音响应调试显示	 rrDebugPrint(message:string)	Print function that works similarly to printl() but prepends RR_TESTBED: to the start of the message.
+function	Globals	rrPrintTable	语音响应显示数据表	" rrPrintTable(table:handle, prefix = ""\t"":any)"	Prints a table (non-recursive)
+function	Globals	rr_AddDecisionRule	语音响应添加决策规则	 rr_AddDecisionRule(rule:RRule)	Add a rule to the decision database. Takes a RRule object from rulescript_base.nut.
+function	Globals	rr_ApplyContext	把上下文条件交给语音响应系统使用	 rr_ApplyContext(speaker:CTerrorPlayer, query:unknown, contextData:unknown, contextToWorld:unknown, func:unknown)	
+function	Globals	rr_CharacterSpeak	让指定角色通过语音响应系统说话	 rr_CharacterSpeak(speaker:CTerrorPlayer, query:unknown)	
+function	Globals	rr_CommitAIResponse	语音响应提交AI 响应	 rr_CommitAIResponse(entity:handle, airesponse:table)	Supposed to commit the result of QueryBestResponse back to the given entity to play. Takes a table needing the keys response with a ResponseSingle object (defined in response_testbed.nut) and orig_query with an unknown content.
+function	Globals	rr_EmitSound	通过语音响应系统播放声音	 rr_EmitSound(speaker:CTerrorPlayer, query:unknown, soundName:unknown, context:unknown, contextToWorld:unknown, func:unknown)	
+function	Globals	rr_GetResponseTargets	语音响应读取响应目标	 rr_GetResponseTargets()	Retrieve a table of all available expresser targets, in the form { name : handle, name: handle }.
+function	Globals	rr_PlaySoundFile	让语音响应系统播放指定声音文件	 rr_PlaySoundFile(speaker:CTerrorPlayer, query:unknown, soundfile:unknown, context:unknown, contextToWorld:unknown, volume:unknown, func:unknown)	
+function	Globals	rr_ProcessCriterion	让语音响应系统处理一条判断条件	 rr_ProcessCriterion(crit:unknown)	
+function	Globals	rr_ProcessResponse	让语音响应系统处理一次响应结果	 rr_ProcessResponse(resp:unknown)	
+function	Globals	rr_ProcessRules	把一组对话规则加入语音响应系统	 rr_ProcessRules(rulesArray:handle)	Processes and adds the given rulesArray table to the talker system. This is an incomplete implementation of custom talker concepts for VScript, but it is mostly functional.
+function	Globals	rr_QueryBestResponse	语音响应查询最合适的响应	 rr_QueryBestResponse(entity:handle, query:table)	Tests query against entity's response system and returns the best response found (or null if none found). Returns a pointer with a null type, that is apparently not usable anywhere. Possibly supposed to return a AI_Response object.
+function	Globals	setconsttable	设置常量表	 setconsttable(consttable:table)	Sets the const table of the VM which also returns the previous const table.
+function	Globals	seterrorhandler	设置错误处理函数	 seterrorhandler(func:function)	Sets the runtime error handler .
+function	Globals	setroottable	设置全局表	 setroottable(roottable:table)	Sets the root table of the VM which also returns the previous root table.
+function	Globals	suspend	暂停协程	 suspend(ret:any)	Suspends the coroutine that called this function.
+function	Globals	type	类型	 type(obj:any)	Return the 'raw' type of an object without invoking the metatmethod '_typeof'.
+function	Math	abs	取整数绝对值	 abs(x:float)	Returns the absolute value of x as an integer.
+function	Math	acos	计算反余弦	 acos(x:float)	Returns the arccosine of x.
+function	Math	asin	计算反正弦	 asin(x:float)	Returns the arcsine of x.
+function	Math	atan	计算反正切	 atan(x:float)	Returns the arctangent of x.
+function	Math	atan2	根据两个分量计算方向角	 atan2(x:float, y:float)	Returns the arctangent of x/y. Unlike atan, it does not lose quadrant information.
+function	Math	ceil	向上取整	 ceil(x:float)	Returns a float value representing the smallest integer that is greater than or equal to x.
+function	Math	cos	计算余弦值	 cos(x:float)	Returns the cosine of x.
+function	Math	exp	计算自然指数	 exp(x:float)	Returns the exponential value (e^x) of the float parameter x.
+function	Math	fabs	取小数绝对值	 fabs(x:float)	Returns the absolute value of x as a float.
+function	Math	floor	向下取整	 floor(x:float)	Returns a float value representing the largest integer that is less than or equal to x.
+function	Math	log	计算自然对数	 log(x:float)	Returns the natural logarithm of x.
+function	Math	log10	计算常用对数	 log10(x:float)	Returns the logarithm base-10 of x.
+function	Math	pow	计算乘方	 pow(x:float, y:float)	Returns x raised to the power of y.
+function	Math	rand	取随机数	 rand()	Returns a pseudorandom integer in the range 0 to RAND_MAX.
+function	Math	sin	计算正弦值	 sin(x:float)	Returns the sine of x.
+function	Math	sqrt	计算平方根	 sqrt(x:float)	Returns the square root of x.
+function	Math	srand	设置随机种子	 srand(seed:float)	Sets the starting point for generating a series of pseudorandom integers.
+function	Math	tan	计算正切值	 tan(x:float)	Returns the tangent of x.
+function	QAngle	Forward	朝前	 Forward()	Returns the Forward Vector of the angles.
+function	QAngle	Left	取得这个朝向的左侧方向向量	 Left()	Returns the left Vector of the angles.
+function	QAngle	Pitch	俯仰角	 Pitch()	Returns the pitch angle in degrees.
+function	QAngle	Roll	翻滚角	 Roll()	Returns the roll angle in degrees.
+function	QAngle	ToKVString	把角度转换成 KeyValues 使用的文字格式	 ToKVString()	Returns a string with the values separated by one space.
+function	QAngle	ToQuat	把角度转换成四元数	 ToQuat()	Returns a quaternion representaion of the orientation.
+function	QAngle	Up	取得这个朝向的上方方向向量	 Up()	Returns the Up Vector of the angles.
+function	QAngle	Yaw	偏航角	 Yaw()	Returns the yaw angle in degrees.
+function	Quaternion	CheckOrSetMapCallback	检查或调整地图回调	 CheckOrSetMapCallback(cb_name:any, cb_default:any)	Pass a callback and default @ for it, if it doesnt exist in current table, place it there.
+function	Quaternion	DeepPrintTable	递归显示数据表	" DeepPrintTable(table:handle, string prefix = """":any)"	Print out a table (and subtables) to the console. This works with classes as well (not instances).
+function	Quaternion	Dot	计算两个向量的点积	 Dot(factor:Quaternion)	The 4D scalar product of two quaternions. represents the angle between the quaternions in the range [1, 0].
+function	Quaternion	DuplicateTable	复制数据表	 DuplicateTable(source:table)	This returns a deep copy of the passed in table.
+function	Quaternion	InjectTable	注入数据表	 InjectTable(override:table, base:table)	Inject the override data into the base table - i.e. add any new ones, overwrite dupes.
+function	Quaternion	Invert	求逆	 Invert()	Returns a quaternion with the complimentary rotation.
+function	Quaternion	Norm	把向量归一化	 Norm()	Normalizes the 4D vector length.
+function	Quaternion	SetPitchYawRoll	设置俯仰角偏航角翻滚角	 SetPitchYawRoll(pitch:float, yaw:float, roll:float)	Recomputes the quaternion from the supplied Euler angles.
+function	Quaternion	SpawnStartBox	生成开始方框	 SpawnStartBox(centerobjname:any, useFloating:any, width:any, depth:any, barriermodel:any, min_gap:any)	Auto-create a startbox that will give you a callback when the first player exits it.
+function	Quaternion	TeleportPlayersToStartPoints	把玩家传送到指定的开局出生点	 TeleportPlayersToStartPoints(spawnpointName:string)	Teleport players to start entities named by the argument - must have 4 spawnpoints.
+function	Quaternion	Ticker_AddToHud	把一条滚动文字加入 HUD	 Ticker_AddToHud(hudTable:table, strInit:string, blink:bool)	Adds ticker data to a passed in HUDTable.
+function	Quaternion	Ticker_NewStr	滚动文字新建文字	 Ticker_NewStr(newStr:string, newTimeout:float)	Sets the current Ticker string, w/an optional timeout value.
+function	Quaternion	TimeToDisplayString	把秒数转换成适合显示的时间文字	 TimeToDisplayString(disp_time:float)	Convert a # of seconds to a displayable time string form m:ss
+function	Quaternion	ToKVString	把四元数转换成 KeyValues 使用的文字格式	 ToKVString()	Returns a string with the values separated by one space.
+function	Quaternion	ToQAngle	把四元数转换成角度	 ToQAngle()	Returns the angles resulting from the rotation.
+function	Strings	format	按占位符拼接格式化字符串	 format(format:string, args...:any)	Returns a formatted string. Same rules as the standard C functions (except * is not supported).
+function	Strings	lstrip	清除字符串开头的指定字符	 lstrip(str:string)	Removes whitespace characters at the beginning of the given string.
+function	Strings	rstrip	清除字符串结尾的指定字符	 rstrip(str:string)	Removes whitespace characters at the end of the given string.
+function	Strings	split	按分隔符拆分字符串	 split(str:string, separator:string)	Returns an array of strings split at each point where a separator character occurs in str. The separator is not returned as part of any array element. the parameter separators is a string that specifies the characters as to be used for the splitting.
+function	Strings	strip	清除字符串首尾的指定字符	 strip(str:string)	Removes whitespace characters at both the beginning and end of the given string.
+function	TerrorNavArea	AddIncomingConnection	给导航区域增加一条驶入连接	 AddIncomingConnection(area:TerrorNavArea, dir:int)	Add areas that connect TO this area by a ONE-WAY link.
+function	TerrorNavArea	ComputeDirection	计算方向	 ComputeDirection(point:Vector)	Return direction from this area to the given point.
+function	TerrorNavArea	ConnectTo	将此导航区域与目标区域连通	 ConnectTo(area:TerrorNavArea, dir:int)	Connect this area to given area in given direction. If you set direction to -1, it will be automatically applied.
+function	TerrorNavArea	ConnectToLadder	将此导航区域连接到梯子	 ConnectToLadder(ladder:CNavLadder)	Connect this area to given ladder.
+function	TerrorNavArea	Contains	这个导航区域包含指定点吗？	 Contains(area:TerrorNavArea)	Return true if other area is on or above this area, but no others.
+function	TerrorNavArea	ContainsOrigin	指定位置在这片导航区域里吗？	 ContainsOrigin(point:Vector)	Return true if given point is on or above this area, but no others.
+function	TerrorNavArea	DebugDrawFilled	用填充颜色标出这片导航区域	 DebugDrawFilled(r:int, g:int, b:int, a:int, duration:float, noDepthTest:bool)	Draw area as a filled rectangle of the given color.
+function	TerrorNavArea	Disconnect	断开	 Disconnect(area:TerrorNavArea)	Disconnect this area from given area.
+function	TerrorNavArea	DisconnectLadder	断开梯子	 DisconnectLadder(ladder:CNavLadder)	Disconnect this area from given ladder.
+function	TerrorNavArea	FindRandomSpot	在导航区域内找一个随机位置	 FindRandomSpot()	Get random origin within extent of area.
+function	TerrorNavArea	GetAdjacentArea	按方向查看相邻导航区域	 GetAdjacentArea(dir:int, nAreas:int)	Return the n'th adjacent area in the given direction.
+function	TerrorNavArea	GetAdjacentAreas	取得所有相邻的导航区域	 GetAdjacentAreas(dir:int, table:any)	Fills a passed in table with all adjacent areas in the given direction.
+function	TerrorNavArea	GetAdjacentCount	数一数相邻导航区域有几个	 GetAdjacentCount(dir:int)	Get the number of adjacent areas in the given direction.
+function	TerrorNavArea	GetAttributes	读取导航区域的属性标志	 GetAttributes()	Get area attribute bits.
+function	TerrorNavArea	GetAvoidanceObstacleHeight	读取当前避让障碍物的高度	 GetAvoidanceObstacleHeight()	Returns the maximum height of the obstruction above the ground.
+function	TerrorNavArea	GetCenter	读取实体边界盒的中心位置	 GetCenter()	Get center origin of area.
+function	TerrorNavArea	GetCorner	查看角落	 GetCorner(corner:int)	Get corner origin of area.
+function	TerrorNavArea	GetDistanceSquaredToPoint	计算到指定点距离的平方	 GetDistanceSquaredToPoint(pos:Vector)	Return shortest distance between point and this area.
+function	TerrorNavArea	GetDoor	查看门	 GetDoor()	Returns the door entity above the area.
+function	TerrorNavArea	GetElevator	找出导航区域关联的电梯	 GetElevator()	Returns the elevator if in an elevator's path.
+function	TerrorNavArea	GetElevatorAreas	列出电梯连接的导航区域	 GetElevatorAreas(table:any)	Fills a passed in table with a collection of areas reachable via elevator from this area.
+function	TerrorNavArea	GetID	查看编号	 GetID()	Get area ID.
+function	TerrorNavArea	GetIncomingConnections	取得进入此区域的连接列表	 GetIncomingConnections(dir:int, table:any)	Fills a passed in table with areas connected TO this area by a ONE-WAY link (ie: we have no connection back to them).
+function	TerrorNavArea	GetLadders	查看此区域能用到哪些梯子	 GetLadders(dir:int, table:any)	Fills a passed in table of ladders in direction.
+function	TerrorNavArea	GetParent	查看父对象	 GetParent()	Returns the area just prior to this one in the search path.
+function	TerrorNavArea	GetParentHow	查看通过什么连接方式到达父区域	 GetParentHow()	Returns how we get from parent to us.
+function	TerrorNavArea	GetPlaceName	读取导航区域的位置名称	 GetPlaceName()	Get place name, null if no name.
+function	TerrorNavArea	GetPlayerCount	查看玩家数量	 GetPlayerCount(team:int)	Return number of players of given team currently within this area (team of zero means any/all).
+function	TerrorNavArea	GetRandomAdjacentArea	随机找一个相邻的导航区域	 GetRandomAdjacentArea(dir:int)	Return a random adjacent area in the given direction.
+function	TerrorNavArea	GetSizeX	读取导航区域横向尺寸	 GetSizeX()	Return the area size along the X axis.
+function	TerrorNavArea	GetSizeY	读取导航区域纵向尺寸	 GetSizeY()	Return the area size along the Y axis.
+function	TerrorNavArea	GetSpawnAttributes	读取此区域允许生成感染者的规则	 GetSpawnAttributes()	Get spawn attribute bits.
+function	TerrorNavArea	GetTimeSinceCleared	查看区域距离上次清理已经过了多久	 GetTimeSinceCleared()	Returns the time since the area was cleared.
+function	TerrorNavArea	GetZ	在指定位置计算导航区域的高度	 GetZ(pos:Vector)	Returns the height of the area at the specified point.
+function	TerrorNavArea	HasAttributes	这片导航区域带有指定标志吗？	 HasAttributes(bits:int)	Has area attribute bits.
+function	TerrorNavArea	HasAvoidanceObstacle	这片导航区域有需要避让的障碍吗？	 HasAvoidanceObstacle(maxHeight:float)	Returns true if there's a large, immobile object obstructing this area.
+function	TerrorNavArea	HasSpawnAttributes	这片导航区域满足指定生成规则吗？	 HasSpawnAttributes(bits:int)	Has spawn attribute bits.
+function	TerrorNavArea	IsBlocked	导航区域目前无法通行吗？	 IsBlocked(team:int, affectsFlow:bool)	Return true if team is blocked in this area.
+function	TerrorNavArea	IsBottleneck	这片导航区域是狭窄瓶颈吗？	 IsBottleneck()	Returns true if area is a bottleneck.
+function	TerrorNavArea	IsCleared	这片区域已经被清理了吗？	 IsCleared(player:CTerrorPlayer)	Returns true if this area has been cleared for the player.
+function	TerrorNavArea	IsCompletelyVisibleToTeam	指定队伍可以完整看见这片区域吗？	 IsCompletelyVisibleToTeam(team:int)	Return true if given area is completely visible from somewhere in this area by someone on the team.
+function	TerrorNavArea	IsConnected	这片导航区域和目标区域连通吗？	 IsConnected(area:TerrorNavArea, dir:int)	Return true if this area is connected to other area in given direction. (If you set direction to -1 or 4, it will automatically check all directions for a connection)
+function	TerrorNavArea	IsConnectedLadder	这片导航区域和目标梯子连通吗？	 IsConnectedLadder(ladder:CNavLadder, dir:int)	Return true if this area is connected to ladder in given direction.
+function	TerrorNavArea	IsCoplanar	两个导航区域大致位于同一平面吗？	 IsCoplanar(area:TerrorNavArea)	Return true if this area and given area are approximately co-planar.
+function	TerrorNavArea	IsDamaging	在这片区域停留会受伤吗？	 IsDamaging()	Return true if continuous damage (ie: fire) is in this area.
+function	TerrorNavArea	IsDegenerate	这片导航区域的形状无效或已退化吗？	 IsDegenerate()	Return true if this area is badly formed.
+function	TerrorNavArea	IsEdge	这片导航区域这一侧是边缘吗？	 IsEdge(dir:int)	Return true if there are no bi-directional links on the given side.
+function	TerrorNavArea	IsFlat	这片导航区域基本平坦吗？	 IsFlat()	Return true if this area is approximately flat.
+function	TerrorNavArea	IsOverlapping	这两片导航区域在平面上有重叠吗？	 IsOverlapping(area:TerrorNavArea)	Return true if 'area' overlaps our 2D extents.
+function	TerrorNavArea	IsOverlappingOrigin	指定坐标落在这片导航区域内吗？	 IsOverlappingOrigin(pos:Vector, tolerance:float)	Return true if 'pos' is within 2D extents of area.
+function	TerrorNavArea	IsPotentiallyVisibleToTeam	指定队伍是否可能看到这片区域？	 IsPotentiallyVisibleToTeam(team:int)	Return true if any portion of this area is visible to anyone on the given team.
+function	TerrorNavArea	IsRoughlySquare	导航区域形状大致是正方形吗？	 IsRoughlySquare()	Return true if this area is approximately square.
+function	TerrorNavArea	IsSpawningAllowed	此区域允许生成感染者吗？	 IsSpawningAllowed()	Returns true if spawning is allowed in this area.
+function	TerrorNavArea	IsUnderwater	这片导航区域位于水下吗？	 IsUnderwater()	Return true if area is underwater.
+function	TerrorNavArea	IsValid	这个实体或对象还有效吗？	 IsValid()	Whether the handle belongs to a valid area.
+function	TerrorNavArea	IsValidForWanderingPopulation	此区域适合游荡感染者生成吗？	 IsValidForWanderingPopulation()	Returns true if area is valid for wandering population.
+function	TerrorNavArea	IsVisible	从指定位置能看到这片导航区域吗？	 IsVisible(point:Vector)	Return true if area is visible from the given point.
+function	TerrorNavArea	MarkAreaCleared	标记这片导航区域已清理	 MarkAreaCleared(player:CTerrorPlayer)	Mark this area as cleared for the player.
+function	TerrorNavArea	MarkAreaNotCleared	取消导航区域的已清理标记	 MarkAreaNotCleared()	Mark this area as not cleared.
+function	TerrorNavArea	MarkAsBlocked	把这片导航区域标记为不可通行	 MarkAsBlocked(team:int)	Mark this area as blocked for team.
+function	TerrorNavArea	MarkAsDamaging	临时把这片导航区域标记为会造成伤害	 MarkAsDamaging(duration:float)	Mark this area is damaging for the next 'duration' seconds.
+function	TerrorNavArea	MarkObstacleToAvoid	告诉 Bot 这里有需要绕开的障碍	 MarkObstacleToAvoid(height:float)	Marks the obstructed status of the nav area.
+function	TerrorNavArea	RemoveAttributes	移除属性标志	 RemoveAttributes(bits:int)	Removes area attribute bits.
+function	TerrorNavArea	RemoveOrthogonalConnections	移除导航区域的正交方向连接	 RemoveOrthogonalConnections(dir:int)	Removes all connections in directions to left and right of specified direction.
+function	TerrorNavArea	RemoveSpawnAttributes	移除生成属性标志	 RemoveSpawnAttributes(bits:int)	Remove spawn attribute bits.
+function	TerrorNavArea	SetAttributes	设置属性标志	 SetAttributes(bits:int)	Set area attribute bits.
+function	TerrorNavArea	SetPlaceName	设置地点名称	 SetPlaceName(name:string)	Set place name. If you pass null, the place name will be set to nothing.
+function	TerrorNavArea	SetSpawnAttributes	设置生成属性标志	 SetSpawnAttributes(bits:int)	Set spawn attribute bits.
+function	TerrorNavArea	UnblockArea	解除阻挡区域	 UnblockArea()	Unblocks this area.
+function	Vector	Cross	计算向量叉积	 Cross(factor:Vector)	The vector product of two vectors. Returns a vector orthogonal to the input vectors.
+function	Vector	Dot	计算两个向量的点积	 Dot(factor:Vector)	The scalar product of two vectors.
+function	Vector	Length	计算向量的长度	 Length()	Magnitude of the vector.
+function	Vector	Length2D	计算向量在水平平面上的长度	 Length2D()	Returns the magnitude of the vector on the x-y plane. Meant to be used when working with the client's HUD.
+function	Vector	Length2DSqr	计算向量水平长度的平方	 Length2DSqr()	Returns the square of the magnitude of the vector on the x-y plane. Faster than the above method.
+function	Vector	LengthSqr	计算向量长度的平方	 LengthSqr()	The magnitude of the vector squared. Faster than the above method.
+function	Vector	Norm	把向量归一化	 Norm()	Seems to also return the vector length.
+function	Vector	Scale	按倍率缩放向量	 Scale(factor:float)	Scales the vector magnitude.
+function	Vector	ToKVString	把向量转换成 KeyValues 使用的文字格式	 ToKVString()	Returns a string without separations commas.
+function	Vector	tostring	转换为字符串	 tostring()	Returns a human readable string.
+function	Vector2D, Vector4D	Dot	计算两个向量的点积	 Dot(factor:VectorXD)	The scalar product of two vectors.
+function	Vector2D, Vector4D	Length	计算向量的长度	 Length()	Magnitude of the vector.
+function	Vector2D, Vector4D	LengthSqr	计算向量长度的平方	 LengthSqr()	The magnitude of the vector squared. Faster than the above method.
+function	Vector2D, Vector4D	Norm	把向量归一化	 Norm()	Seems to also return the vector length.
+function	Vector2D, Vector4D	ToKVString	把向量转换成 KeyValues 使用的文字格式	 ToKVString()	Returns a string without separations commas.
+function	regexp	capture	捕获	 capture(str:any, [start]:any)	"Returns an array of tables containing two indexes (""begin"" and ""end"") of the first match of the regular expression in the string str. An array entry is created for each captured sub expressions. If no match occurs returns null. The search starts from the index start of the string, if start is omitted the search starts from the beginning of the string."
+function	regexp	match	匹配	 match(str:any)	Returns a true if the regular expression matches the string str, otherwise returns false.
+function	regexp	search	搜索	 search(str:any, [start]:any)	"Returns a table containing two indexes (""begin"" and ""end"") of the first match of the regular expression in the string str, otherwise if no match occurs returns null. The search starts from the index start of the string, if start is omitted the search starts from the beginning of the string."
+event		ability_out_of_range	特殊感染者技能目标超出距离时	userid:short, ability:string	
+event		ability_use	特殊感染者使用技能时	userid:short, ability:string, context:short	Called: Fires when an infected uses their ability Issues: Doesn't fire for jockey
+event		achievement_earned	玩家获得成就时	player:byte, achievement:short	Called: Fires when a player earns an achievement.
+event		achievement_write_failed	游戏保存成就记录失败时		Used for a notification message when an achievement fails to write
+event		adrenaline_used	幸存者打下肾上腺素时	userid:short	Called: Fires when a survivor successfully uses an adrenaline.
+event		ammo_pack_used	幸存者成功给别人补充特殊弹药时	userid:short, subject:short	
+event		ammo_pack_used_fail_doesnt_use_ammo	目标武器无法使用该弹药升级时	userid:short, subject:short	
+event		ammo_pack_used_fail_full	目标弹药已满，无法再补充时	userid:short, subject:short	
+event		ammo_pack_used_fail_no_weapon	目标没有主武器，补充弹药失败时	userid:short, subject:short	
+event		ammo_pickup	幸存者从弹药堆补充子弹时	userid:short	Called: Fires when a survivor fills their primary weapon's ammo by using weapon_ammo_spawn entity.
+event		ammo_pile_weapon_cant_use_ammo	玩家拿榴弹发射器尝试补充普通弹药时	userid:short	
+event		area_cleared	指定区域已清理完成时	userid:short, area:long	
+event		award_earned	玩家获得一项游戏奖励时	userid:short, entityid:long, subjectentid:long, award:short	
+event		begin_scavenge_overtime	清道夫模式开始加时赛时		Enter overtime in a scavenge round
+event		boomer_exploded	Boomer 爆炸时	userid:short, attacker:short, splashedbile:bool	Called: Fires when a boomer explodes. Related Events: Fires after player_death
+event		boomer_near	Boomer 靠近幸存者时	userid:short, victim:short	
+event		bot_player_replace	玩家接管 Bot 角色时	bot:short, player:short	Called: Fires when a player replaces a bot. Tip: Imagine using the slot operator when reading the name of these events bot <- player to remember whether the bot is being replaced or a player
+event		break_breakable	玩家破坏可破坏物体时	userid:short, entindex:long, material:byte, hulkonly:bool, achievement:short	Override from gameevents.res
+event		bullet_impact	子弹命中表面时	userid:short, x:float, y:float, z:float	Called: Fires on bullet impact. Bug*: Does not fire for the grenade launcher and miniguns.
+event		c1m4_scavenge_instructions	c1m4 关卡出现收集汽油说明时	userid:short, subject:long	
+event		charger_carry_end	Charger 停止拖拽幸存者时	userid:short, victim:short	Called: Fires when a charger stops charging while carrying a survivor.
+event		charger_carry_kill	Charger 拖拽期间杀死目标时	userid:short, victim:short	Called: Fires when a survivor dies while being carried by a charger. Note: Only works on competitive gamemodes, like versus.
+event		charger_carry_start	Charger 抓住幸存者并开始拖走时	userid:short, victim:short	Called: Fires when a charger starts carrying a survivor while charging. Bug*: Does not fire when a charger stops charging right after it carries a survivor, usually happens when the survivor is near a wall. Subsequently, charger_carry_end does not fire.
+event		charger_charge_end	Charger 结束冲锋时	userid:short	Called: Fires when a charger stops charging.
+event		charger_charge_start	Charger 开始冲锋时	userid:short	Called: Fires when a charger starts charging. Issues: Called more than once per ability use. For consistency, check ability_use Issues: Can be called after charger_charge_end. Use ability_use for an alternative start-to-end relationship.
+event		charger_impact	Charger 冲锋撞击目标或障碍时	userid:short, victim:short	Called: Fires when a survivor is sent flying by a charger’s charge impact.
+event		charger_killed	Charger 被杀死时	userid:short, attacker:short, melee:bool, charging:bool	Called: Fires on a charger's death.
+event		charger_pummel_end	Charger 停止砸击幸存者时	userid:short, victim:short, rescuer:short	Called: Fires when a charger stops pummeling a survivor. Note: Killing the charger or survivor being pummeled to death returns rescuer as 0. It only returns rescuer as the survivor's userid when the charger is staggered by a pipe bomb, explosive ammo, propane/oxygen tank. Using Stagger() on the survivor returns rescuer argument as 0. Using Stagger() on the charger returns rescuer argument as the charger's userid.
+event		charger_pummel_start	Charger 开始摔打幸存者时	userid:short, victim:short	Called: Fires when a charger starts pummeling a survivor.
+event		choke_end	Smoker 停止勒住幸存者时	userid:short, victim:short	Called: Fires when a smoker stops choking a survivor, regardless of the situation.
+event		choke_start	Smoker 开始勒住幸存者时	userid:short, victim:short	Called: Fires when a smoker starts choking a survivor.
+event		choke_stopped	玩家解除了 Smoker 的勒住状态时	userid:short, victim:short, smoker:short, release_type:short	Called: Fires when a smoker tongue is cleared on a choked player, fires alongside choke_end (choke_stopped fires first). Note: Does not fire when (choke_end still fires): The smoker is staggered with a propane/oxygen tank, pipe bomb, explosive ammo, grenade launcher, boomer explosion, and charger impact. Another special takes over the pinned survivor or kills the smoker. The smoker is killed by a gas can, a firework box, a Molotov, and incendiary ammo. The smoker ledge-hanged the survivor. Using Stagger() on either the smoker or the survivor. Issues: While the event does not fire while staggering the smoker with the methods above, it fires when it is killed using only the grenade launcher and explosive ammo.
+event		create_panic_event	游戏触发一轮尸潮时	userid:short	A panic event has been created, though not necessarily started
+event		dead_survivor_visible	玩家看到可复活的死亡幸存者时	userid:short, subject:long, deadplayer:short	
+event		defibrillator_begin	幸存者开始使用除颤器时	userid:short, subject:short	Called: Fires when a survivor starts using a defibrillator.
+event		defibrillator_interrupted	使用除颤器时被打断时	userid:short, subject:short	
+event		defibrillator_used	幸存者用除颤器成功救人时	userid:short, subject:short	Called: Fires when a survivor successfully uses a defibrillator.
+event		defibrillator_used_fail	除颤器复活失败时	userid:short, subject:short	
+event		difficulty_changed	本局难度被修改时	newDifficulty:short, oldDifficulty:short, strDifficulty:string	Called: Fires when the difficulty is changed ingame. Note: Alongside a successful vote, it also fires when the difficulty is manually changed via z_difficulty convar. It appears that strDifficulty is z_difficulty value
+event		door_close	玩家把门关上时	userid:short, checkpoint:bool	
+event		door_moving	门正在移动时	entindex:long, userid:short	
+event		door_open	玩家打开门时	userid:short, checkpoint:bool, closed:bool	
+event		door_unlocked	门被解锁时	userid:short, checkpoint:bool	
+event		drag_begin	Smoker 开始把幸存者拖走时	userid:short, subject:short	
+event		drag_end	Smoker 停止拖拽幸存者时	userid:short, subject:short	
+event		entered_spit	玩家踏入 Spitter 酸液区域时	userid:short, subject:long	
+event		entity_shoved	非幸存者实体被推开时	entityid:short, attacker:short	Called: Fires when a survivor shoves a non-point entity, except survivors.
+event		entity_visible	玩家能看到指定实体时	userid:short, subject:long, classname:string, entityname:string	
+event		explain_bodyshots_reduced	游戏弹出“躯干命中伤害降低”的操作提示时	userid:short	
+event		explain_bridge	游戏弹出“大桥”的操作提示时	userid:short, subject:long	explain how to close the gates to make a bridge.
+event		explain_burger_sign	游戏弹出“汉堡招牌”的操作提示时	userid:short, subject:long	
+event		explain_c1m4_finale	游戏弹出“c1m4 终局”的操作提示时	userid:short, subject:long	
+event		explain_c2m4_ticketbooth	游戏弹出“c2m4 售票亭”的操作提示时	userid:short, subject:long	
+event		explain_c3m4_radio1	游戏弹出“c3m4 第一段无线电”的操作提示时	userid:short, subject:long	
+event		explain_c3m4_radio2	游戏弹出“c3m4 第二段无线电”的操作提示时	userid:short, subject:long	
+event		explain_c3m4_rescue	游戏弹出“c3m4 救援”的操作提示时	userid:short, subject:long	
+event		explain_carousel_button	游戏弹出“旋转木马按钮”的操作提示时	userid:short, subject:long	
+event		explain_carousel_destination	游戏弹出“旋转木马目的地”的操作提示时	userid:short, subject:long	
+event		explain_church_door	游戏弹出“教堂大门”的操作提示时	userid:short, subject:long	explain how to provoke the crazy church guy.
+event		explain_coaster	游戏弹出“过山车”的操作提示时	userid:short, subject:long	
+event		explain_coaster_stop	游戏弹出“过山车停止”的操作提示时	userid:short, subject:long	
+event		explain_crane	游戏弹出“起重机”的操作提示时	userid:short, subject:long	explain how to lower the box on the crane.
+event		explain_deactivate_alarm	游戏弹出“关闭警报”的操作提示时	userid:short, subject:long	
+event		explain_decon	游戏弹出“消毒区域”的操作提示时	userid:short, subject:long	
+event		explain_decon_wait	游戏弹出“等待消毒”的操作提示时	userid:short, subject:long	
+event		explain_disturbance	游戏弹出“周围扰动”的操作提示时	userid:short, subject:long	explain that disturbances (car alarm) attract the infected horde
+event		explain_drawbridge	游戏弹出“吊桥”的操作提示时	userid:short, subject:long	
+event		explain_elevator_button	游戏弹出“电梯按钮”的操作提示时	userid:short, subject:long	explain how to operate the hospital elevator button.
+event		explain_emergency_door	游戏弹出“应急门”的操作提示时	userid:short, subject:long	explain how to open the emergency door.
+event		explain_ferry_button	游戏弹出“渡轮按钮”的操作提示时	userid:short, subject:long	
+event		explain_float	游戏弹出“漂浮物”的操作提示时	userid:short, subject:long	
+event		explain_gas_can_panic	游戏弹出“汽油桶引发的尸潮”的操作提示时	userid:short, subject:long	explain how to shoot the gas can.
+event		explain_gas_truck	游戏弹出“油罐车”的操作提示时	userid:short, subject:long	explain how pulling the lever on the gas truck starts the finale
+event		explain_gates_are_open	游戏弹出“大门已打开”的操作提示时	userid:short, subject:long	
+event		explain_gun_shop	游戏弹出“枪店”的操作提示时	userid:short, subject:long	
+event		explain_gun_shop_tanker	游戏弹出“枪店附近的油罐车”的操作提示时	userid:short, subject:long	
+event		explain_hatch_button	游戏弹出“舱门按钮”的操作提示时	userid:short, subject:long	
+event		explain_hotel_elevator_doors	游戏弹出“酒店电梯门”的操作提示时	userid:short, subject:long	
+event		explain_impound_lot	游戏弹出“车辆扣押场”的操作提示时	userid:short, subject:long	
+event		explain_item_glows_disabled	游戏弹出“物品轮廓已关闭”的操作提示时	userid:short	
+event		explain_lift_button	游戏弹出“升降梯按钮”的操作提示时	userid:short, subject:long	explain how to operate the lift button.
+event		explain_mainstreet	游戏弹出“主街”的操作提示时	userid:short, subject:long	explain how to lower the forklift
+event		explain_mall_alarm	游戏弹出“商场警报”的操作提示时	userid:short, subject:long	
+event		explain_mall_window	游戏弹出“商场橱窗”的操作提示时	userid:short, subject:long	
+event		explain_need_gnome_to_continue	游戏弹出“必须带着侏儒玩偶继续前进”的操作提示时		none (none) -
+event		explain_panic_button	游戏弹出“触发尸潮的按钮”的操作提示时	userid:short, subject:long	explain that pressing this button starts a panic event.
+event		explain_perimeter	游戏弹出“边界”的操作提示时	userid:short, subject:long	
+event		explain_pills	游戏弹出“止痛药”的操作提示时	subject:long	
+event		explain_pre_drawbridge	游戏弹出“吊桥前的准备”的操作提示时	userid:short, subject:long	Point out the button that starts the gauntlet finale.
+event		explain_pre_radio	游戏弹出“无线电前的准备”的操作提示时	userid:short, subject:long	explain the rescue radio reminds you to get ready for the finale
+event		explain_radio	游戏弹出“无线电”的操作提示时	userid:short, subject:long	explain the rescue radio to start the finale
+event		explain_rescue_disabled	游戏弹出“救援功能已关闭”的操作提示时	userid:short	
+event		explain_return_item	游戏弹出“归还任务物品”的操作提示时	userid:short, subject:long	
+event		explain_save_items	游戏弹出“保留任务物品”的操作提示时	userid:short, subject:long	
+event		explain_scavenge_goal	游戏弹出“清道夫目标”的操作提示时	userid:short, subject:long	explain where to put the scavenge mode items
+event		explain_scavenge_leave_area	游戏弹出“离开清道夫区域”的操作提示时	userid:short, subject:long	explain that leaving the area, starts round
+event		explain_shack_button	游戏弹出“小屋按钮”的操作提示时	userid:short, subject:long	
+event		explain_stage_finale_start	游戏弹出“舞台终局开始”的操作提示时	userid:short, subject:long	
+event		explain_stage_lighting	游戏弹出“舞台灯光”的操作提示时	userid:short, subject:long	
+event		explain_stage_pyrotechnics	游戏弹出“舞台烟火”的操作提示时	userid:short, subject:long	
+event		explain_stage_survival_start	游戏弹出“舞台生存模式开始”的操作提示时	userid:short, subject:long	
+event		explain_store_alarm	游戏弹出“商店警报”的操作提示时	userid:short, subject:long	
+event		explain_store_item	游戏弹出“商店物品”的操作提示时	userid:short, subject:long	
+event		explain_store_item_stop	游戏弹出“商店物品提示结束”的操作提示时	userid:short, subject:long	
+event		explain_survival_alarm	游戏弹出“生存模式警报”的操作提示时	userid:short, subject:long	
+event		explain_survival_carousel	游戏弹出“生存模式旋转木马”的操作提示时	userid:short, subject:long	
+event		explain_survival_generic	游戏弹出“生存模式”的操作提示时	userid:short, subject:long	
+event		explain_survival_radio	游戏弹出“生存模式无线电”的操作提示时	userid:short, subject:long	
+event		explain_survivor_glows_disabled	游戏弹出“幸存者轮廓已关闭”的操作提示时	userid:short	
+event		explain_train_lever	游戏弹出“火车控制杆”的操作提示时	userid:short, subject:long	explain how to operate the train lever.
+event		explain_van_panic	游戏弹出“厢式车引发的尸潮”的操作提示时	userid:short, subject:long	explain how to start the van.
+event		explain_vehicle_arrival	游戏弹出“载具抵达”的操作提示时	subject:long	
+event		explain_weapons	游戏弹出“武器”的操作提示时	subject:long	
+event		explain_witch_instant_kill	游戏弹出“Witch 一击致命”的操作提示时	userid:short	
+event		fatal_vomit	胆汁攻击造成目标死亡或倒地时	userid:short, victim:short	
+event		final_reportscreen	进入战役结算报告前		Right before the final report screen comes up, let the awards possibly fire
+event		finale_escape_start	终局逃脱阶段开始时		
+event		finale_radio_damaged	终局无线电遭到破坏时	health:short	
+event		finale_radio_start	终局无线电开始运作时	health:short	
+event		finale_rush	终局进入一轮感染者冲锋时		
+event		finale_start	战役终局事件开始时	rushes:short	
+event		finale_vehicle_incoming	终局逃生载具即将到达时	campaign:string	
+event		finale_vehicle_leaving	终局逃生载具准备离开时	survivorcount:short	
+event		finale_vehicle_ready	终局逃生载具可以上车时	campaign:string	
+event		finale_win	幸存者完成终局并获胜时	map_name:string, difficulty:short	
+event		friendly_fire	玩家误伤队友时	attacker:short, victim:short, guilty:short, type:long	
+event		gameinstructor_draw	游戏教学提示需要显示时		
+event		gameinstructor_nodraw	游戏教学提示需要隐藏时		
+event		gas_can_forced_drop	玩家被迫丢下汽油桶时	userid:short, victim:short	
+event		gascan_dropped	汽油桶掉落到地上时	userid:short	
+event		gascan_pour_blocked	汽油桶倒油动作被阻止时	userid:short	can't pour the gas, someone else already is
+event		gascan_pour_completed	玩家把汽油成功倒入目标时	userid:short	player finished pouring a can
+event		gascan_pour_interrupted	玩家倒油时被打断时	userid:short	we got interrupted pouring the gas can
+event		gauntlet_finale_start	跑酷式终局开始时		
+event		ghost_spawn_time	感染者灵魂状态的出生倒计时变化时	userid:short, spawntime:short	Used for clients to know how long until they become a ghost (and can spawn)
+event		give_weapon	玩家把武器交给另一个玩家时	userid:short, recipient:short, weapon:short	
+event		golden_crowbar_pickup	玩家捡起金色撬棍时	userid:short	Called: Fires when a survivor picks up a golden crowbar.
+event		grenade_bounce	投掷物碰到地面或其他物体时	userid:short, x:float, y:float, z:float	Called: Fires when a grenade launcher projectile lands, or a thrown pipe bomb/molotov/bile jar bounces.
+event		heal_begin	幸存者开始使用医疗包时	userid:short, subject:short	Called: Fires when a survivor starts using a medkit.
+event		heal_end	医疗包治疗过程结束时	userid:short, subject:short	Issues: subject is broken for this event, it always appears to be the player doing the healing
+event		heal_interrupted	幸存者的医疗包治疗被打断时	userid:short, subject:short	Called: Fires when a survivor's healing process from a medkit is interrupted.
+event		heal_success	幸存者用医疗包治疗成功时	userid:short, subject:short, health_restored:short	Called: Fires when a survivor successfully uses a medkit.
+event		hegrenade_detonate	爆炸物发生爆炸时	userid:short, x:float, y:float, z:float	Called: Fires when molotov projectiles, pipe bomb projectiles, propane tanks or oxygen tanks detonate.
+event		hostname_changed	服务器名称被更改时	hostname:string	
+event		hunter_headshot	Hunter 被爆头时	userid:short, hunteruserid:long, islunging:bool	
+event		hunter_punched	Hunter 被近身击打时	userid:short, hunteruserid:long, islunging:bool	
+event		infected_death	普通感染者死亡时	attacker:short, infected_id:short, gender:short, weapon_id:short, headshot:bool, minigun:bool, blast:bool, submerged:bool	Called: Fires when an infected dies.
+event		infected_decapitated	感染者被斩首时	userid:short, weapon:string	
+event		infected_hurt	普通感染者或 Witch 受到伤害时	attacker:short, entityid:long, hitgroup:byte, amount:short, type:long	Called: Fires when an infected takes damage. Registers for non-playable classes (Common Infected, Witch). See player_hurt for other playable classes
+event		item_pickup	幸存者拾起一件物品时	userid:short, item:string	Called: Fires when a survivor picks up a weapon. Note: It does not fire when picking up primary weapons and pistols on non weapon_*_spawn entities, excluding the give command.
+event		jockey_headshot	Jockey 被爆头时	userid:short, jockeyuserid:long, islunging:bool	
+event		jockey_killed	Jockey 被杀死时	userid:short, attacker:short, weapon:string	Called: Fires on a jockey's death.
+event		jockey_punched	Jockey 被击打时	userid:short, jockeyuserid:long, islunging:bool	
+event		jockey_ride	Jockey 骑上幸存者时	userid:short, victim:short	Called: Fires when a jockey successfully rides a survivor.
+event		jockey_ride_end	Jockey 结束骑乘时	userid:short, victim:short, rescuer:short, ride_length:float	Called: Fires when a jockey releases a survivor. Note: rescuer return 0 when: The jockey is being cleared by shoving. Another special takes over the jockeyed survivor. The commons kill the biled jockey. The jockey incapacitates the survivor, including ledge-hangs. The jockey is killed or stumbled by a charger's impact. Note: A jockey stumbled by a boomer explosion returns rescuer argument as the boomer's userid. Using Stagger() on the jockey returns rescuer argument as the jockey's userid. Using Stagger() on the survivor returns rescuer argument as the survivor's userid.
+event		lunge_pounce	Hunter 扑中幸存者时	userid:short, victim:short, distance:long, damage:short	Called: Fires when a hunter successfully pounces a survivor.
+event		lunge_shove	Hunter 扑击动作碰到目标时	userid:short, victim:short	
+event		map_transition	战役切换到下一章节时		When campaign cinematics start
+event		melee_kill	感染者被近战攻击杀死时	userid:short, entityid:long, ambush:bool	
+event		mission_lost	幸存者队伍任务失败时		As in, the survivor team failed. Opposite of finale_win, but not necessarily during the finale.
+event		molotov_thrown	玩家扔出燃烧瓶时	userid:short	
+event		mounted_gun_overheated	固定机枪过热时	userid:short	
+event		mounted_gun_start	玩家开始使用固定机枪时	userid:short, subject:long	
+event		nav_blocked	某片导航区域被阻挡或解除阻挡时	area:long, blocked:bool	
+event		nav_generate	导航网格开始生成时		
+event		non_melee_fired	玩家使用非近战武器开火时	userid:short	Called: Fires when a survivor attacks with a non-melee weapon. Note: Only fires once for each survivor; subsequent non-melee weapons being fired do not fire this event. Most likely used to detect if a survivor has used a non-melee weapon or not for non-melee achievements. It continues firing again after a map transition, reset and team swap.
+event		non_pistol_fired	玩家使用非手枪武器开火时	userid:short	Called: Fires when a survivor attacks with a non-pistol weapon. Note: Only fires once for each survivor; subsequent non-pistol weapons being shot do not fire this event. Most likely used to detect if a survivor has used a melee weapon or not for melee-only achievements. It continues firing again after a map transition, reset and team swap.
+event		panic_event_finished	本轮尸潮结束时		
+event		pills_used	幸存者吃下止痛药时	userid:short, subject:short	Called: Fires when a survivor successfully uses pain pills.
+event		pills_used_fail	幸存者尝试吃止痛药但失败时	userid:short	
+event		player_afk	玩家进入暂离状态时	player:short	
+event		player_blind	玩家的视野受到致盲影响时	userid:short	
+event		player_blocked	玩家移动时被另一名玩家挡住时	userid:short, blocker:short	
+event		player_bot_replace	Bot 接管玩家角色时	player:short, bot:short	Called: Fires when a bot replaces a player. Related Events: Fires alongside player_first_spawn in order to spawn the bot; this event fires afterwards.
+event		player_connect	玩家连接服务器时	xuid:string, address:string, networkid:string, index:short, userid:short, name:string, bot:short	
+event		player_death	玩家或可玩感染者死亡时	userid:short, entityid:long, attacker:short, attackername:string, attackerentid:long, weapon:string, headshot:bool, attackerisbot:bool, victimname:string, victimisbot:bool, abort:bool, type:long, victim_x:float, victim_y:float, victim_z:float	a game event, name may be 32 characters long; this extends the original player_death by a new field
+event		player_disconnect	玩家断开服务器连接时	xuid:string, reason:string, name:string, networkid:string, userid:short	
+event		player_entered_checkpoint	玩家进入安全屋范围时	userid:short, entityid:long, door:long, area:long, doorname:string	Called: Fires when a player entity enters a checkpoint area.
+event		player_entered_start_area	玩家进入出发区域时	userid:short	When a player spawns into the player start area
+event		player_falldamage	玩家受到坠落伤害时	userid:short, damage:float, causer:short	Called: Fires when a player takes fall damage.
+event		player_first_spawn	玩家首次生成角色实体时	userid:short, map_name:string, isbot:bool	Called: Fires when a player entity is spawned for the first time. Note: When a player idles, a survivor bot is spawned, firing this event.
+event		player_footstep	玩家迈出脚步时	userid:short	
+event		player_hurt	玩家受到伤害时	userid:short, attacker:short, attackerentid:long, health:short, armor:byte, weapon:string, dmg_health:short, dmg_armor:byte, hitgroup:byte, type:long, userid:short	Called: Fires when a player entity takes damage. Note: Does not fire when a survivor takes enough damage to become incapacitated. Registers all playable classes (Hunter, Smoker, Boomer, Tank, Survivors). See infected_hurt for Witch and Common Infected player_activate The earliest game event that generates when a CTerrorPlayer entity is being spawned
+event		player_hurt_concise	玩家受到伤害的简化通知到来时	userid:short, attackerentid:long, type:long, dmg_health:short	Abbreviated version of 'player_hurt' that is networked
+event		player_incapacitated	幸存者被打倒地时	userid:short, attacker:short, attackerentid:long, weapon:string, type:long	Called: Fires when a survivor becomes incapacitated, or a tank is killed.
+event		player_incapacitated_start	幸存者即将倒地时	userid:short, attacker:short, attackerentid:long, weapon:string, type:long	Called: Fires when a survivor is about to become incapacitated. Tip: Use this event to check a survivor's state before becoming incapacitated.
+event		player_jump	玩家起跳时	userid:short	Called: Fires when a player jumps.
+event		player_jump_apex	玩家跳到最高点时	userid:short	Called: Fires when a player reaches the highest point of their jump. In other words, their upward velocity becomes 0, right before the player starts falling. Note: Using noclip fires this event constantly.
+event		player_ledge_grab	幸存者抓住悬崖边缘时	userid:short, causer:short	Called: Fires when a survivor hangs from a ledge.
+event		player_ledge_release	幸存者松开悬崖边缘时	userid:short	
+event		player_left_checkpoint	玩家离开安全屋范围时	userid:short, entityid:long, area:long	Called: Fires when a player entity leavess a checkpoint area.
+event		player_left_safe_area	玩家离开安全区域时	userid:short, playercount:byte	When a player leaves the safe area
+event		player_left_start_area	玩家离开出发区域时	userid:short	When a player leaves the player start area
+event		player_no_longer_it	玩家身上的胆汁效果消失时	userid:short	Called: Fires when a player entity's bile effect wears off.
+event		player_now_it	玩家被胆汁覆盖时	userid:short, attacker:short, exploded:bool, infected:bool, by_boomer:bool	Called: Fires when a player entity is covered in bile.
+event		player_shoved	幸存者被另一个幸存者推开时	userid:short, attacker:short	Called: Fires when a survivor shoves another survivor. Issues: Does not fire when shoving a survivor that is currently in combat.
+event		player_talking_state	玩家语音聊天状态发生变化时	player:byte, istalking:bool	
+event		player_team	玩家切换队伍时	userid:short, team:byte, oldteam:byte, disconnect:bool, name:string, isbot:bool	Called: Fires when a player switches team.
+event		player_transitioned	玩家完成跨章节切换时	userid:short	Note: Fires when a player has transitioned to a new chapter from the previous chapter in a campaign. While in coop or realism and the map is not a first session (!Director.IsSessionStartMap()), fires after a map reset because of mission loss. Fires alongside player_spawn, if the survivor has died from the previous chapter, this event fires first, and vice versa. This event never fires on versus; the game treats every versus game as the first session. Fires when switching campaigns via voting, even though Director.IsSessionStartMap() returns true, it is not the same as using the changelevel convar, players transition as they are dead from the previous.
+event		player_use	玩家按下使用键与目标互动时	userid:short, targetid:long	Called: Fires when a Survivor presses +USE on a useable entity. i.e. Weapons, items, doors. Related Events: If targetid is an item, item_pickup is called prior to player_use Note: It does not fire when using a mounted gun. It does not fire when the Use input is fired on a survivor. Bug: Doesn’t fire when player is pressing use while reloading a weapon
+event		pounce_attempt_stopped	Hunter 的扑击尝试被打断时	userid:short, weaponid:short	
+event		pounce_end	Hunter 结束压制幸存者时	userid:short, victim:short	
+event		pounce_stopped	玩家解除 Hunter 的扑倒控制时	userid:short, victim:short	Called: Fires whenever a player clears a hunter dominating a survivor, fires alongside pounce_end (pounce_stopped is fired first). Note: Does not fire if staggered by pipe bomb, propane/oxygen tank, explosive ammo, grenade launcher, boomer explosion, charger impact, and Stagger(). (pounce_end still fires) Fires if the hunter is killed by any method above, except boomer explosion and charger impact. A special that kills the hunter returns userid as the special's userid. Killing the hunter by shoving fires this event before player_hurt. However, killing it by any other means fires the event after player_hurt. Issues: Shoving a hunter right after it pounces a survivor does not release the survivor, but the event still fires.
+event		punched_clown	小丑感染者被击打时	userid:short	
+event		receive_upgrade	玩家收到武器升级时	userid:short, upgrade:string	Called: Fires when a survivor successfully receives an incendiary, explosive, or laser sight upgrades.
+event		relocated	玩家被重新安置位置时	userid:short	
+event		request_weapon_stats	游戏请求统计武器使用数据时	userid:short	
+event		rescue_door_open	救援房间的门打开时	userid:short, entindex:long	
+event		respawning	玩家开始重新生成时	userid:short	
+event		revive_begin	幸存者开始扶起倒地队友时	userid:short, subject:short	Called: Fires when a survivor starts reviving an incapacitated survivor.
+event		revive_end	扶起队友的过程结束时	userid:short, subject:short, ledge_hang:bool	
+event		revive_success	幸存者成功扶起队友时	userid:short, subject:short, lastlife:bool, ledge_hang:bool	Called: Fires when a survivor successfully revives an incapacitated survivor.
+event		round_end	本回合结束时	winner:byte, reason:byte, message:string, time:float	
+event		round_end_message	游戏准备显示本回合结束信息时	winner:byte, reason:byte, message:string	
+event		round_freeze_end	回合开始前的冻结状态结束时		
+event		round_start	新回合正式开始时	timelimit:long, fraglimit:long, objective:string	Related Events: Fires alongside round_start_pre_entity and round_start_post_nav. Event order: round_start_pre_entity, round_start_post_nav, round_start.
+event		round_start_post_nav	回合开始且导航网格准备好时		Related Events: Fires alongside round_start_pre_entity and round_start. Event order: round_start_pre_entity, round_start_post_nav, round_start.
+event		round_start_pre_entity	回合初始化且实体尚未生成时		Related Events: Fires alongside round_start_post_nav and round_start. Event order: round_start_pre_entity, round_start_post_nav, round_start.
+event		scavenge_match_finished	清道夫模式整场比赛结束时	winners:byte	
+event		scavenge_round_finished	清道夫模式本回合结束时		a scavenge round has ended
+event		scavenge_round_halftime	清道夫模式进行到中场时		a scavenge round is in halftime
+event		scavenge_round_start	清道夫模式新回合开始时	round:byte, firsthalf:bool	a scavenge round has begun
+event		scavenge_score_tied	清道夫模式双方比分打平时		a team just tied the score
+event		set_instructor_group_enabled	游戏教学提示分组的启用状态改变时	group:string, enabled:short, userid:short, marker:short, userid:short, userid:short, subject:long, userid:short, subject:long, userid:short, subject:long, userid:short, subject:long, userid:short, userid:short, userid:short, userid:short, text:string	versus_marker_reached start_score_animation survival_round_start Called: Fires when a survivor round starts. scavenge_gas_can_destroyed explain_sewer_gate explain_sewer_run explain_c6m3_finale finale_bridge_lowering m60_streak_ended I was holding down the m60 trigger, and now I'm not none (none) - chair_charged song_played
+event		spawner_give_item	物品生成器向玩家提供物品时	userid:short, item:string, spawner:long	Called: Fires when a player picks up an item from weapon_*_spawn entities.
+event		spec_target_updated	观战目标发生变化时		
+event		spit_burst	Spitter 的酸液爆裂时	userid:short, subject:long	Called: Fires when a spitter's spit hits the ground. Note: Spitter's spit on death also fires this event.
+event		spitter_killed	Spitter 被杀死时	userid:short, attacker:short, has_spit:bool	Called: Fires on a spitter's death.
+event		started_pre_radio	无线电事件的准备阶段开始时	userid:short, subject:long	explain the rescue radio reminds you to get ready for the finale
+event		stashwhacker_game_won	游乐场打地鼠小游戏获胜时	subject:long, entindex_inflictor:long, entindex_killed:long, damagebits:long, entindex_attacker:long	Called: Fires after winning a game of stashwhacker in chapter 4 of Dark Carnival (c2m4). entity_killed
+event		strongman_bell_knocked_off	游乐场力量测试铃铛被敲响时	userid:short, subject:short	The arcade bell on c2m4_barns
+event		success_checkpoint_button_used	玩家按下检查点按钮且条件满足时	userid:short	Someone pushed a button that's locked until everyone is gathered
+event		survival_at_10min	生存模式达到 10 分钟时		Called: Fires when the survivors survive 10 minutes on a survival map. Used to know when we elapse 10 minutes on a survival map
+event		survival_at_30min	生存模式达到 30 分钟时		Called: Fires when the survivors survive 30 minutes on a survival map. Used to know when we elapse 30 minutes on a survival map
+event		survivor_call_for_help	幸存者在救援房间等待救援时	userid:short, subject:long	
+event		survivor_rescue_abandoned	救援房间的救援目标被放弃时		
+event		survivor_rescued	幸存者从救援房间被救出时	rescuer:short, victim:short, dooridx:long	Called: Fires when a survivor is successfully rescued from a rescue closet.
+event		tank_frustrated	Tank 失去耐心并准备交出控制权时	userid:short	
+event		tank_killed	Tank 被杀死时	userid:short, attacker:short, solo:bool, melee_only:bool, l4d1_only:bool	Called: Fires when a tank dies. Issues: It does not fire if the tank is not a bot.
+event		tank_rock_killed	Tank 扔出的石头被击碎时	userid:short	Called: Fires when a survivor destroys a tank rock.
+event		tank_spawn	Tank 出现时	userid:short, tankid:long	Called: Fires when a witch spawns.
+event		temp_c4m1_getgas	临时事件：在 c4m1 收集汽油时	userid:short, subject:long	
+event		temp_c4m3_return_to_boat	临时事件：在 c4m3 返回船上时	userid:short, subject:long	
+event		tongue_broke_bent	Smoker 的舌头因绕过障碍而扯断时	userid:short	Called: Fires when a smoker's tongue breaks due to world geometry bend.
+event		tongue_broke_victim_died	被 Smoker 抓住的幸存者死亡导致舌头断开时	userid:short	
+event		tongue_grab	Smoker 舌头抓住幸存者时	userid:short, victim:short	Called: Fires when a smoker starts grabbing a survivor.
+event		tongue_pull_stopped	玩家中断了 Smoker 的拖拽时	userid:short, victim:short, smoker:short, release_type:short, damage_type:long	Called: Fires when a smoker tongue is cleared on a dragging player. Includes cuts. Note: Does not fire when: The smoker is staggered with a propane/oxygen tank, pipe bomb, explosive ammo, grenade launcher, boomer explosion, and charger impact. Another special takes over the pinned survivor or kills the smoker. The smoker is killed by a gas can, a firework box, a Molotov, and incendiary ammo. The smoker ledge-hanged the survivor. Using Stagger() on either the smoker or the survivor. Issues: While the event does not fire while staggering the smoker with the methods above, it fires when it is killed using only the grenade launcher and explosive ammo.
+event		tongue_release	Smoker 松开幸存者时	userid:short, victim:short, distance:long	Called: Fires when a smoker releases a survivor, whether choked or not, etc. Note: Fires twice in all release cases, except tongue_broke_bent where it only fires once. Second iteration returns distance and victim arguments as 0.
+event		total_ammo_below_40	玩家的总弹药量低于 40 时	userid:short	sent for any ammo type, except those with max ammo 1, or infinite ammo, like pistols
+event		triggered_car_alarm	汽车警报被触发时	userid:short	Called: Fires when a survivor triggers a car alarm.
+event		upgrade_explosive_ammo	玩家获得高爆弹药升级时	userid:short	
+event		upgrade_failed_no_primary	玩家没有主武器而无法使用弹药包时	userid:short, upgrade:string	Called: Fires when a survivor tries to use an unused upgrade pack with no primary weapon. Note: If the upgrade pack has been used and the survivor has no primary weapon, upgrade_item_already_used fires instead of this event.
+event		upgrade_incendiary_ammo	玩家获得燃烧弹药升级时	userid:short	
+event		upgrade_item_already_used	玩家尝试重复使用已经用过的弹药包时	userid:short, upgradeclass:string	Called: Fires when a survivor tries to use an already used upgrade pack.
+event		upgrade_pack_added	地图上添加了特殊弹药包时	upgradeid:short, userid:short	
+event		upgrade_pack_begin	玩家开始部署特殊弹药包时	userid:short	Called: Fires when a survivor starts deploying an upgrade pack.
+event		upgrade_pack_used	特殊弹药包部署成功时	upgradeid:short, userid:short	Called: Fires when a survivor successfully deploys an upgrade pack.
+event		use_target	玩家与可使用目标交互时	targetid:long, classname:string, isprop:bool	A new use target has been found
+event		versus_match_finished	对抗模式整场比赛结束时	winners:byte	
+event		versus_round_start	对抗模式新回合开始时		a versus round has begun
+event		vomit_bomb_tank	Tank 被胆汁罐影响时	userid:short	Called: Fires when a survivor biled a tank using a vomit jar. Note: Does not fire when biled using HitWithVomit() script function.
+event		vote_cast_no	玩家投下反对票时	team:byte, entityid:long	Called: Fires when a player votes no on an ongoing vote.
+event		vote_cast_yes	玩家投下赞成票时	team:byte, entityid:long	Called: Fires when a player votes yes on an ongoing vote.
+event		vote_changed	投票票数发生变化时	yesVotes:byte, noVotes:byte, potentialVotes:byte	
+event		vote_ended	投票流程结束时		
+event		vote_failed	投票未通过时	team:byte	
+event		vote_passed	投票通过时	details:string, param1:string, team:byte	
+event		vote_started	玩家发起投票时	issue:string, param1:string, votedata:string, team:byte, initiator:long	
+event		waiting_checkpoint_button_used	有人尝试按下等待所有玩家集合的按钮时	userid:short	Someone tried to push a button that's locked until everyone is gathered
+event		waiting_checkpoint_door_used	有人尝试打开尚未解锁的安全屋门时	userid:short, entindex:long	Someone tried to open a checkpoint door that is locked till everyone loads in
+event		waiting_door_used_versus	对抗模式有人尝试打开等待中的安全屋门时	userid:short, entindex:long	Someone tried to open a checkpoint door that is locked till everyone loads in
+event		weapon_drop	幸存者把武器从背包里丢出来时	userid:short, item:string, propid:short	Called: Fires When an item is removed from a survivor's inventory. Related Events: Called before heal_success, defibrillator_used, upgrade_pack_used, but called after pills_used and adrenaline_used.
+event		weapon_drop_to_prop	幸存者放下油桶等实体物品时	userid:short, item:string, propid:short	Called: Fires when a player drops an item that turns into a prop, such as a gas can, a firework box, a propane tank, an oxygen tank, cola bottles, a gnome, etc.
+event		weapon_fire	玩家按下开火键准备射击时	userid:short, weapon:string, weaponid:short, count:short	Note: It fires before firing the weapon, even if it's being interrupted. For example: interrupting a Molotov throw by switching right before it's about to be thrown.
+event		weapon_fire_at_40	游戏触发弹药阈值相关的开火提示时	userid:short, weapon:string, weaponid:short, count:short	This is networked, special event for game instructor
+event		weapon_fire_on_empty	玩家扣下扳机但弹匣已空时	userid:short, weapon:string, count:short	
+event		weapon_given	玩家收到了别人给的武器时	userid:short, giver:short, weapon:short, weaponentid:short	
+event		weapon_pickup	玩家拾取武器时	context:byte, weaponid:byte, weaponslot:byte, dropped_by_infected:byte	"client event for player has picked up a weapon. If that does not work, try using the ""item_pickup"" event."
+event		weapon_reload	幸存者开始给武器换弹时	userid:short, manual:bool	Called: Fires when a survivor reloads their weapon.
+event		weapon_spawn_visible	玩家能看到武器生成点时	userid:short, subject:long, weaponname:string, subtype:string	
+event		weapon_zoom	玩家按下狙击枪开镜键时	userid:short	Called: Fires when a survivor uses the zoom feature on snipers. Note: It fires when pressing the zoom button while holding a sniper, instead of zooming the weapon.
+event		witch_harasser_set	Witch 被玩家惊扰时	userid:short, witchid:long, first:bool	Called: Fires when a witch is startled. Note: Using CommandABot on the witch also fires this event.
+event		witch_killed	Witch 被杀死时	userid:short, witchid:long, oneshot:bool, melee_only:bool, bride:bool	Called: Fires when a witch dies.
+event		witch_spawn	Witch 出现在地图上时	witchid:long	Called: Fires when a witch is spawned.
+event		zombie_ignited	感染者被点燃时	userid:short, gender:short, entityid:long, victimname:string, fire_ammo:bool	

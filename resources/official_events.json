@@ -1,0 +1,4879 @@
+{
+  "player_death": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID who died"
+      },
+      {
+        "name": "entityid",
+        "type": "long",
+        "description": "entity ID who died, userid should be used first, to get the dead Player. Otherwise, it is not a player, so use this."
+      },
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "user ID who killed"
+      },
+      {
+        "name": "attackername",
+        "type": "string",
+        "description": "What type of zombie, so we don't have zombie names"
+      },
+      {
+        "name": "attackerentid",
+        "type": "long",
+        "description": "if the killer is not a player, the entindex of who killed. Again, use the attacker first"
+      },
+      {
+        "name": "weapon",
+        "type": "string",
+        "description": "weapon name killer used"
+      },
+      {
+        "name": "headshot",
+        "type": "bool",
+        "description": "signals a headshot"
+      },
+      {
+        "name": "attackerisbot",
+        "type": "bool",
+        "description": "is the attacker a bot"
+      },
+      {
+        "name": "victimname",
+        "type": "string",
+        "description": "What type of zombie, so we don't have zombie names"
+      },
+      {
+        "name": "victimisbot",
+        "type": "bool",
+        "description": "is the victim a bot"
+      },
+      {
+        "name": "abort",
+        "type": "bool",
+        "description": "did the victim abort"
+      },
+      {
+        "name": "type",
+        "type": "long",
+        "description": "damage type"
+      },
+      {
+        "name": "victim_x",
+        "type": "float",
+        "description": "victim's position in the x-axis"
+      },
+      {
+        "name": "victim_y",
+        "type": "float",
+        "description": "victim's position in the y-axis"
+      },
+      {
+        "name": "victim_z",
+        "type": "float",
+        "description": "victim's position in the z-axis"
+      }
+    ],
+    "description": "a game event, name may be 32 characters long; this extends the original player_death by a new field",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_hurt": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID who was hurt"
+      },
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "user id who attacked"
+      },
+      {
+        "name": "attackerentid",
+        "type": "long",
+        "description": "entity id who attacked, if attacker not a player, and userid therefore invalid"
+      },
+      {
+        "name": "health",
+        "type": "short",
+        "description": "remaining health points"
+      },
+      {
+        "name": "armor",
+        "type": "byte",
+        "description": "remaining armor points"
+      },
+      {
+        "name": "weapon",
+        "type": "string",
+        "description": "weapon name attacker used, if not the world"
+      },
+      {
+        "name": "dmg_health",
+        "type": "short",
+        "description": "damage done to health"
+      },
+      {
+        "name": "dmg_armor",
+        "type": "byte",
+        "description": "damage done to armor"
+      },
+      {
+        "name": "hitgroup",
+        "type": "byte",
+        "description": "hitgroup that was damaged"
+      },
+      {
+        "name": "type",
+        "type": "long",
+        "description": "damage type"
+      }
+    ],
+    "description": "Called: Fires when a player entity takes damage.\nNote:\nDoes not fire when a survivor takes enough damage to become incapacitated.\nRegisters all playable classes (Hunter, Smoker, Boomer, Tank, Survivors). See infected_hurt for Witch and Common Infected",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_activate": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID on server"
+      }
+    ],
+    "description": "The earliest game event that generates when a CTerrorPlayer entity is being spawned",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_team": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID on server"
+      },
+      {
+        "name": "team",
+        "type": "byte",
+        "description": "team id"
+      },
+      {
+        "name": "oldteam",
+        "type": "byte",
+        "description": "old team id"
+      },
+      {
+        "name": "disconnect",
+        "type": "bool",
+        "description": "team change because player disconnects"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "description": ""
+      },
+      {
+        "name": "isbot",
+        "type": "bool",
+        "description": ""
+      }
+    ],
+    "description": "Called: Fires when a player switches team.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_bot_replace": {
+    "fields": [
+      {
+        "name": "player",
+        "type": "short",
+        "description": "user ID of the player"
+      },
+      {
+        "name": "bot",
+        "type": "short",
+        "description": "user ID of the bot"
+      }
+    ],
+    "description": "Called: Fires when a bot replaces a player.\nRelated Events: Fires alongside player_first_spawn in order to spawn the bot; this event fires afterwards.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "bot_player_replace": {
+    "fields": [
+      {
+        "name": "bot",
+        "type": "short",
+        "description": "user ID of the bot"
+      },
+      {
+        "name": "player",
+        "type": "short",
+        "description": "user ID of the player"
+      }
+    ],
+    "description": "Called: Fires when a player replaces a bot.\nTip:\nImagine using the slot operator when reading the name of these events bot <- player to remember whether the bot is being replaced or a player",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_afk": {
+    "fields": [
+      {
+        "name": "player",
+        "type": "short",
+        "description": "user ID of the player"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "weapon_fire": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the player who fires their weapon"
+      },
+      {
+        "name": "weapon",
+        "type": "string",
+        "description": "used weapon name"
+      },
+      {
+        "name": "weaponid",
+        "type": "short",
+        "description": "used weapon ID"
+      },
+      {
+        "name": "count",
+        "type": "short",
+        "description": "number of bullets"
+      }
+    ],
+    "description": "Note:\nIt fires before firing the weapon, even if it's being interrupted. For example: interrupting a Molotov throw by switching right before it's about to be thrown.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "weapon_fire_on_empty": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the player who fires their weapon"
+      },
+      {
+        "name": "weapon",
+        "type": "string",
+        "description": "weapon name used"
+      },
+      {
+        "name": "count",
+        "type": "short",
+        "description": "number of bullets"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "weapon_reload": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the player who reloads"
+      },
+      {
+        "name": "manual",
+        "type": "bool",
+        "description": "player manually started the reload"
+      }
+    ],
+    "description": "Called: Fires when a survivor reloads their weapon.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "weapon_zoom": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the survivor who zooms their weapon"
+      }
+    ],
+    "description": "Called: Fires when a survivor uses the zoom feature on snipers.\nNote:\nIt fires when pressing the zoom button while holding a sniper, instead of zooming the weapon.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "ability_use": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the player who uses their ability"
+      },
+      {
+        "name": "ability",
+        "type": "string",
+        "description": "Classname of ability. Possible values: 'ability_tongue', 'ability_vomit', 'ability_lunge', 'ability_spit', 'ability_charge', 'ability_throw' for the Smoker, Boomer, Hunter, Spitter, Charger and Tank, respectively."
+      },
+      {
+        "name": "context",
+        "type": "short",
+        "description": "enum of the way it was used (different for each ability)"
+      }
+    ],
+    "description": "Called: Fires when an infected uses their ability\nIssues: Doesn't fire for jockey",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "ammo_pickup": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The player who got some ammo from a weapon_ammo_spawner"
+      }
+    ],
+    "description": "Called: Fires when a survivor fills their primary weapon's ammo by using weapon_ammo_spawn entity.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "item_pickup": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "item",
+        "type": "string",
+        "description": "either a weapon such as 'tmp' or 'hegrenade', or an item such as 'nvgs'"
+      }
+    ],
+    "description": "Called: Fires when a survivor picks up a weapon.\nNote:\nIt does not fire when picking up primary weapons and pistols on non weapon_*_spawn entities, excluding the give command.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "golden_crowbar_pickup": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The player who picked up the crowbar"
+      }
+    ],
+    "description": "Called: Fires when a survivor picks up a golden crowbar.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "grenade_bounce": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the projectile's owner"
+      },
+      {
+        "name": "x",
+        "type": "float",
+        "description": "the projectile's position in the x-axis"
+      },
+      {
+        "name": "y",
+        "type": "float",
+        "description": "the projectile's position in the y-axis"
+      },
+      {
+        "name": "z",
+        "type": "float",
+        "description": "the projectile's position in the z-axis"
+      }
+    ],
+    "description": "Called: Fires when a grenade launcher projectile lands, or a thrown pipe bomb/molotov/bile jar bounces.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "hegrenade_detonate": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the detonated entities' owner"
+      },
+      {
+        "name": "x",
+        "type": "float",
+        "description": "detonated entity's position in the x-axis"
+      },
+      {
+        "name": "y",
+        "type": "float",
+        "description": "detonated entity's position in the y-axis"
+      },
+      {
+        "name": "z",
+        "type": "float",
+        "description": "detonated entity's position in the z-axis"
+      }
+    ],
+    "description": "Called: Fires when molotov projectiles, pipe bomb projectiles, propane tanks or oxygen tanks detonate.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "bullet_impact": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "x",
+        "type": "float",
+        "description": "bullet's position in the x-axis"
+      },
+      {
+        "name": "y",
+        "type": "float",
+        "description": "bullet's position in the y-axis"
+      },
+      {
+        "name": "z",
+        "type": "float",
+        "description": "bullet's position in the z-axis"
+      }
+    ],
+    "description": "Called: Fires on bullet impact.\nBug*:\nDoes not fire for the grenade launcher and miniguns.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_footstep": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_jump": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the player who jumps"
+      }
+    ],
+    "description": "Called: Fires when a player jumps.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_blind": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_falldamage": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Who got hurt"
+      },
+      {
+        "name": "damage",
+        "type": "float",
+        "description": "for how much"
+      },
+      {
+        "name": "causer",
+        "type": "short",
+        "description": "Who caused them to do so (if anyone)"
+      }
+    ],
+    "description": "Called: Fires when a player takes fall damage.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_ledge_grab": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Who grabbed the ledge"
+      },
+      {
+        "name": "causer",
+        "type": "short",
+        "description": "Who caused them to do so (if anyone)"
+      }
+    ],
+    "description": "Called: Fires when a survivor hangs from a ledge.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_ledge_release": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who released from the ledge"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "door_moving": {
+    "fields": [
+      {
+        "name": "entindex",
+        "type": "long",
+        "description": ""
+      },
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "door_open": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Who opened the door"
+      },
+      {
+        "name": "checkpoint",
+        "type": "bool",
+        "description": "Is the door a checkpoint door"
+      },
+      {
+        "name": "closed",
+        "type": "bool",
+        "description": "Was the door closed when it started opening?"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "door_close": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Who closed the door"
+      },
+      {
+        "name": "checkpoint",
+        "type": "bool",
+        "description": "Is the door a checkpoint door"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "door_unlocked": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Who opened the door"
+      },
+      {
+        "name": "checkpoint",
+        "type": "bool",
+        "description": "Is the door a checkpoint door"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "rescue_door_open": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Who opened the door"
+      },
+      {
+        "name": "entindex",
+        "type": "long",
+        "description": "door that opened"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "waiting_checkpoint_door_used": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who tried to open it"
+      },
+      {
+        "name": "entindex",
+        "type": "long",
+        "description": "door that was used"
+      }
+    ],
+    "description": "Someone tried to open a checkpoint door that is locked till everyone loads in",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "waiting_door_used_versus": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who tried to open it"
+      },
+      {
+        "name": "entindex",
+        "type": "long",
+        "description": "door that was used"
+      }
+    ],
+    "description": "Someone tried to open a checkpoint door that is locked till everyone loads in",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "waiting_checkpoint_button_used": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who tried to open it"
+      }
+    ],
+    "description": "Someone tried to push a button that's locked until everyone is gathered",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "success_checkpoint_button_used": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who openned it"
+      }
+    ],
+    "description": "Someone pushed a button that's locked until everyone is gathered",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "round_freeze_end": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "round_start": {
+    "fields": [
+      {
+        "name": "timelimit",
+        "type": "long",
+        "description": "round time limit in seconds"
+      },
+      {
+        "name": "fraglimit",
+        "type": "long",
+        "description": "frag limit in seconds"
+      },
+      {
+        "name": "objective",
+        "type": "string",
+        "description": "round objective"
+      }
+    ],
+    "description": "Related Events: Fires alongside round_start_pre_entity and round_start_post_nav.\nEvent order: round_start_pre_entity, round_start_post_nav, round_start.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "round_start_pre_entity": {
+    "fields": [],
+    "description": "Related Events: Fires alongside round_start_post_nav and round_start.\nEvent order: round_start_pre_entity, round_start_post_nav, round_start.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "round_start_post_nav": {
+    "fields": [],
+    "description": "Related Events: Fires alongside round_start_pre_entity and round_start.\nEvent order: round_start_pre_entity, round_start_post_nav, round_start.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "nav_blocked": {
+    "fields": [
+      {
+        "name": "area",
+        "type": "long",
+        "description": ""
+      },
+      {
+        "name": "blocked",
+        "type": "bool",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "nav_generate": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "round_end_message": {
+    "fields": [
+      {
+        "name": "winner",
+        "type": "byte",
+        "description": "winner team/user i"
+      },
+      {
+        "name": "reason",
+        "type": "byte",
+        "description": "reson why team won"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "description": "end round message"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "round_end": {
+    "fields": [
+      {
+        "name": "winner",
+        "type": "byte",
+        "description": "winner team/user i"
+      },
+      {
+        "name": "reason",
+        "type": "byte",
+        "description": "reson why team won"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "description": "end round message"
+      },
+      {
+        "name": "time",
+        "type": "float",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "vote_ended": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "vote_started": {
+    "fields": [
+      {
+        "name": "issue",
+        "type": "string",
+        "description": ""
+      },
+      {
+        "name": "param1",
+        "type": "string",
+        "description": ""
+      },
+      {
+        "name": "votedata",
+        "type": "string",
+        "description": ""
+      },
+      {
+        "name": "team",
+        "type": "byte",
+        "description": ""
+      },
+      {
+        "name": "initiator",
+        "type": "long",
+        "description": "entity id of the player who initiated the vote"
+      },
+      {
+        "name": "reliable",
+        "type": "1",
+        "description": "this event is reliable"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "vote_changed": {
+    "fields": [
+      {
+        "name": "yesVotes",
+        "type": "byte",
+        "description": ""
+      },
+      {
+        "name": "noVotes",
+        "type": "byte",
+        "description": ""
+      },
+      {
+        "name": "potentialVotes",
+        "type": "byte",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "vote_passed": {
+    "fields": [
+      {
+        "name": "details",
+        "type": "string",
+        "description": ""
+      },
+      {
+        "name": "param1",
+        "type": "string",
+        "description": ""
+      },
+      {
+        "name": "team",
+        "type": "byte",
+        "description": ""
+      },
+      {
+        "name": "reliable",
+        "type": "1",
+        "description": "this event is reliable"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "vote_failed": {
+    "fields": [
+      {
+        "name": "team",
+        "type": "byte",
+        "description": ""
+      },
+      {
+        "name": "reliable",
+        "type": "1",
+        "description": "this event is reliable"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "vote_cast_yes": {
+    "fields": [
+      {
+        "name": "team",
+        "type": "byte",
+        "description": ""
+      },
+      {
+        "name": "entityid",
+        "type": "long",
+        "description": "entity id of the voter"
+      }
+    ],
+    "description": "Called: Fires when a player votes yes on an ongoing vote.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "vote_cast_no": {
+    "fields": [
+      {
+        "name": "team",
+        "type": "byte",
+        "description": ""
+      },
+      {
+        "name": "entityid",
+        "type": "long",
+        "description": "entity id of the voter"
+      }
+    ],
+    "description": "Called: Fires when a player votes no on an ongoing vote.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "infected_hurt": {
+    "fields": [
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "player userid who attacked"
+      },
+      {
+        "name": "entityid",
+        "type": "long",
+        "description": "entity id of infected"
+      },
+      {
+        "name": "hitgroup",
+        "type": "byte",
+        "description": "hitgroup that was damaged"
+      },
+      {
+        "name": "amount",
+        "type": "short",
+        "description": "how much damage was done"
+      },
+      {
+        "name": "type",
+        "type": "long",
+        "description": "damage type"
+      }
+    ],
+    "description": "Called: Fires when an infected takes damage.\nRegisters for non-playable classes (Common Infected, Witch). See player_hurt for other playable classes",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "infected_death": {
+    "fields": [
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "user ID who killed"
+      },
+      {
+        "name": "infected_id",
+        "type": "short",
+        "description": "ID of the infected that died"
+      },
+      {
+        "name": "gender",
+        "type": "short",
+        "description": "gender (type) of the infected"
+      },
+      {
+        "name": "weapon_id",
+        "type": "short",
+        "description": "ID of the weapon used"
+      },
+      {
+        "name": "headshot",
+        "type": "bool",
+        "description": "signals a headshot"
+      },
+      {
+        "name": "minigun",
+        "type": "bool",
+        "description": "signals a minigun kill"
+      },
+      {
+        "name": "blast",
+        "type": "bool",
+        "description": "signals a death from blast damage"
+      },
+      {
+        "name": "submerged",
+        "type": "bool",
+        "description": "indicates the infected was submerged"
+      }
+    ],
+    "description": "Called: Fires when an infected dies.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "hostname_changed": {
+    "fields": [
+      {
+        "name": "hostname",
+        "type": "string",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "difficulty_changed": {
+    "fields": [
+      {
+        "name": "newDifficulty",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "oldDifficulty",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "strDifficulty",
+        "type": "string",
+        "description": ""
+      }
+    ],
+    "description": "Called: Fires when the difficulty is changed ingame.\nNote:\nAlongside a successful vote, it also fires when the difficulty is manually changed via z_difficulty convar.\nIt appears that strDifficulty is z_difficulty value",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "finale_start": {
+    "fields": [
+      {
+        "name": "rushes",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "finale_rush": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "finale_escape_start": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "finale_vehicle_incoming": {
+    "fields": [
+      {
+        "name": "campaign",
+        "type": "string",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "finale_vehicle_ready": {
+    "fields": [
+      {
+        "name": "campaign",
+        "type": "string",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "finale_vehicle_leaving": {
+    "fields": [
+      {
+        "name": "survivorcount",
+        "type": "short",
+        "description": "number of survivors that made it out"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "finale_win": {
+    "fields": [
+      {
+        "name": "map_name",
+        "type": "string",
+        "description": ""
+      },
+      {
+        "name": "difficulty",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "mission_lost": {
+    "fields": [],
+    "description": "As in, the survivor team failed. Opposite of finale_win, but not necessarily during the finale.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "finale_radio_start": {
+    "fields": [
+      {
+        "name": "health",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "finale_radio_damaged": {
+    "fields": [
+      {
+        "name": "health",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "final_reportscreen": {
+    "fields": [],
+    "description": "Right before the final report screen comes up, let the awards possibly fire",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "map_transition": {
+    "fields": [],
+    "description": "When campaign cinematics start",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_transitioned": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "the person that just finished transitioning"
+      }
+    ],
+    "description": "Note:\nFires when a player has transitioned to a new chapter from the previous chapter in a campaign.\nWhile in coop or realism and the map is not a first session (!Director.IsSessionStartMap()), fires after a map reset because of mission loss.\nFires alongside player_spawn, if the survivor has died from the previous chapter, this event fires first, and vice versa.\nThis event never fires on versus; the game treats every versus game as the first session.\nFires when switching campaigns via voting, even though Director.IsSessionStartMap() returns true, it is not the same as using the changelevel convar, players transition as they are dead from the previous.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "heal_begin": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person doing the healing"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person being healed"
+      }
+    ],
+    "description": "Called: Fires when a survivor starts using a medkit.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "heal_success": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person doing the healing"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person being healed"
+      },
+      {
+        "name": "health_restored",
+        "type": "short",
+        "description": "amount of health restored"
+      }
+    ],
+    "description": "Called: Fires when a survivor successfully uses a medkit.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "heal_end": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person doing the healing"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person being healed"
+      }
+    ],
+    "description": "Issues: subject is broken for this event, it always appears to be the player doing the healing",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "heal_interrupted": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who was being healed, but moved."
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person being healed"
+      }
+    ],
+    "description": "Called: Fires when a survivor's healing process from a medkit is interrupted.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "ammo_pack_used": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person giving the ammo"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person receiving ammo"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "give_weapon": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The giver of the weapon"
+      },
+      {
+        "name": "recipient",
+        "type": "short",
+        "description": "The recipient of the weapon"
+      },
+      {
+        "name": "weapon",
+        "type": "short",
+        "description": "The ID of the weapon given"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "pills_used": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who had the pills"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person swallowing the pills"
+      }
+    ],
+    "description": "Called: Fires when a survivor successfully uses pain pills.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "pills_used_fail": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who tried to use the pills"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "ammo_pack_used_fail_no_weapon": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who tried to use the ammo pack"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person it failed to help"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "ammo_pack_used_fail_full": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who tried to use the ammo pack"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person it failed to help"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "ammo_pack_used_fail_doesnt_use_ammo": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who tried to use the ammo pack"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person it failed to help"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "ammo_pile_weapon_cant_use_ammo": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who tried to use an ammo pile with a grenade launcher"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "defibrillator_begin": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who is defibrillating."
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person being revived"
+      }
+    ],
+    "description": "Called: Fires when a survivor starts using a defibrillator.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "defibrillator_used": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who used the defibrillator"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person it helped"
+      }
+    ],
+    "description": "Called: Fires when a survivor successfully uses a defibrillator.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "defibrillator_used_fail": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who tried to use the defibrillator"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person it failed to help"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "defibrillator_interrupted": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who was defibrillating, but moved."
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person being revived"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "upgrade_pack_begin": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who is deploying the pack"
+      }
+    ],
+    "description": "Called: Fires when a survivor starts deploying an upgrade pack.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "upgrade_pack_used": {
+    "fields": [
+      {
+        "name": "upgradeid",
+        "type": "short",
+        "description": "entity index of the deployed upgrade pack (either upgrade_ammo_explosive or upgrade_ammo_incendiary)"
+      },
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who is deploying the pack"
+      }
+    ],
+    "description": "Called: Fires when a survivor successfully deploys an upgrade pack.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "upgrade_item_already_used": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who tried to use an ammo upgrade twice"
+      },
+      {
+        "name": "upgradeclass",
+        "type": "string",
+        "description": "classname of the upgrade we tried to use"
+      }
+    ],
+    "description": "Called: Fires when a survivor tries to use an already used upgrade pack.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "upgrade_failed_no_primary": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who tried to use an upgrade without having a primary weapon"
+      },
+      {
+        "name": "upgrade",
+        "type": "string",
+        "description": "name of the upgrade we tried to use, eg \"INCENDIARY_AMMO\""
+      }
+    ],
+    "description": "Called: Fires when a survivor tries to use an unused upgrade pack with no primary weapon.\nNote:\nIf the upgrade pack has been used and the survivor has no primary weapon, upgrade_item_already_used fires instead of this event.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "dead_survivor_visible": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The player who sees the entity"
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "Entindex of the entity they see"
+      },
+      {
+        "name": "deadplayer",
+        "type": "short",
+        "description": "user id of the dead player represented"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "adrenaline_used": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who had and used the adrenaline"
+      }
+    ],
+    "description": "Called: Fires when a survivor successfully uses an adrenaline.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "revive_begin": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person doing the reviving"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person being revived"
+      }
+    ],
+    "description": "Called: Fires when a survivor starts reviving an incapacitated survivor.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "revive_success": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person doing the reviving"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person who was revived"
+      },
+      {
+        "name": "lastlife",
+        "type": "bool",
+        "description": "person revived dies if they fall again"
+      },
+      {
+        "name": "ledge_hang",
+        "type": "bool",
+        "description": "1 if person revived was ledge hanging"
+      }
+    ],
+    "description": "Called: Fires when a survivor successfully revives an incapacitated survivor.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "revive_end": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person doing the reviving"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person being revived"
+      },
+      {
+        "name": "ledge_hang",
+        "type": "bool",
+        "description": "person is ledge hanging"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "drag_begin": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person doing the dragging"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person being dragged"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "drag_end": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person doing the dragging"
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": "person being dragged"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_incapacitated": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who became incapacitated"
+      },
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "user ID who made us incapacitated"
+      },
+      {
+        "name": "attackerentid",
+        "type": "long",
+        "description": "if attacker not player, entindex of who made us incapacitated"
+      },
+      {
+        "name": "weapon",
+        "type": "string",
+        "description": "weapon name attacker used"
+      },
+      {
+        "name": "type",
+        "type": "long",
+        "description": "damage type"
+      }
+    ],
+    "description": "Called: Fires when a survivor becomes incapacitated, or a tank is killed.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_incapacitated_start": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who became incapacitated"
+      },
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "user ID who made us incapacitated"
+      },
+      {
+        "name": "attackerentid",
+        "type": "long",
+        "description": "if attacker not player, entindex of who made us incapacitated"
+      },
+      {
+        "name": "weapon",
+        "type": "string",
+        "description": "weapon name attacker used"
+      },
+      {
+        "name": "type",
+        "type": "long",
+        "description": "damage type"
+      }
+    ],
+    "description": "Called: Fires when a survivor is about to become incapacitated.\nTip:\nUse this event to check a survivor's state before becoming incapacitated.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_entered_start_area": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who entered"
+      }
+    ],
+    "description": "When a player spawns into the player start area",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_first_spawn": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who spawned"
+      },
+      {
+        "name": "map_name",
+        "type": "string",
+        "description": ""
+      },
+      {
+        "name": "isbot",
+        "type": "bool",
+        "description": ""
+      }
+    ],
+    "description": "Called: Fires when a player entity is spawned for the first time.\nNote:\nWhen a player idles, a survivor bot is spawned, firing this event.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_left_start_area": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who left"
+      }
+    ],
+    "description": "When a player leaves the player start area",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_left_safe_area": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who left"
+      },
+      {
+        "name": "playercount",
+        "type": "byte",
+        "description": ""
+      }
+    ],
+    "description": "When a player leaves the safe area",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_entered_checkpoint": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who entered"
+      },
+      {
+        "name": "entityid",
+        "type": "long",
+        "description": "If not a player, the entity index of the one entering"
+      },
+      {
+        "name": "door",
+        "type": "long",
+        "description": "Entity index of the checkpoint door the player entered to get here."
+      },
+      {
+        "name": "area",
+        "type": "long",
+        "description": ""
+      },
+      {
+        "name": "doorname",
+        "type": "string",
+        "description": "name of the entity they see"
+      }
+    ],
+    "description": "Called: Fires when a player entity enters a checkpoint area.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_left_checkpoint": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who left"
+      },
+      {
+        "name": "entityid",
+        "type": "long",
+        "description": "If not a player, the entity index of the one exiting"
+      },
+      {
+        "name": "area",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "Called: Fires when a player entity leavess a checkpoint area.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_shoved": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player index who was shoved"
+      },
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "player index who attacked them"
+      }
+    ],
+    "description": "Called: Fires when a survivor shoves another survivor.\nIssues: Does not fire when shoving a survivor that is currently in combat.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "entity_shoved": {
+    "fields": [
+      {
+        "name": "entityid",
+        "type": "short",
+        "description": "the entity index of the one who was shoved"
+      },
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "player index who attacked them"
+      }
+    ],
+    "description": "Called: Fires when a survivor shoves a non-point entity, except survivors.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_jump_apex": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who jumped"
+      }
+    ],
+    "description": "Called: Fires when a player reaches the highest point of their jump. In other words, their upward velocity becomes 0, right before the player starts falling.\nNote:\nUsing noclip fires this event constantly.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_blocked": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player index who was trying to move"
+      },
+      {
+        "name": "blocker",
+        "type": "short",
+        "description": "player index who kept them from moving"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_now_it": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Player who is now it"
+      },
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "player that did the it-ing"
+      },
+      {
+        "name": "exploded",
+        "type": "bool",
+        "description": "whether it was vomit or explosion"
+      },
+      {
+        "name": "infected",
+        "type": "bool",
+        "description": "is the vomit infectious"
+      },
+      {
+        "name": "by_boomer",
+        "type": "bool",
+        "description": "came from a boomer"
+      }
+    ],
+    "description": "Called: Fires when a player entity is covered in bile.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_no_longer_it": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Player who is now no longer it"
+      }
+    ],
+    "description": "Called: Fires when a player entity's bile effect wears off.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "witch_harasser_set": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Player who woke up the witch"
+      },
+      {
+        "name": "witchid",
+        "type": "long",
+        "description": "Entindex of witch woken up"
+      },
+      {
+        "name": "first",
+        "type": "bool",
+        "description": "First time the witch set a harasser"
+      }
+    ],
+    "description": "Called: Fires when a witch is startled.\nNote:\nUsing CommandABot on the witch also fires this event.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "witch_spawn": {
+    "fields": [
+      {
+        "name": "witchid",
+        "type": "long",
+        "description": "Entindex of witch spawning right now."
+      }
+    ],
+    "description": "Called: Fires when a witch is spawned.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "witch_killed": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Player who killed the witch"
+      },
+      {
+        "name": "witchid",
+        "type": "long",
+        "description": "Entindex of witch that was killed."
+      },
+      {
+        "name": "oneshot",
+        "type": "bool",
+        "description": "TRUE if the Witch was killed with one shot"
+      },
+      {
+        "name": "melee_only",
+        "type": "bool",
+        "description": "TRUE if the witch was only killed by melee attacks (no blast, burn, or bullet damage)"
+      },
+      {
+        "name": "bride",
+        "type": "bool",
+        "description": "bride variant?"
+      }
+    ],
+    "description": "Called: Fires when a witch dies.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "tank_spawn": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "User ID of the tank spawning now"
+      },
+      {
+        "name": "tankid",
+        "type": "long",
+        "description": "Entindex of tank spawning right now."
+      }
+    ],
+    "description": "Called: Fires when a witch spawns.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "melee_kill": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Player who bashed the infected"
+      },
+      {
+        "name": "entityid",
+        "type": "long",
+        "description": "Entindex of infected what got killed"
+      },
+      {
+        "name": "ambush",
+        "type": "bool",
+        "description": "Infected was unaware when killed"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "area_cleared": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who cleared the area"
+      },
+      {
+        "name": "area",
+        "type": "long",
+        "description": "id of the cleared area"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "award_earned": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who earned the award"
+      },
+      {
+        "name": "entityid",
+        "type": "long",
+        "description": "client likes ent id"
+      },
+      {
+        "name": "subjectentid",
+        "type": "long",
+        "description": "entity id of other party in the award, if any"
+      },
+      {
+        "name": "award",
+        "type": "short",
+        "description": "id of award earned"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "tongue_grab": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who did the grabbing"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "player that got grabbed"
+      }
+    ],
+    "description": "Called: Fires when a smoker starts grabbing a survivor.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "tongue_broke_bent": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Tongue owner"
+      }
+    ],
+    "description": "Called: Fires when a smoker's tongue breaks due to world geometry bend.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "tongue_broke_victim_died": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Tongue owner"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "tongue_release": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The tongue owner"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "The (now released) victim"
+      },
+      {
+        "name": "distance",
+        "type": "long",
+        "description": "Distance the victim was dragged."
+      }
+    ],
+    "description": "Called: Fires when a smoker releases a survivor, whether choked or not, etc.\nNote:\nFires twice in all release cases, except tongue_broke_bent where it only fires once.\nSecond iteration returns distance and victim arguments as 0.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "choke_start": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The choker"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "The person being choked"
+      }
+    ],
+    "description": "Called: Fires when a smoker starts choking a survivor.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "choke_end": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The choker"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "The person being choked"
+      }
+    ],
+    "description": "Called: Fires when a smoker stops choking a survivor, regardless of the situation.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "choke_stopped": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Who stopped it"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "And who was being choked"
+      },
+      {
+        "name": "smoker",
+        "type": "short",
+        "description": "The tongue owner"
+      },
+      {
+        "name": "release_type",
+        "type": "short",
+        "description": "How did it break?"
+      }
+    ],
+    "description": "Called: Fires when a smoker tongue is cleared on a choked player, fires alongside choke_end (choke_stopped fires first).\nNote:\nDoes not fire when (choke_end still fires):\nThe smoker is staggered with a propane/oxygen tank, pipe bomb, explosive ammo, grenade launcher, boomer explosion, and charger impact.\nAnother special takes over the pinned survivor or kills the smoker.\nThe smoker is killed by a gas can, a firework box, a Molotov, and incendiary ammo.\nThe smoker ledge-hanged the survivor.\nUsing Stagger() on either the smoker or the survivor.\nIssues: While the event does not fire while staggering the smoker with the methods above, it fires when it is killed using only the grenade launcher and explosive ammo.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "tongue_pull_stopped": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Who stopped it"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "And who was being pulled"
+      },
+      {
+        "name": "smoker",
+        "type": "short",
+        "description": "The tongue owner"
+      },
+      {
+        "name": "release_type",
+        "type": "short",
+        "description": "How did it break?"
+      },
+      {
+        "name": "damage_type",
+        "type": "long",
+        "description": "bullet, slash, chainsaw"
+      }
+    ],
+    "description": "Called: Fires when a smoker tongue is cleared on a dragging player. Includes cuts.\nNote:\nDoes not fire when:\nThe smoker is staggered with a propane/oxygen tank, pipe bomb, explosive ammo, grenade launcher, boomer explosion, and charger impact.\nAnother special takes over the pinned survivor or kills the smoker.\nThe smoker is killed by a gas can, a firework box, a Molotov, and incendiary ammo.\nThe smoker ledge-hanged the survivor.\nUsing Stagger() on either the smoker or the survivor.\nIssues: While the event does not fire while staggering the smoker with the methods above, it fires when it is killed using only the grenade launcher and explosive ammo.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "lunge_shove": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who did the lunging"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "player that got lunged"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "lunge_pounce": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who did the lunging"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "player that got lunged"
+      },
+      {
+        "name": "distance",
+        "type": "long",
+        "description": "Distance from pounce start to contact"
+      },
+      {
+        "name": "damage",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "Called: Fires when a hunter successfully pounces a survivor.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "pounce_end": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Player who did the pouncing"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "And who was being pounced"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "pounce_stopped": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Who stopped it"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "And who was being pounced"
+      }
+    ],
+    "description": "Called: Fires whenever a player clears a hunter dominating a survivor, fires alongside pounce_end (pounce_stopped is fired first).\nNote:\nDoes not fire if staggered by pipe bomb, propane/oxygen tank, explosive ammo, grenade launcher, boomer explosion, charger impact, and Stagger(). (pounce_end still fires)\nFires if the hunter is killed by any method above, except boomer explosion and charger impact.\nA special that kills the hunter returns userid as the special's userid.\nKilling the hunter by shoving fires this event before player_hurt. However, killing it by any other means fires the event after player_hurt.\nIssues: Shoving a hunter right after it pounces a survivor does not release the survivor, but the event still fires.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "pounce_attempt_stopped": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Who stopped it"
+      },
+      {
+        "name": "weaponid",
+        "type": "short",
+        "description": "used weapon ID"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "fatal_vomit": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Who vomited"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "And who was killed or incapped"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "survivor_call_for_help": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The actual player entity who is awaiting rescue."
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "SurvivorRescue entity representing the player who needs to be rescued from the closet (used for position)"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "survivor_rescued": {
+    "fields": [
+      {
+        "name": "rescuer",
+        "type": "short",
+        "description": "player that did the rescuing"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "the survivor being rescued"
+      },
+      {
+        "name": "dooridx",
+        "type": "long",
+        "description": "ent index of the rescue door"
+      }
+    ],
+    "description": "Called: Fires when a survivor is successfully rescued from a rescue closet.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "survivor_rescue_abandoned": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "relocated": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who was relocated"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "respawning": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who started respawning"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "tank_frustrated": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who was culled"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "weapon_given": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who got the weapon"
+      },
+      {
+        "name": "giver",
+        "type": "short",
+        "description": "player that did the giving"
+      },
+      {
+        "name": "weapon",
+        "type": "short",
+        "description": "weapon id given"
+      },
+      {
+        "name": "weaponentid",
+        "type": "short",
+        "description": "weapon entity id"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "weapon_drop": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who dropped the weapon"
+      },
+      {
+        "name": "item",
+        "type": "string",
+        "description": "either a weapon such as 'tmp' or 'hegrenade', or an item such as 'nvgs'"
+      },
+      {
+        "name": "propid",
+        "type": "short",
+        "description": "entindex of the dropped weapon"
+      }
+    ],
+    "description": "Called: Fires When an item is removed from a survivor's inventory.\nRelated Events: Called before heal_success, defibrillator_used, upgrade_pack_used, but called after pills_used and adrenaline_used.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "weapon_drop_to_prop": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who dropped the weapon"
+      },
+      {
+        "name": "item",
+        "type": "string",
+        "description": "weapon string \"weapon_*\""
+      },
+      {
+        "name": "propid",
+        "type": "short",
+        "description": "entindex of the dropped weapon"
+      }
+    ],
+    "description": "Called: Fires when a player drops an item that turns into a prop, such as a gas can, a firework box, a propane tank, an oxygen tank, cola bottles, a gnome, etc.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "break_breakable": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "userid of breaker"
+      },
+      {
+        "name": "entindex",
+        "type": "long",
+        "description": "entindex of thing breaking"
+      },
+      {
+        "name": "material",
+        "type": "byte",
+        "description": "BREAK_GLASS, BREAK_WOOD, etc"
+      },
+      {
+        "name": "hulkonly",
+        "type": "bool",
+        "description": "SF_BREAK_HULK_ONLY"
+      },
+      {
+        "name": "achievement",
+        "type": "short",
+        "description": "tag to identify achievement on the client"
+      }
+    ],
+    "description": "Override from gameevents.res",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "achievement_earned": {
+    "fields": [
+      {
+        "name": "player",
+        "type": "byte",
+        "description": "entindex of the player"
+      },
+      {
+        "name": "achievement",
+        "type": "short",
+        "description": "achievement ID"
+      }
+    ],
+    "description": "Called: Fires when a player earns an achievement.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "spec_target_updated": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "spawner_give_item": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Item recipient"
+      },
+      {
+        "name": "item",
+        "type": "string",
+        "description": "Name of item given"
+      },
+      {
+        "name": "spawner",
+        "type": "long",
+        "description": "entindex of the spawner entity"
+      }
+    ],
+    "description": "Called: Fires when a player picks up an item from weapon_*_spawn entities.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "create_panic_event": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who was started the panic"
+      }
+    ],
+    "description": "A panic event has been created, though not necessarily started",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_pills": {
+    "fields": [
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The weapon_pain_pills spawner that is indicated"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_weapons": {
+    "fields": [
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The weapon_pain_pills spawner that is indicated"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "entity_visible": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The player who sees the entity"
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "Entindex of the entity they see"
+      },
+      {
+        "name": "classname",
+        "type": "string",
+        "description": "Classname of the entity they see"
+      },
+      {
+        "name": "entityname",
+        "type": "string",
+        "description": "name of the entity they see"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "weapon_spawn_visible": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The player who sees the entity"
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "Entindex of the entity they see"
+      },
+      {
+        "name": "weaponname",
+        "type": "string",
+        "description": "weapon name, or \"melee\""
+      },
+      {
+        "name": "subtype",
+        "type": "string",
+        "description": "melee weapon name"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "boomer_near": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The boomer"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "The survivor whom the boomer has gotten very close to"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_pre_radio": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "explain the rescue radio reminds you to get ready for the finale",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "started_pre_radio": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "explain the rescue radio reminds you to get ready for the finale",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_radio": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "explain the rescue radio to start the finale",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_gas_truck": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The lever"
+      }
+    ],
+    "description": "explain how pulling the lever on the gas truck starts the finale",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_panic_button": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The panic button"
+      }
+    ],
+    "description": "explain that pressing this button starts a panic event.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_elevator_button": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The button"
+      }
+    ],
+    "description": "explain how to operate the hospital elevator button.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_lift_button": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The lift button"
+      }
+    ],
+    "description": "explain how to operate the lift button.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_church_door": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The saferoom door"
+      }
+    ],
+    "description": "explain how to provoke the crazy church guy.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_emergency_door": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The door"
+      }
+    ],
+    "description": "explain how to open the emergency door.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_crane": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The lever/button"
+      }
+    ],
+    "description": "explain how to lower the box on the crane.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_bridge": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The button"
+      }
+    ],
+    "description": "explain how to close the gates to make a bridge.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_gas_can_panic": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The gas can"
+      }
+    ],
+    "description": "explain how to shoot the gas can.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_van_panic": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The van"
+      }
+    ],
+    "description": "explain how to start the van.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_mainstreet": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The forklift"
+      }
+    ],
+    "description": "explain how to lower the forklift",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_train_lever": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The lever on box car"
+      }
+    ],
+    "description": "explain how to operate the train lever.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_disturbance": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The source of disturbance"
+      }
+    ],
+    "description": "explain that disturbances (car alarm) attract the infected horde",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_scavenge_goal": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The collection device"
+      }
+    ],
+    "description": "explain where to put the scavenge mode items",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_scavenge_leave_area": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "The entity"
+      }
+    ],
+    "description": "explain that leaving the area, starts round",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "begin_scavenge_overtime": {
+    "fields": [],
+    "description": "Enter overtime in a scavenge round",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "scavenge_round_start": {
+    "fields": [
+      {
+        "name": "round",
+        "type": "byte",
+        "description": "round number, 1 based"
+      },
+      {
+        "name": "firsthalf",
+        "type": "bool",
+        "description": "start of the first half of the round"
+      }
+    ],
+    "description": "a scavenge round has begun",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "scavenge_round_halftime": {
+    "fields": [],
+    "description": "a scavenge round is in halftime",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "scavenge_round_finished": {
+    "fields": [],
+    "description": "a scavenge round has ended",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "scavenge_score_tied": {
+    "fields": [],
+    "description": "a team just tied the score",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "versus_round_start": {
+    "fields": [],
+    "description": "a versus round has begun",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "gascan_pour_blocked": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "can't pour the gas, someone else already is",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "gascan_pour_completed": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "player finished pouring a can",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "gascan_dropped": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "gascan_pour_interrupted": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "person who interuppted us"
+      }
+    ],
+    "description": "we got interrupted pouring the gas can",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "scavenge_match_finished": {
+    "fields": [
+      {
+        "name": "winners",
+        "type": "byte",
+        "description": "winner team"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "versus_match_finished": {
+    "fields": [
+      {
+        "name": "winners",
+        "type": "byte",
+        "description": "winner team"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "use_target": {
+    "fields": [
+      {
+        "name": "targetid",
+        "type": "long",
+        "description": "Entindex of the use target"
+      },
+      {
+        "name": "classname",
+        "type": "string",
+        "description": "classname of the use target"
+      },
+      {
+        "name": "isprop",
+        "type": "bool",
+        "description": "is this a prop that can be carried"
+      }
+    ],
+    "description": "A new use target has been found",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_use": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "userid of user"
+      },
+      {
+        "name": "targetid",
+        "type": "long",
+        "description": "Entindex of the used entity"
+      }
+    ],
+    "description": "Called: Fires when a Survivor presses +USE on a useable entity. i.e. Weapons, items, doors.\nRelated Events: If targetid is an item, item_pickup is called prior to player_use\nNote:\nIt does not fire when using a mounted gun.\nIt does not fire when the Use input is fired on a survivor.\nBug:\nDoesn’t fire when player is pressing use while reloading a weapon",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "friendly_fire": {
+    "fields": [
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "player who fired the weapon"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "player who got shot"
+      },
+      {
+        "name": "guilty",
+        "type": "short",
+        "description": "player who was at fault"
+      },
+      {
+        "name": "type",
+        "type": "long",
+        "description": "damage type"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "gameinstructor_draw": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "gameinstructor_nodraw": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "request_weapon_stats": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "userid of user requesting their stats"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_talking_state": {
+    "fields": [
+      {
+        "name": "player",
+        "type": "byte",
+        "description": ""
+      },
+      {
+        "name": "istalking",
+        "type": "bool",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "weapon_pickup": {
+    "fields": [
+      {
+        "name": "context",
+        "type": "byte",
+        "description": "split screen message context"
+      },
+      {
+        "name": "weaponid",
+        "type": "byte",
+        "description": ""
+      },
+      {
+        "name": "weaponslot",
+        "type": "byte",
+        "description": ""
+      },
+      {
+        "name": "dropped_by_infected",
+        "type": "byte",
+        "description": "gender of the Infected that dropped the weapon"
+      }
+    ],
+    "description": "client event for player has picked up a weapon. If that does not work, try using the \"item_pickup\" event.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "hunter_punched": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who caused ignition"
+      },
+      {
+        "name": "hunteruserid",
+        "type": "long",
+        "description": "user ID of Hunter"
+      },
+      {
+        "name": "islunging",
+        "type": "bool",
+        "description": "TRUE if the Hunter was in the act of lunging"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "hunter_headshot": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who made the headshot"
+      },
+      {
+        "name": "hunteruserid",
+        "type": "long",
+        "description": "user ID of Hunter"
+      },
+      {
+        "name": "islunging",
+        "type": "bool",
+        "description": "TRUE if the Hunter was in the act of lunging"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "zombie_ignited": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who caused ignition"
+      },
+      {
+        "name": "gender",
+        "type": "short",
+        "description": "gender (type) of the infected"
+      },
+      {
+        "name": "entityid",
+        "type": "long",
+        "description": "entity ID of Tank"
+      },
+      {
+        "name": "victimname",
+        "type": "string",
+        "description": "\"Witch\", \"Tank\", \"Hunter\", \"Smoker\", or \"Infected\""
+      },
+      {
+        "name": "fire_ammo",
+        "type": "bool",
+        "description": "true if incendiary ammo was used"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "boomer_exploded": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "Boomer that exploded"
+      },
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "player who caused the explosion"
+      },
+      {
+        "name": "splashedbile",
+        "type": "bool",
+        "description": "Exploding boomer splashed bile on Survivors"
+      }
+    ],
+    "description": "Called: Fires when a boomer explodes.\nRelated Events: Fires after player_death",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "non_pistol_fired": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "User that fired a non-pistol weapon"
+      }
+    ],
+    "description": "Called: Fires when a survivor attacks with a non-pistol weapon.\nNote:\nOnly fires once for each survivor; subsequent non-pistol weapons being shot do not fire this event. Most likely used to detect if a survivor has used a melee weapon or not for melee-only achievements.\nIt continues firing again after a map transition, reset and team swap.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "weapon_fire_at_40": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "weapon",
+        "type": "string",
+        "description": "used weapon name"
+      },
+      {
+        "name": "weaponid",
+        "type": "short",
+        "description": "used weapon ID"
+      },
+      {
+        "name": "count",
+        "type": "short",
+        "description": "number of bullets"
+      }
+    ],
+    "description": "This is networked, special event for game instructor",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "total_ammo_below_40": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "sent for any ammo type, except those with max ammo 1, or infinite ammo, like pistols",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_hurt_concise": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID who was hurt"
+      },
+      {
+        "name": "attackerentid",
+        "type": "long",
+        "description": "entity id who attacked, if attacker not a player, and userid therefore invalid"
+      },
+      {
+        "name": "type",
+        "type": "long",
+        "description": "damage type"
+      },
+      {
+        "name": "dmg_health",
+        "type": "short",
+        "description": "damage done to health"
+      }
+    ],
+    "description": "Abbreviated version of 'player_hurt' that is networked",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "tank_killed": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of dead tank"
+      },
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "user id of killer"
+      },
+      {
+        "name": "solo",
+        "type": "bool",
+        "description": "TRUE if a player single-handedly killed the Tank"
+      },
+      {
+        "name": "melee_only",
+        "type": "bool",
+        "description": "TRUE if the tank was only killed by melee attacks (no blast, burn, or bullet damage)"
+      },
+      {
+        "name": "l4d1_only",
+        "type": "bool",
+        "description": "TRUE if l4d1 survivors inflicted damage and the l4d2 survivors did not)"
+      }
+    ],
+    "description": "Called: Fires when a tank dies.\nIssues: It does not fire if the tank is not a bot.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "tank_rock_killed": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user id of killer"
+      }
+    ],
+    "description": "Called: Fires when a survivor destroys a tank rock.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "achievement_write_failed": {
+    "fields": [],
+    "description": "Used for a notification message when an achievement fails to write",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "ghost_spawn_time": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the player that is becoming a ghost"
+      },
+      {
+        "name": "spawntime",
+        "type": "short",
+        "description": "How long of a wait until player is a ghost"
+      }
+    ],
+    "description": "Used for clients to know how long until they become a ghost (and can spawn)",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "survival_at_30min": {
+    "fields": [],
+    "description": "Called: Fires when the survivors survive 30 minutes on a survival map.\nUsed to know when we elapse 30 minutes on a survival map",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "survival_at_10min": {
+    "fields": [],
+    "description": "Called: Fires when the survivors survive 10 minutes on a survival map.\nUsed to know when we elapse 10 minutes on a survival map",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_pre_drawbridge": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "Point out the button that starts the gauntlet finale.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_drawbridge": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_perimeter": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_deactivate_alarm": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_impound_lot": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_decon": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_mall_window": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_mall_alarm": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_coaster": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_coaster_stop": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_decon_wait": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "gauntlet_finale_start": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_float": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_ferry_button": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_hatch_button": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_shack_button": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "upgrade_incendiary_ammo": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "upgrade_explosive_ammo": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "receive_upgrade": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "upgrade",
+        "type": "string",
+        "description": ""
+      }
+    ],
+    "description": "Called: Fires when a survivor successfully receives an incendiary, explosive, or laser sight upgrades.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_vehicle_arrival": {
+    "fields": [
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "mounted_gun_start": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "mounted_gun_overheated": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_burger_sign": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_carousel_button": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_carousel_destination": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_stage_lighting": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_stage_finale_start": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_stage_survival_start": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "ability_out_of_range": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "ability",
+        "type": "string",
+        "description": "ability classname"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_stage_pyrotechnics": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_c3m4_radio1": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_c3m4_radio2": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_gates_are_open": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_c2m4_ticketbooth": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_c3m4_rescue": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_hotel_elevator_doors": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_gun_shop_tanker": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_gun_shop": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_store_alarm": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_store_item": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_store_item_stop": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_survival_generic": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_survival_alarm": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_survival_radio": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_survival_carousel": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_return_item": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_save_items": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "spit_burst": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "Called: Fires when a spitter's spit hits the ground.\nNote:\nSpitter's spit on death also fires this event.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "entered_spit": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "temp_c4m1_getgas": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "temp_c4m3_return_to_boat": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_c1m4_finale": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "c1m4_scavenge_instructions": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "punched_clown": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who punched the clown"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "charger_killed": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of dead charger"
+      },
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "user id of killer"
+      },
+      {
+        "name": "melee",
+        "type": "bool",
+        "description": "TRUE if a player killed the charger with a melee weapon"
+      },
+      {
+        "name": "charging",
+        "type": "bool",
+        "description": "TRUE if the charger was charging when it died"
+      }
+    ],
+    "description": "Called: Fires on a charger's death.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "spitter_killed": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of dead spitter"
+      },
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "user id of killer"
+      },
+      {
+        "name": "has_spit",
+        "type": "bool",
+        "description": "TRUE if the spitter spit at some point"
+      }
+    ],
+    "description": "Called: Fires on a spitter's death.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "jockey_ride": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who did the lunging"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "player that got lunged"
+      }
+    ],
+    "description": "Called: Fires when a jockey successfully rides a survivor.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "jockey_ride_end": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player who did the lunging"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "player that got lunged"
+      },
+      {
+        "name": "rescuer",
+        "type": "short",
+        "description": "Who stopped it"
+      },
+      {
+        "name": "ride_length",
+        "type": "float",
+        "description": "Duration of our ride"
+      }
+    ],
+    "description": "Called: Fires when a jockey releases a survivor.\nNote:\nrescuer return 0 when:\nThe jockey is being cleared by shoving.\nAnother special takes over the jockeyed survivor.\nThe commons kill the biled jockey.\nThe jockey incapacitates the survivor, including ledge-hangs.\nThe jockey is killed or stumbled by a charger's impact.\nNote:\nA jockey stumbled by a boomer explosion returns rescuer argument as the boomer's userid.\nUsing Stagger() on the jockey returns rescuer argument as the jockey's userid.\nUsing Stagger() on the survivor returns rescuer argument as the survivor's userid.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "jockey_punched": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of player that shoved the jockey"
+      },
+      {
+        "name": "jockeyuserid",
+        "type": "long",
+        "description": "user ID of Jockey"
+      },
+      {
+        "name": "islunging",
+        "type": "bool",
+        "description": "TRUE if Jockey was in the act of lunging"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "jockey_headshot": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of player that landed a headshot on the Jockey"
+      },
+      {
+        "name": "jockeyuserid",
+        "type": "long",
+        "description": "user ID of Jockey"
+      },
+      {
+        "name": "islunging",
+        "type": "bool",
+        "description": "TRUE if Jockey was in the act of lunging"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "jockey_killed": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of dead jockey"
+      },
+      {
+        "name": "attacker",
+        "type": "short",
+        "description": "user id of killer"
+      },
+      {
+        "name": "weapon",
+        "type": "string",
+        "description": "weapon name"
+      }
+    ],
+    "description": "Called: Fires on a jockey's death.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "non_melee_fired": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "User that fired a non-melee weapon"
+      }
+    ],
+    "description": "Called: Fires when a survivor attacks with a non-melee weapon.\nNote:\nOnly fires once for each survivor; subsequent non-melee weapons being fired do not fire this event. Most likely used to detect if a survivor has used a non-melee weapon or not for non-melee achievements.\nIt continues firing again after a map transition, reset and team swap.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "infected_decapitated": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "userid of the player who did the decapitation"
+      },
+      {
+        "name": "weapon",
+        "type": "string",
+        "description": "melee weapon name"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "upgrade_pack_added": {
+    "fields": [
+      {
+        "name": "upgradeid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "vomit_bomb_tank": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "userid of the player who biled the tank"
+      }
+    ],
+    "description": "Called: Fires when a survivor biled a tank using a vomit jar.\nNote:\nDoes not fire when biled using HitWithVomit() script function.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "triggered_car_alarm": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of player who activated car alarm"
+      }
+    ],
+    "description": "Called: Fires when a survivor triggers a car alarm.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "panic_event_finished": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "charger_charge_start": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the charger"
+      }
+    ],
+    "description": "Called: Fires when a charger starts charging.\nIssues: Called more than once per ability use. For consistency, check ability_use\nIssues: Can be called after charger_charge_end. Use ability_use for an alternative start-to-end relationship.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "charger_charge_end": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the charger"
+      }
+    ],
+    "description": "Called: Fires when a charger stops charging.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "charger_carry_start": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the charger"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "user ID of the player who was charged"
+      }
+    ],
+    "description": "Called: Fires when a charger starts carrying a survivor while charging.\nBug*:\nDoes not fire when a charger stops charging right after it carries a survivor, usually happens when the survivor is near a wall. Subsequently, charger_carry_end does not fire.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "charger_carry_end": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the charger"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "user ID of the player who was charged"
+      }
+    ],
+    "description": "Called: Fires when a charger stops charging while carrying a survivor.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "charger_carry_kill": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the charger"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "user ID of the victim"
+      }
+    ],
+    "description": "Called: Fires when a survivor dies while being carried by a charger.\nNote:\nOnly works on competitive gamemodes, like versus.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "charger_impact": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the charger"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "user ID of the player who was impacted"
+      }
+    ],
+    "description": "Called: Fires when a survivor is sent flying by a charger’s charge impact.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "charger_pummel_start": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the charger"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "user ID of the player who was charged"
+      }
+    ],
+    "description": "Called: Fires when a charger starts pummeling a survivor.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "charger_pummel_end": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "user ID of the charger"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "user ID of the player who was charged"
+      },
+      {
+        "name": "rescuer",
+        "type": "short",
+        "description": "user ID of the player who rescued them"
+      }
+    ],
+    "description": "Called: Fires when a charger stops pummeling a survivor.\nNote:\nKilling the charger or survivor being pummeled to death returns rescuer as 0.\nIt only returns rescuer as the survivor's userid when the charger is staggered by a pipe bomb, explosive ammo, propane/oxygen tank.\nUsing Stagger() on the survivor returns rescuer argument as 0.\nUsing Stagger() on the charger returns rescuer argument as the charger's userid.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "strongman_bell_knocked_off": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "The arcade bell on c2m4_barns",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "molotov_thrown": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "gas_can_forced_drop": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "player that forced the drop"
+      },
+      {
+        "name": "victim",
+        "type": "short",
+        "description": "player that dropped it"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_need_gnome_to_continue": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_survivor_glows_disabled": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The player we're explaining to"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_item_glows_disabled": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The player we're explaining to"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_rescue_disabled": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The player we're explaining to"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_bodyshots_reduced": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The player we're explaining to"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_witch_instant_kill": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The player we're explaining to"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "set_instructor_group_enabled": {
+    "fields": [
+      {
+        "name": "group",
+        "type": "string",
+        "description": ""
+      },
+      {
+        "name": "enabled",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "versus_marker_reached": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "marker",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "start_score_animation": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "survival_round_start": {
+    "fields": [],
+    "description": "Called: Fires when a survivor round starts.",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "scavenge_gas_can_destroyed": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "The player that destroyed it"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_sewer_gate": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_sewer_run": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "explain_c6m3_finale": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "finale_bridge_lowering": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "subject",
+        "type": "long",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "m60_streak_ended": {
+    "fields": [],
+    "description": "I was holding down the m60 trigger, and now I'm not",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "chair_charged": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "song_played": {
+    "fields": [],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "foot_locker_opened": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_connect_full": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_say": {
+    "fields": [
+      {
+        "name": "userid",
+        "type": "short",
+        "description": ""
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "description": ""
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "stashwhacker_game_won": {
+    "fields": [
+      {
+        "name": "subject",
+        "type": "long",
+        "description": "info_game_event_proxy entity for wam_achievement_event"
+      }
+    ],
+    "description": "Called: Fires after winning a game of stashwhacker in chapter 4 of Dark Carnival (c2m4).",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "entity_killed": {
+    "fields": [
+      {
+        "name": "entindex_inflictor",
+        "type": "long",
+        "description": "entity index of the inflictor"
+      },
+      {
+        "name": "entindex_killed",
+        "type": "long",
+        "description": "entity index of the killed entity"
+      },
+      {
+        "name": "damagebits",
+        "type": "long",
+        "description": "damage type"
+      },
+      {
+        "name": "entindex_attacker",
+        "type": "long",
+        "description": "entity index of the attacker"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_connect": {
+    "fields": [
+      {
+        "name": "xuid",
+        "type": "string",
+        "description": "Steam64 ID of the client"
+      },
+      {
+        "name": "address",
+        "type": "string",
+        "description": "The IP address and source port of the client for the connection"
+      },
+      {
+        "name": "networkid",
+        "type": "string",
+        "description": "Steam ID of the client"
+      },
+      {
+        "name": "index",
+        "type": "short",
+        "description": "Entity index of the client"
+      },
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "User ID of the client"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "description": "Name of the client"
+      },
+      {
+        "name": "bot",
+        "type": "short",
+        "description": "Flag indicating whether the client is a bot or player"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  },
+  "player_disconnect": {
+    "fields": [
+      {
+        "name": "xuid",
+        "type": "string",
+        "description": "Steam64 ID of the client"
+      },
+      {
+        "name": "reason",
+        "type": "string",
+        "description": "Reason for disconnecting"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "description": "Name of the client"
+      },
+      {
+        "name": "networkid",
+        "type": "string",
+        "description": "Steam ID of the client"
+      },
+      {
+        "name": "userid",
+        "type": "short",
+        "description": "User ID of the client"
+      }
+    ],
+    "description": "",
+    "source": "用户提供的 L4D2 Events 页面转存 event(2).md"
+  }
+}
