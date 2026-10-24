@@ -93,11 +93,13 @@ class Project:
     documents: list[ScriptDocument] = field(default_factory=list)
     library: dict = field(default_factory=dict)
     version: int = 1
+    recovered_workspaces: list[dict] = field(default_factory=list)
 
     def to_dict(self):
         return {"version": self.version, "name": self.name,
                 "event_namespace": self.event_namespace,
-                "documents": [d.to_dict() for d in self.documents], "library": self.library}
+                "documents": [d.to_dict() for d in self.documents], "library": self.library,
+                "recovered_workspaces": self.recovered_workspaces}
 
     @classmethod
     def from_dict(cls, obj):
@@ -106,7 +108,9 @@ class Project:
         return cls(str(obj.get('name', 'Untitled')),
                    str(obj.get('event_namespace', 'MyEvents')),
                    [ScriptDocument.from_dict(d) for d in obj.get('documents', [])],
-                   dict(obj.get('library', {})))
+                   dict(obj.get('library', {})),
+                   int(obj.get('version', 1)),
+                   list(obj.get('recovered_workspaces', [])))
 
 
 def default_project():

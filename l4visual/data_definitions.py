@@ -257,3 +257,82 @@ def prune_empty_orphan_data(document):
             document.sections.remove(section)
             removed.append(section.id)
     return removed
+
+
+
+def prune_redundant_orphan_data(document):
+    """Remove *only* proven duplicates of live Namespace data declarations.
+
+    A nonempty orphan is ordinarily valuable user work and must NOT be deleted.
+    The only safe case here is a standalone Table workspace with a missing
+    declaration and an exactly matching Namespace member list.  Nested data,
+    member behaviors and unresolved values are intentionally excluded.
+
+    Return removed (Section, Namespace) pairs so the caller can archive them.
+    """
+    def members(blocks):
+        values = {}
+        for block in blocks:
+            if block.kind != 'var' or block.branches:
+                return None
+            name = str(block.args.get('name', '')).strip()
+            if not name or name in values:
+                return None
+            # Only compare ordinary, direct definitions; ScriptScope mode has
+            # separate initialization semantics.
+            if block.args.get('init_mode', 'once') != 'once':
+                return None
+            value = block.args.get('value', 'null')
+            if not isinstance(value, str):
+                return None
+            values[name] = (value.strip(), block.args.get('container_type', '普通'))
+        return values or None
+
+    removed = []
+    for section in tuple(document.sections):
+        if (section.kind != 'data' or not section.args.get('source_id')
+                or section.args.get('parent_section_id')
+                or section.args.get('container') != 'Table'
+                or section.args.get('fallback_expression')
+                or not section.blocks or find_source(document, section) is not None):
+            continue
+        # Never discard workspaces that own nested definitions; their content
+        # can have semantics not represented by the immediate member values.
+        if any(other.kind == 'data' and other.args.get('parent_section_id') == section.id
+               for other in document.sections):
+            continue
+        data_members = members(section.blocks)
+        if data_members is None:
+            continue
+        matching_namespaces = [namespace for namespace in document.sections
+                               if namespace.kind == 'namespace' and namespace.name == section.name
+                               and members(namespace.blocks) == data_members]
+        if len(matching_namespaces) != 1:
+            continue
+        # Require the member sets to be identical, not merely a shared name.
+        namespace = matching_namespaces[0]
+        document.sections.remove(section)
+        removed.append((section, namespace))
+    return removed
+
+
+def repair_orphan_workspaces(project):
+    """Clean empty or proven-duplicate orphan workspaces, archiving content.
+
+    Ambiguous / unique nonempty workspaces remain intact for manual recovery.
+    Archived sections are stored inside the .l4vp file, and can be exported
+    from the editor Tools menu. Does not change the script generator's output.
+    """
+    removed = []
+    for document in project.documents:
+        for section_id in prune_empty_orphan_data(document):
+            removed.append((document.name, section_id, 'empty'))
+        for section, namespace in prune_redundant_orphan_data(document):
+            project.recovered_workspaces.append({
+                'document': document.name,
+                'reason': 'duplicate_namespace',
+                'namespace_id': namespace.id,
+                'section': section.to_dict(),
+            })
+            removed.append((document.name, section.id, 'duplicate_namespace'))
+    return removed

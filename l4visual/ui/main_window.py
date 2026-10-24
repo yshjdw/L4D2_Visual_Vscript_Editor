@@ -293,6 +293,7 @@ class MainWindow(QMainWindow):
         tool=self.menuBar().addMenu('工具')
         self.action(tool,'外部自定义 API',None,self.external_library)
         self.action(tool,'API 数据库信息',None,self.catalog_about)
+        self.action(tool,'导出已恢复的 Data 分区 / Export recovered Data',None,self.export_recovered_workspaces)
         bar=self.addToolBar('编辑')
         for label,callback in [('新建工程',self.new_project),('新建文件',self.add_document),('添加分区',self.add_section),('保存',self.save),('生成代码',self.update_preview),('导出 .nut',self.export_current)]:
             action=QAction(label,self);action.triggered.connect(callback);bar.addAction(action)
@@ -567,25 +568,46 @@ class MainWindow(QMainWindow):
         from .localization import translated_text
         self.statusBar().showMessage(translated_text('当前文件 ')+doc.name if doc else translated_text('当前工程没有 .nut 文件，请新建脚本。'))
 
+    def export_recovered_workspaces(self):
+        """Export the archived original sections for recovery or inspection."""
+        english=current_profile().language=='en'
+        saved=self.project.recovered_workspaces
+        if not saved:
+            QMessageBox.information(self,
+                'Recovered Data' if english else '已恢复的 Data 分区',
+                'No archived workspaces in this project.' if english else '工程中没有已归档的失效工作区。')
+            return
+        path,_=QFileDialog.getSaveFileName(self,
+            'Export recovered Data' if english else '导出 Data 工作区恢复记录',
+            self.project.name+'_recovered_data.json','JSON (*.json)')
+        if not path:return
+        if not path.lower().endswith('.json'):path+='.json'
+        try:
+            Path(path).write_text(json.dumps(saved,ensure_ascii=False,indent=2),encoding='utf-8')
+            self.statusBar().showMessage(('Recovered workspaces exported: ' if english else '已导出恢复记录：')+path,7000)
+        except OSError as error:
+            QMessageBox.warning(self,'Export failed' if english else '导出失败',str(error))
+
     def _cleanup_orphan_data(self, refresh_canvas=True):
-        from ..data_definitions import prune_empty_orphan_data
-        removed_current=[]
-        total=0
-        for doc in self.project.documents:
-            removed=prune_empty_orphan_data(doc)
-            total+=len(removed)
-            if doc is self.current_doc:
-                removed_current.extend(removed)
-        if removed_current and refresh_canvas:
+        from ..data_definitions import repair_orphan_workspaces
+        changes=repair_orphan_workspaces(self.project)
+        current_changed=any(doc_name==self.current_doc.name for doc_name,_,_ in changes) if self.current_doc else False
+        if current_changed and refresh_canvas:
             self._loading=True
             try:
                 self.canvas.board.load(self.current_doc)
             finally:
                 self._loading=False
-        if total:
+        if changes:
             self.dirty=True
-            self.statusBar().showMessage(translated_text('已自动清理 ')+str(total)+translated_text(' 个空的失效 Data / ScriptScope 隐藏分区'),5000)
-        return total
+            duplicates=sum(reason=='duplicate_namespace' for _,_,reason in changes)
+            english=current_profile().language=='en'
+            if english:
+                message=f'Cleaned {len(changes)} orphan Data workspace(s). {duplicates} redundant workspace(s) archived in project recovery records; save the project.'
+            else:
+                message=f'已清理 {len(changes)} 个失效 Data 工作区，其中 {duplicates} 个冗余分区已存入工程恢复记录；请保存工程。'
+            self.statusBar().showMessage(message,10000)
+        return len(changes)
 
     def _scheduled_scope_cleanup(self):
         self._scope_cleanup_pending=False
@@ -621,13 +643,18 @@ class MainWindow(QMainWindow):
         if not path:return
         try:
             self.project=load_project(path);self.file_path=path;self.dirty=False
-            from ..data_definitions import prune_empty_orphan_data
-            self._repaired_orphans=sum(len(prune_empty_orphan_data(doc)) for doc in self.project.documents)
+            from ..data_definitions import repair_orphan_workspaces
+            repairs=repair_orphan_workspaces(self.project)
+            self._repaired_orphans=len(repairs)
+            archived=sum(reason=='duplicate_namespace' for _,_,reason in repairs)
             self.load_document(self.project.documents[0] if self.project.documents else None)
             self.setWindowTitle(f'L4D2 Visual VScript {APP_VERSION} — '+self.project.name)
             if self._repaired_orphans:
                 self.mark_dirty()
-                self.statusBar().showMessage(translated_text('已清理 ')+str(self._repaired_orphans)+translated_text(' 个空的失效 Data 分区；请保存工程'),10000)
+                english=current_profile().language=='en'
+                message=(f'Cleaned {self._repaired_orphans} orphan Data workspace(s), archived {archived} duplicate(s); save the project.' if english
+                         else f'已清理 {self._repaired_orphans} 个失效 Data 工作区，其中 {archived} 个重复分区已归档；请保存工程。')
+                self.statusBar().showMessage(message,10000)
         except Exception as exc:QMessageBox.critical(self,'打开失败',str(exc))
 
     def save(self):

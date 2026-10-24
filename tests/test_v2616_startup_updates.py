@@ -51,7 +51,7 @@ class StartupUpdateTests(unittest.TestCase):
         info=release_from_json(data)
         self.assertFalse(is_newer(info.version, APP_VERSION))
         self.assertFalse(info.asset_url)
-        self.assertTrue(is_newer('v26.18', APP_VERSION))
+        self.assertTrue(is_newer('v26.19', APP_VERSION))
 
 if __name__ == '__main__':
     unittest.main()
